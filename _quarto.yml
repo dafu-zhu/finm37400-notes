@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: _site
+  pre-render: scripts/copy_figures.py
 
 website:
   title: "FINM 37400: Fixed Income"
