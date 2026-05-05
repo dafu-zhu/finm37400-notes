@@ -171,7 +171,7 @@ Long Bond, and Ultra Bond nodes dominate the individual Treasury issues
 trading in the cash market.
 
 ::: center
-![image](figures/L4_2_c09_volume_zoom.png){width="90%" height="80%"}
+![image](../figures/L4_2_c09_volume_zoom.png){width="90%" height="80%"}
 :::
 
 Side-by-side bars of notional volume (top) and DV01-scaled volume (bottom)
@@ -353,7 +353,7 @@ head off the confusion.
 **Cells 36--41.** *Examples: Gross and Net Basis (FVM5, 2025-02-25).*\
 
 ::: center
-![image](figures/L4_2_c41_net_basis.png){width="90%" height="80%"}
+![image](../figures/L4_2_c41_net_basis.png){width="90%" height="80%"}
 :::
 
 Bond-by-bond table of coupon, repo rate, days to forward, accrued interest,
@@ -510,7 +510,7 @@ $$\mathcal{F}(T,T) \;=\; \frac{P^{\text{CTD}}_T}{\phi^{\text{CTD}}}
 note along with its gross and net basis.
 
 ::: center
-![image](figures/L4_2_c62_bbg_ctd.png){width="70%" height="25%"}
+![image](../figures/L4_2_c62_bbg_ctd.png){width="70%" height="25%"}
 :::
 
 The contract (FVM5 Comdty) shows CTD price $97.93$, gross basis $-5.95$,
@@ -521,7 +521,7 @@ directly from the bond data for all seven deliverables produces a
 delivery-cost column whose minimum flags the CTD.
 
 ::: center
-![image](figures/L4_2_c65_confirm_ctd.png){width="90%" height="60%"}
+![image](../figures/L4_2_c65_confirm_ctd.png){width="90%" height="60%"}
 :::
 
 The $91282\mathrm{CLK}$ note (2029-08-31, 3.62% coupon, $\phi = 0.9135$)
@@ -728,7 +728,7 @@ discussion.)*
 :::
 
 ::: center
-![image](figures/L5_1_c06_otc_products.png){width="90%" height="60%"}
+![image](../figures/L5_1_c06_otc_products.png){width="90%" height="60%"}
 :::
 
 U.S. bank derivatives notional (Q4-2024): interest rate derivatives and
@@ -943,7 +943,7 @@ SOFR swap rate varied from near zero (2020 COVID era) to above 4% (2023
 peak of the hiking cycle) and back to around 4% in 2025.
 
 ::: center
-![image](figures/L5_1_c27_ten_year_ts.png){width="80%" height="40%"}
+![image](../figures/L5_1_c27_ten_year_ts.png){width="80%" height="40%"}
 :::
 
 **Swap rates move over time, strongly correlated across tenors.**
@@ -952,7 +952,7 @@ structure; every tenor tracks a common "level" factor, with secondary
 "slope" and "curvature" deviations.
 
 ::: center
-![image](figures/L5_1_c34_factor_structure.png){width="80%" height="40%"}
+![image](../figures/L5_1_c34_factor_structure.png){width="80%" height="40%"}
 :::
 
 **Swap curves at four snapshot dates.** The swap curve's shape
@@ -960,7 +960,7 @@ varies: concave (typical), inverted (2023 hiking cycle), or humped at
 short horizons.
 
 ::: center
-![image](figures/L5_1_c29_curves_dates.png){width="80%" height="40%"}
+![image](../figures/L5_1_c29_curves_dates.png){width="80%" height="40%"}
 :::
 
 The $2019$ curve (blue) is nearly flat around $2\%$; the $2021$ curve
@@ -1023,7 +1023,7 @@ The notation emphasizes that $c_{\text{sw}}$ depends on the quote date
 ($0$), the maturity ($T$), and the frequency ($m$) of the swap.
 
 ::: center
-![image](figures/L5_1_c47_swap_rate_panels.png){width="90%" height="55%"}
+![image](../figures/L5_1_c47_swap_rate_panels.png){width="90%" height="55%"}
 :::
 
 Four-panel overlay of Treasury spot curve (blue) and implied swap curve

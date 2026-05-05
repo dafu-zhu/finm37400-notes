@@ -225,7 +225,7 @@ short-term yields --- even averaged over long periods of time.* This means
 long-term yields cannot simply be an average of short-term yields.
 
 ::: center
-![image](figures/L2_1_c18_fact1_unc.png){width="90%" height="80%"}
+![image](../figures/L2_1_c18_fact1_unc.png){width="90%" height="80%"}
 :::
 
 The table reports the unconditional mean yield at each maturity over the full
@@ -249,7 +249,7 @@ the class encountered in portfolio theory last quarter.
 than the future yield.* The forward overestimates the realized future spot.
 
 ::: center
-![image](figures/L2_1_c22_fact2_unc.png){width="90%" height="80%"}
+![image](../figures/L2_1_c22_fact2_unc.png){width="90%" height="80%"}
 :::
 
 The left column is the average forward rate $f_t^{(n,n+1)}$; the right column
@@ -274,7 +274,7 @@ investor risk aversion.
 **Cells 23--26.** *Fact #3. Excess returns are not zero.*
 
 ::: center
-![image](figures/L2_1_c25_fact3_unc.png){width="90%" height="80%"}
+![image](../figures/L2_1_c25_fact3_unc.png){width="90%" height="80%"}
 :::
 
 The excess return (long bond return minus one-year bond return) averages
@@ -320,7 +320,7 @@ where $\tilde{y}^{(\cdot)}_t \equiv y^{(\cdot)}_t - y^{(1)}_t$.
 Under the EH, $\beta^{(n)} = 1$ at every $n$.
 
 ::: center
-![image](figures/L2_1_c40_fact1_dyn.png){width="90%" height="80%"}
+![image](../figures/L2_1_c40_fact1_dyn.png){width="90%" height="80%"}
 :::
 
 The estimated betas are $0.32$, $0.31$, $0.30$, $0.30$ at maturities $n=2,3,4,5$
@@ -364,7 +364,7 @@ $$y^{(1)}_{t+n} - y^{(1)}_t \;=\; \alpha \;+\; \beta\,\tilde{f}_t^{(n,n+1)} \;+\
 Under the EH, $\beta = 1$.
 
 ::: center
-![image](figures/L2_1_c47_fact2_dyn.png){width="90%" height="80%"}
+![image](../figures/L2_1_c47_fact2_dyn.png){width="90%" height="80%"}
 :::
 
 The betas are again far below one and decay to roughly one-quarter at the
@@ -391,7 +391,7 @@ Under the EH, *no* regressor should predict excess returns, so
 $\beta$ should be zero. In the data:
 
 ::: center
-![image](figures/L2_1_c55_fact3_dyn.png){width="90%" height="80%"}
+![image](../figures/L2_1_c55_fact3_dyn.png){width="90%" height="80%"}
 :::
 
 The estimated betas are *positive and non-trivial*: when the forward
@@ -438,14 +438,14 @@ Then $p^{(n)} = -n\,y^{(n)}$, equivalently $y^{(n)} = -\frac{1}{n}\,p^{(n)}$.
 **Cells 71--73.** *Log prices and log yields, data check.*
 
 ::: center
-![image](figures/L2_1_c71_logtails.png){width="90%" height="80%"}
+![image](../figures/L2_1_c71_logtails.png){width="90%" height="80%"}
 :::
 
 The tails of `lprices` and `lys`; note that log prices are
 negative (they are discount rates times maturity, with a sign flip).
 
 ::: center
-![image](figures/L2_1_c73_logseries.png){width="90%" height="80%"}
+![image](../figures/L2_1_c73_logseries.png){width="90%" height="80%"}
 :::
 
 :::
@@ -577,7 +577,7 @@ We have discussed the yield curve, which is a range of rates quoted on a
 single date. Now we consider a range of dates for a single bond issue.
 
 ::: center
-![image](figures/L2_2_c07_dirty.png){width="90%" height="80%"}
+![image](../figures/L2_2_c07_dirty.png){width="90%" height="80%"}
 :::
 
 The dirty price of a 30-year Treasury from 1992 through 2023. Note that the

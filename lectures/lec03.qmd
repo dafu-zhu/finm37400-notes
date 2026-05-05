@@ -776,7 +776,7 @@ cross-check.
 **Cell 17.** *(Output) Implied Fed Funds Rate step plot.*
 
 ::: center
-![image](figures/L3_2_c17_implied_ff.png){width="90%" height="80%"}
+![image](../figures/L3_2_c17_implied_ff.png){width="90%" height="80%"}
 :::
 
 The red step function shows the futures-implied rate for each contract
@@ -818,7 +818,7 @@ problem, for the current data.
 **Cell 19.** *(Output) Change in Expected Rates between quote dates.*
 
 ::: center
-![image](figures/L3_2_c19_change.png){width="90%" height="80%"}
+![image](../figures/L3_2_c19_change.png){width="90%" height="80%"}
 :::
 
 The line shows the difference, in basis points, between the expected rate
@@ -854,7 +854,7 @@ monetary-policy surprise measurement.
 **Cells 25--26.** *Looking at Open Interest on the Chain.*\
 
 ::: center
-![image](figures/L3_2_c26_oi_scatter.png){width="90%" height="80%"}
+![image](../figures/L3_2_c26_oi_scatter.png){width="90%" height="80%"}
 :::
 
 The scatter shows implied Fed Funds rate on the $y$-axis versus FOMC
@@ -892,7 +892,7 @@ intermediate steps as self-study.
 **Cell 9.** *(Output) Volume vs. Open Interest by Contract.*
 
 ::: center
-![image](figures/L3_3_c09_volume_oi.png){width="90%" height="80%"}
+![image](../figures/L3_3_c09_volume_oi.png){width="90%" height="80%"}
 :::
 
 Each point is a 3-month SOFR contract, plotted by its daily trading
@@ -945,7 +945,7 @@ applies --- but for short horizons it is a good first approximation.
 **Cell 18.** *(Output) Short-term rates from SOFR futures.*
 
 ::: center
-![image](figures/L3_3_c18_shortterm_rates.png){width="90%" height="80%"}
+![image](../figures/L3_3_c18_shortterm_rates.png){width="90%" height="80%"}
 :::
 
 Spot rates (blue) and forward rates (orange), extracted directly from the
@@ -971,7 +971,7 @@ splice in the swap curve from that point onward in a real calibration.
 **Cell 13.** *(Output) Convexity bias and adjusted rates, Bloomberg vs. in-house.*
 
 ::: center
-![image](figures/L3_3_c13_bloomberg_comp.png){width="90%" height="80%"}
+![image](../figures/L3_3_c13_bloomberg_comp.png){width="90%" height="80%"}
 :::
 
 *Left panel:* size of the convexity bias ($r^{\text{fut}} -

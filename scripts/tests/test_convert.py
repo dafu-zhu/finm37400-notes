@@ -120,3 +120,24 @@ def test_wrap_with_yaml_includes_title_and_warning():
     assert 'title: "Lecture 1: Spot Curve"' in out
     assert "AUTO-GENERATED" in out
     assert "body" in out
+
+
+def test_clean_pandoc_output_rewrites_figure_paths():
+    md = "Text\n![](figures/foo.png)\nmore\n![alt](figures/bar.png)\n"
+    out = convert.clean_pandoc_output(md)
+    assert "../figures/foo.png" in out
+    assert "../figures/bar.png" in out
+    assert "(figures/" not in out  # nothing left without ../
+
+
+def test_clean_pandoc_output_preserves_already_relative_paths():
+    md = "![](../figures/L8_tikz_1.png)"
+    out = convert.clean_pandoc_output(md)
+    assert out.count("../figures/") == 1   # not double-prefixed
+    assert "../../figures/" not in out
+
+
+def test_clean_pandoc_output_unescapes_underscores_in_image_paths():
+    md = "![](../figures/L1\\_1\\_compounding.png)"
+    out = convert.clean_pandoc_output(md)
+    assert "../figures/L1_1_compounding.png" in out

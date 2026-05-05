@@ -126,9 +126,16 @@ def run_pandoc(tex: str) -> str:
 
 
 def clean_pandoc_output(md: str) -> str:
+    # Pandoc may escape underscores in image paths in markdown output
     md = re.sub(
-        r"!\[\]\((\.\./figures/[^)]+)\)",
-        lambda m: "![](" + m.group(1).replace("\\_", "_") + ")",
+        r"!\[([^\]]*)\]\(((?:\.\./)?figures/[^)]+)\)",
+        lambda m: f"![{m.group(1)}](" + m.group(2).replace("\\_", "_") + ")",
+        md,
+    )
+    # Rewrite root-relative figure paths to be relative to lectures/
+    md = re.sub(
+        r"(!\[[^\]]*\]\()figures/",
+        r"\1../figures/",
         md,
     )
     return md

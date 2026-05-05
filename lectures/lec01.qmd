@@ -31,7 +31,7 @@ the CRSP-style names (`CALDT`, `TCOUPRT`, `TDNOMPRC`,
 The first non-trivial output is the head of the loaded quote frame:
 
 ::: center
-![image](figures/L1_1_c02_load_quotes.png){width="90%" height="80%"}
+![image](../figures/L1_1_c02_load_quotes.png){width="90%" height="80%"}
 :::
 
 The screenshot crops the right-hand columns (`ytm`, `accrued int`, `total size`); for the full table see the live page at
@@ -181,7 +181,7 @@ re-do it with $Z$.
 Consider the annually compounded spot rate of 5% at maturity $T-t=1$.
 
 ::: center
-![image](figures/L1_1_compounding.png){width="90%" height="80%"}
+![image](../figures/L1_1_compounding.png){width="90%" height="80%"}
 :::
 
 The table shows the equivalent rate at each compounding frequency
@@ -257,7 +257,7 @@ too long, quotes that do not have transparent pricing, and so on.
 **Cells 37--38.** *Map Cashflows.*
 
 ::: center
-![image](figures/L1_1_c38_cashflows.png){width="90%" height="80%"}
+![image](../figures/L1_1_c38_cashflows.png){width="90%" height="80%"}
 :::
 
 The output of `calc_cashflows` is the cashflow matrix $\mathbf{C}$:
@@ -359,13 +359,13 @@ in the unrestricted form and is what motivates a parametric model.
 **Bootstrap.**
 
 ::: center
-![image](figures/L1_1_c48_bootstrap.png){width="90%" height="80%"}
+![image](../figures/L1_1_c48_bootstrap.png){width="90%" height="80%"}
 :::
 
 **OLS Estimation.** Same restrictions, model swapped for OLS.
 
 ::: center
-![image](figures/L1_1_c50_ols.png){width="90%" height="80%"}
+![image](../figures/L1_1_c50_ols.png){width="90%" height="80%"}
 :::
 
 :::
@@ -408,7 +408,7 @@ The spot curve of interest rates can be calculated for any compounding
 frequency. The figure below plots it for continuous compounding.
 
 ::: center
-![image](figures/L1_1_c54_spot_curve.png){width="90%" height="80%"}
+![image](../figures/L1_1_c54_spot_curve.png){width="90%" height="80%"}
 :::
 
 The estimated spot curves under bootstrap and OLS are nearly identical when
@@ -435,7 +435,7 @@ under that heading). The first plot below is the resulting OLS discount
 curve under the relaxed restrictions:
 
 ::: center
-![image](figures/L1_1_c62_estimate_bad.png){width="90%" height="80%"}
+![image](../figures/L1_1_c62_estimate_bad.png){width="90%" height="80%"}
 :::
 
 The OLS-extracted discount curve under the relaxed restrictions
@@ -443,11 +443,11 @@ The OLS-extracted discount curve under the relaxed restrictions
 discounts between 10 and 15 years.
 
 ::: center
-![image](figures/L1_1_vacillating.png){width="90%" height="80%"}
+![image](../figures/L1_1_vacillating.png){width="90%" height="80%"}
 :::
 
 ::: center
-![image](figures/L1_1_c71_vacillate_long.png){width="90%" height="80%"}
+![image](../figures/L1_1_c71_vacillate_long.png){width="90%" height="80%"}
 :::
 
 In fact, it is worse than it appears: the missing values in years 10--15 are
@@ -482,7 +482,7 @@ huge swings in the estimated parameters.
 Consider the condition number of the cashflow matrix:
 
 ::: center
-![image](figures/L1_1_c78_condnum.png){width="90%" height="80%"}
+![image](../figures/L1_1_c78_condnum.png){width="90%" height="80%"}
 :::
 
 The condition number gives an idea of how a small perturbation to the data
@@ -537,7 +537,7 @@ estimated by searching over $\boldsymbol{\theta}$ to minimize the sum of
 squared pricing errors:
 
 ::: center
-![image](figures/L1_1_c92_ns_params.png){width="90%" height="80%"}
+![image](../figures/L1_1_c92_ns_params.png){width="90%" height="80%"}
 :::
 
 The output table shows the optimized $\boldsymbol{\theta}$ for both the
@@ -577,11 +577,11 @@ not affect identification.
 Spot Curve, then convert to the Discount Curve.*
 
 ::: center
-![image](figures/L1_1_c96_ns_spot.png){width="90%" height="80%"}
+![image](../figures/L1_1_c96_ns_spot.png){width="90%" height="80%"}
 :::
 
 ::: center
-![image](figures/L1_1_c98_ns_disc.png){width="90%" height="80%"}
+![image](../figures/L1_1_c98_ns_disc.png){width="90%" height="80%"}
 :::
 
 The parameterized functional form lets us evaluate the curve at *any*
@@ -661,7 +661,7 @@ at `discussions/1.1. The Spot Discount Curve.html`, section
 *Model Prices and Errors*.
 
 ::: center
-![image](figures/L1_1_errors.png){width="90%" height="80%"}
+![image](../figures/L1_1_errors.png){width="90%" height="80%"}
 :::
 
 The plot shows price residuals for each fitted model across maturities. The
@@ -716,7 +716,7 @@ quote, and what is the no-arbitrage value of that rate?
 Consider the quoted treasuries on the date shown below.
 
 ::: center
-![image](figures/L1_2_quotes.png){width="90%" height="80%"}
+![image](../figures/L1_2_quotes.png){width="90%" height="80%"}
 :::
 
 :::
@@ -751,7 +751,7 @@ We have a perfectly hedged position at all times. Thus, the forward rate must
 equal the gain from the 12mo tbill.
 
 ::: center
-![image](figures/L1_2_c13_forward_calc.png){width="90%" height="80%"}
+![image](../figures/L1_2_c13_forward_calc.png){width="90%" height="80%"}
 :::
 
 :::
@@ -795,7 +795,7 @@ Given this forward dollar exposure, the investor is guaranteed the following
 semiannual compounded rate:
 
 ::: center
-![image](figures/L1_2_c16_rate_summary.png){width="90%" height="80%"}
+![image](../figures/L1_2_c16_rate_summary.png){width="90%" height="80%"}
 :::
 
 :::
@@ -811,7 +811,7 @@ will move over the interim. It is replicated by treasuries, so it is subject
 to interest-rate risk.
 
 ::: center
-![image](figures/L1_2_c21_tsdata.png){width="90%" height="80%"}
+![image](../figures/L1_2_c21_tsdata.png){width="90%" height="80%"}
 :::
 
 :::
@@ -895,15 +895,15 @@ the forward curve from the spot curve*.
 **Cells 39--41 (output).**\
 
 ::: center
-![image](figures/L1_2_spot.png){width="90%" height="80%"}
+![image](../figures/L1_2_spot.png){width="90%" height="80%"}
 :::
 
 ::: center
-![image](figures/L1_2_forward.png){width="90%" height="80%"}
+![image](../figures/L1_2_forward.png){width="90%" height="80%"}
 :::
 
 ::: center
-![image](figures/L1_2_c41_fwd_disc.png){width="90%" height="80%"}
+![image](../figures/L1_2_c41_fwd_disc.png){width="90%" height="80%"}
 :::
 
 The first plot shows the spot rate curve as of 2023-11-30. The second
@@ -974,7 +974,7 @@ measurement error in the spot curve produces a much larger error in the
 forward curve.
 
 ::: center
-![image](figures/L1_2_c61_extract_loop.png){width="90%" height="80%"}
+![image](../figures/L1_2_c61_extract_loop.png){width="90%" height="80%"}
 :::
 
 :::
@@ -1073,11 +1073,11 @@ the rate to $T_2 = 12$ months, go long the forward contract on the
 $T_2$-T-bill at $T_1$.
 
 ::: center
-![image](figures/L1_2_c83_display_bonds.png){width="90%" height="80%"}
+![image](../figures/L1_2_c83_display_bonds.png){width="90%" height="80%"}
 :::
 
 ::: center
-![image](figures/L1_2_c86_fwd_contract.png){width="90%" height="80%"}
+![image](../figures/L1_2_c86_fwd_contract.png){width="90%" height="80%"}
 :::
 
 :::
@@ -1118,7 +1118,7 @@ initiation. For $t = T_1$, the value collapses to the realized vs. agreed
 rate spread.
 
 ::: center
-![image](figures/L1_2_c100_fra_dates.png){width="90%" height="80%"}
+![image](../figures/L1_2_c100_fra_dates.png){width="90%" height="80%"}
 :::
 
 :::

@@ -696,7 +696,7 @@ forward-vol curve is plausible:
 and forward vols against tenor.)*
 
 ::: center
-![image](figures/L6_1_c58_flat_vs_fwd.png){width="90%" height="55%"}
+![image](../figures/L6_1_c58_flat_vs_fwd.png){width="90%" height="55%"}
 :::
 
 The blue line is the flat vol quoted by the market for caps of

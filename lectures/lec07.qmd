@@ -321,7 +321,7 @@ $\sigma$-units.
 curves across futures markets and expirations.)*
 
 ::: center
-![image](figures/L7_1_c07_skew_examples.png){width="80%" height="85%"}
+![image](../figures/L7_1_c07_skew_examples.png){width="80%" height="85%"}
 :::
 
 The notebook walks through implied-vol skews for several futures
@@ -833,7 +833,7 @@ not because joint optimization is hard.
 crude futures, September 2025 contract.)*
 
 ::: center
-![image](figures/L7_3_c22_sabr_fit.png){width="85%" height="55%"}
+![image](../figures/L7_3_c22_sabr_fit.png){width="85%" height="55%"}
 :::
 
 The notebook fits SABR to a Bloomberg vol skew snapshot for WTI crude.
@@ -876,7 +876,7 @@ any market.
 $F_0$ moves.)*
 
 ::: center
-![image](figures/L7_3_c24_volpath.png){width="85%" height="50%"}
+![image](../figures/L7_3_c24_volpath.png){width="85%" height="50%"}
 :::
 
 The plot fixes the calibrated $(\beta, \rho, \nu, \sigma_0)$ and
@@ -928,7 +928,7 @@ options they can differ substantially.
 Changes*).** *(Numerical sensitivity table.)*
 
 ::: center
-![image](figures/L7_3_c25_atm_sensitivity.png){width="70%" height="45%"}
+![image](../figures/L7_3_c25_atm_sensitivity.png){width="70%" height="45%"}
 :::
 
 For the WTI crude calibration, a $\pm 5\%$ shift in the forward price
