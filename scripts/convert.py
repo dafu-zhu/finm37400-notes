@@ -27,6 +27,16 @@ BLOCK_MAP = {
     "tipblock":      ("tip",       "Filling the gap"),
 }
 
+# Unicode sentinels survive pandoc as plain text. Post-pass swaps them
+# for proper Quarto fenced-div syntax.
+SENTINEL_OPEN = {
+    "keyblock":      "§§KEYBLOCK_OPEN§§",
+    "exerciseblock": "§§EXERCISEBLOCK_OPEN§§",
+    "noteblock":     "§§NOTEBLOCK_OPEN§§",
+    "tipblock":      "§§TIPBLOCK_OPEN§§",
+}
+SENTINEL_CLOSE = "§§BLOCK_CLOSE§§"
+
 CHECKPOINT_RE = re.compile(
     r"\\begin\{checkpoint\}.*?\\end\{checkpoint\}", re.DOTALL
 )
@@ -41,14 +51,34 @@ def remove_checkpoint_blocks(tex: str) -> str:
 
 
 def convert_color_blocks(tex: str) -> str:
-    for env, (callout, title) in BLOCK_MAP.items():
+    """Pre-pass: swap mdframed envs for unicode sentinels.
+
+    The sentinels survive pandoc untouched; restore_callout_sentinels
+    converts them back to Quarto fenced-div syntax in the markdown output.
+    """
+    for env in BLOCK_MAP:
         tex = re.sub(
             rf"\\begin\{{{env}\}}",
-            f':::{{.callout-{callout} title="{title}"}}\n',
+            f"\n\n{SENTINEL_OPEN[env]}\n\n",
             tex,
         )
-        tex = re.sub(rf"\\end\{{{env}\}}", "\n:::", tex)
+        tex = re.sub(
+            rf"\\end\{{{env}\}}",
+            f"\n\n{SENTINEL_CLOSE}\n\n",
+            tex,
+        )
     return tex
+
+
+def restore_callout_sentinels(md: str) -> str:
+    """Post-pass: replace sentinels with Quarto fenced-div callout syntax."""
+    for env, (callout, title) in BLOCK_MAP.items():
+        md = md.replace(
+            SENTINEL_OPEN[env],
+            f':::{{.callout-{callout} title="{title}"}}',
+        )
+    md = md.replace(SENTINEL_CLOSE, ":::")
+    return md
 
 
 def replace_tikz_blocks(tex: str, lecture_num: int) -> tuple[str, int]:
@@ -124,6 +154,7 @@ def convert_file(tex_path: Path) -> None:
     tex, tikz_n = replace_tikz_blocks(tex, lecture_num)
     tex = strip_lecture_macros(tex)
     md = run_pandoc(tex)
+    md = restore_callout_sentinels(md)
     md = clean_pandoc_output(md)
     md = wrap_with_yaml(md, title, lecture_num)
     out = OUT / f"lec{lecture_num:02d}.qmd"

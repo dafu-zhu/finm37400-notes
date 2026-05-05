@@ -42,7 +42,7 @@ sharpened a few framings that are worth keeping.
 
 ## Swaps as a duration-transformation primitive {#L7-sec:swaps-recap}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (Page *Vol Skew* setup recap).**
 *(Why swaps are a foundational fixed-income product.)*\
@@ -70,7 +70,7 @@ cheaply.
 
 ## Forward swaps and swaptions as the next layer {#L7-sec:swaptions-recap}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (recap of *Swaptions* from Lecture 6).**
 *(Two layers of optionality on top of the spot swap.)*
@@ -103,7 +103,7 @@ that sits above.
 
 The four-by-four grid that the lecturer kept returning to:
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The structural grid.**
 
@@ -130,7 +130,7 @@ question is whether to enter a forward swap at all.
 
 ## Flat vol and forward vol as YTM and spot rate {#L7-sec:flatvfwd-recap}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The two implied-vol layers (recap).**
 
@@ -162,7 +162,7 @@ forward vol must be *lower*. "As I see these flat vols going up
 and up and up, what do I know must be true of these caplet vols, of the
 forward vols? They have to be even higher."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer flagged but did not labor the
 naming-confusion the class always trips on: the cap analog of the
@@ -177,7 +177,7 @@ emotionally awkward.
 
 ## The swaption Black formula and what to plug in {#L7-sec:swaption-blackrecap}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (recap of *Black's formula for swaptions*).**
 *(One Black call on the forward swap rate, scaled by the swap
@@ -211,7 +211,7 @@ that the swap annuity is a valid numeraire, plug the forward swap
 rate into Black, scale by the annuity, and the Bloomberg quote
 translates to a dollar price.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The forward swap rate (recap).**
 $$f_n(0, T_o, T) \;=\; n\,
@@ -235,7 +235,7 @@ on whether the option stays deeply in the money rationalizes the
 
 ## Black vs Bachelier: the normal-vol toggle {#L7-sec:normal-toggle}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (recap).** *(Bloomberg's normal-vol convention.)*\
 Bloomberg quotes vols by default in the *normal* (Bachelier) form,
@@ -264,7 +264,7 @@ caps-and-floors machinery practical: a *collared floater*, a
 floating-rate corporate note whose coupon is bounded inside an
 interval $[K_{\text{floor}}, K_{\text{cap}}]$.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (case study, *Collared floater*).**
 *(Decomposition into floating + cap + floor positions.)*\
@@ -300,7 +300,7 @@ pivoted into the new material.
 
 # The volatility skew, in pictures {#L7-sec:skewpictures}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (Page *Examples of Vol Skew*).**
 *(What an implied-vol-vs-strike chart shows.)*\
@@ -315,7 +315,7 @@ $\sigma$-units.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 7 (Page *Examples of Vol Skew*).** *(Implied-vol
 curves across futures markets and expirations.)*
@@ -348,7 +348,7 @@ ones in turn:
 
 The point the lecturer wanted on the table next was diagnostic:
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Two predictions if Black were exactly right.**
 
@@ -368,7 +368,7 @@ ought to be tradable.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why does put-call parity, in implied-vol
 form, force the put and call IVs to coincide at a single strike? In
@@ -450,7 +450,7 @@ of the class, in increasing order of importance.
 
 ## Pricing the wings, as a market-maker {#L7-sec:wings}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Reason 1: market-makers must quote where there is no recent data.**
 At any moment, almost all option-market activity is at-the-money. If a
@@ -472,7 +472,7 @@ propagates out to the wings via the model's structural assumptions.
 
 ## Inventory risk: my old positions drift OTM {#L7-sec:inventory}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Reason 2: your old at-the-money inventory becomes an OTM book
 over time.**
@@ -498,7 +498,7 @@ This was the section the lecturer flagged as the most important point
 of the entire lecture --- the reason a market-maker on a large book
 *cannot* simply rely on Black's $\Delta$.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Reason 3: Delta hedging is wrong when the skew shifts with the
 underlying.**
@@ -528,7 +528,7 @@ market-maker who explicitly does not want directional rate exposure,
 ignoring the Vega channel turns a flat book into a sizeable hidden
 duration position.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The size of the augmentation depends on
 *the sign of $\partial \sigma / \partial F$ and the magnitude of
@@ -559,7 +559,7 @@ Before defining SABR the lecturer gave a brief taxonomy of curve-fitting
 strategies for any kind of curve, not just the skew. The frame was a
 direct callback to Lecture 1's Treasury-curve fitting choices.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (Page *The SABR Model* ·
 *Which Type of Model*).**
@@ -596,7 +596,7 @@ different shops are going to have different approaches."
 
 ## Why SABR for fixed income, why not for equities {#L7-sec:sabrvsfi}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (*Why SABR*).**
 *(Empirical claim.)*\
@@ -631,7 +631,7 @@ in the formula.
 
 ## The two coupled SDEs {#L7-sec:sabrSDE}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (Page *The SABR Model* · *The
 Model*).** *(The two-equation system, under the forward measure.)*
@@ -661,7 +661,7 @@ and $\sigma_0$ are interchangeable.
 
 ## Role of $\beta$ --- the elasticity {#L7-sec:beta}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (*Role of Beta*).** *(Lognormal vs normal vs
 in-between.)*\
@@ -683,7 +683,7 @@ $\beta$. We don't. I'm going to choose it."
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why does $\beta$ have weak statistical
 power? Because the skew is identified mostly by the ratio
@@ -700,7 +700,7 @@ specific parametric class.
 
 ## Roles of $\sigma_0$ ($\alpha$), $\rho$, and $\nu$ {#L7-sec:rho-nu}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The four parameters, summarized.**
 
@@ -729,7 +729,7 @@ chain.
 
 ## The SABR implied-vol formula {#L7-sec:sabrformula}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (*The Equation*).** *(Hagan--Kumar--Lesniewski--
 Woodward closed-form approximation.)*\
@@ -751,7 +751,7 @@ the notebook; the structural point is that it is closed-form.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer flagged the suspicious-looking
 constants ($24, 4, 2-3$) as a giveaway: "this is clearly an
@@ -769,7 +769,7 @@ Monte Carlo, and that is enough for instant repricing on the desk.
 
 ## The at-the-money simplification {#L7-sec:atmsimp}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (*At-the-money*).** *(The clean simplification at
 $F_0 = K$.)*\
@@ -800,7 +800,7 @@ single calibrated example.
 
 ## The fitting recipe {#L7-sec:fittingrecipe}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (Page *Fitting SABR*).**
 *(The standard recipe.)*
@@ -827,7 +827,7 @@ not because joint optimization is hard.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 22 (Page *Fitting SABR*).** *(SABR fit on WTI
 crude futures, September 2025 contract.)*
@@ -854,7 +854,7 @@ quote sheet has a handful of moneyness points (typically $\pm 100,
 \pm 200, \pm 300$ bps), and SABR is the device that fills in the rest
 of the curve consistently.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** A subtle methodological point the lecturer
 raised: the data has to be *synchronous*. "I really can only fit
@@ -869,7 +869,7 @@ any market.
 
 ## The vol path {#L7-sec:volpath}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 23--24 (*Forward Price Scenarios* and
 *Volatility Surface Dynamics*).** *(How the skew moves when
@@ -896,7 +896,7 @@ channel will be to my change in the option value." The colored
 curves are SABR's prediction; for the homework they will be compared
 to the empirical realized skew on subsequent days to assess fit.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Two slices of this picture have very
 different operational meaning, and the lecturer flagged this
@@ -922,7 +922,7 @@ options they can differ substantially.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 25 (*ATM Volatility Sensitivity to Forward Price
 Changes*).** *(Numerical sensitivity table.)*
@@ -978,7 +978,7 @@ A student question at the end of the lecture connected the strike-by-strike
 mismatch between calls and puts in the market data to whether SABR's
 fit could be tradable.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The arbitrage-free property of SABR (and Black).**
 SABR is internally consistent across put and call at the same strike:
@@ -1008,7 +1008,7 @@ liquidity, frictions, and inventory have been priced in.
 The lecturer previewed the homework at the end of class. Two
 substantive new exercises layered on top of last week's work:
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (assigned, optional). Re-pricing the collared floater
 with SABR-corrected skews.** The collared-floater case study used
@@ -1022,7 +1022,7 @@ baseline.
 
 :::
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (assigned, primary). Augmented delta on the swaption
 exercise.** The Lecture 6 swaption-pricing exercise priced the
@@ -1045,7 +1045,7 @@ Black implied vol naively. Now use SABR to:
 
 :::
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (case-study followup, optional). Swaption vol
 2020.** The lecturer flagged a related case using March 2020 swaption

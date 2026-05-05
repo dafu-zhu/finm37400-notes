@@ -16,7 +16,7 @@ swap spreads; a cameo review of floating-rate notes (*2.4*) against
 lectured on; and a one-sentence preview of the *5.2 Swap-Spread Trade*
 case that anchors the next lecture.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Audio dropout.** The lecture recording lost microphone input from
 about 28:10 through 85:30 --- roughly 57 minutes that cover the back half of
@@ -42,7 +42,7 @@ on the live page.
 
 ## Forward price as a carry identity {#L4-sec:fwd-carry}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 1--9.** *(Page 4.1 · Forward Pricing.)*\
 **Basics.** A forward agreement is a commitment at $t$ to purchase an
@@ -81,7 +81,7 @@ the sections below and is worth nailing down before reading on.
 
 ## No-arbitrage price for a coupon bond {#L4-sec:fwd-price}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 10--12.** *Forward price with interim coupons.*\
 If the bond pays coupons $c_i$ at times $T_i$ between $t$ and $T$, the
@@ -106,7 +106,7 @@ computed forward price agrees with the identity above.
 
 ## Forwards vs. futures and the PV discount {#L4-sec:fwd-vs-fut}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 19--38.** *Forwards vs Futures.*\
 Futures differ from forwards in that they
@@ -161,7 +161,7 @@ the short.
 
 ## Why Treasury Futures --- volume and liquidity {#L4-sec:tf-why}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 1--11.** *(Page 4.2 · Treasury Futures.)*\
 **Why Treasury Futures?** Treasury futures are the most liquid
@@ -194,7 +194,7 @@ either pick one on-the-run five-year note (limited size, narrow bid-ask)
 or short one FVM5 future (all the 5-year liquidity on the exchange
 collected in one ticker). The second option is almost always easier.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The DV01-scaled measure is notional $\times$
 modified duration, so it expresses risk transferred per day rather than
@@ -209,7 +209,7 @@ cash market even more decisively than on raw notional.
 
 ## The deliverable basket and conversion factors {#L4-sec:tf-basket}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 12--26.** *Delivery, Pricing, and CTD.*\
 In order to increase liquidity, a Treasury futures contract allows
@@ -282,7 +282,7 @@ that YTM depends on *price*, which is real-time, so using YTM would
 make the conversion factor move every second. Present value at a flat 6%
 is the cleanest rule that uses only coupon and maturity.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The factor-1 bond is by construction the bond
 whose cashflows, when present-valued at 6%, equal face. For a freshly
@@ -303,7 +303,7 @@ of 4.2, "Gross and Net Basis," for the next 45 minutes. The prose below
 reconstructs the teaching order from the frames and the cell content; the
 formulas are exactly as stated on the live page.)*
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 27--35.** *Gross and Net Basis.*\
 **The basis trade.** Being long the bond's basis means taking a
@@ -348,7 +348,7 @@ of the P&L on most basis trades. The lecturer emphasized this enough on
 the live page that the *Alternate View* callout exists precisely to
 head off the confusion.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 36--41.** *Examples: Gross and Net Basis (FVM5, 2025-02-25).*\
 
@@ -374,7 +374,7 @@ of §[2.6](#L4-sec:tf-options){reference-type="ref" reference="L4-sec:tf-option
 long-CTD / short-future trade earns the carry over the contract horizon and
 loses the option premium the short keeps.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 42--46.** *Convergence and caveats.*\
 **Convergence.** At expiration $T$, gross basis and net basis are
@@ -415,7 +415,7 @@ financing costs.
 
 ## Implied repo {#L4-sec:tf-impliedrepo}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 47--55.** *Implied Repo.*\
 The **implied repo rate** for bond $i$ is the repo rate that
@@ -459,7 +459,7 @@ on any bond of their choice, because the short-futures leg pays off at
 $\phi^{\text{CTD}}\mathcal{F}(T,T)$ regardless of which bond the trader
 holds.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** There is a clean relationship between implied
 repo and the CTD rule:
@@ -478,7 +478,7 @@ basis is in dollars.
 
 ## The cheapest-to-deliver computation {#L4-sec:tf-ctd}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 56--65.** *Cheapest to Deliver.*\
 **Conversion factor.** $\phi^i$ is the publicly published, immutable
@@ -548,7 +548,7 @@ ranking the delivery-cost column, not by computing the price/phi ratio
 directly: the two rankings agree by construction, and the delivery-cost
 column is what traders actually compute at expiry.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 66.** *Technical Point: Calculation of the conversion factor.*\
 Suppose bond $i$ has coupon rate $c_i$ and $n$ coupon periods remaining at
@@ -564,7 +564,7 @@ delivery date.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 67.** *Understanding CTD.*\
 **In a low-rate environment** (such as 2008--2021): *lower-coupon,
@@ -589,7 +589,7 @@ rates are high, it rotates to the long end.
 
 ## Embedded optionality {#L4-sec:tf-options}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 68--77.** *Embedded Optionality of Treasury Futures.*\
 Bond futures embed several options that belong to the *short*:
@@ -625,7 +625,7 @@ The short may deliver on *any day* of the
 delivery month, not only the last. This is the key content of the
 "collect carry" versus "retain option value" bullet on the slide.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 75.** *Timing Option.*\
 
@@ -672,7 +672,7 @@ choice.
 
 #### Wildcard option.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 77.** *Wildcard Option.*\
 
@@ -713,7 +713,7 @@ discussion.)*
 
 ## Size of the swap market {#L4-sec:sw-size}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 2--7.** *Size of Swap Markets.*\
 **Global OTC derivatives (end-2024):**
@@ -752,7 +752,7 @@ outstanding swaps have net-present value close to zero (see the "no cost
 to initiate" property below), so the gross exposure is a tiny fraction
 of the notional.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Notional and gross market value answer different
 questions. Notional is the *reference* quantity on which interest
@@ -769,7 +769,7 @@ regulatory collateral is a non-trivial share of bank balance sheets.
 
 ## Definition and fixed-for-floating mechanics {#L4-sec:sw-def}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 8--15.** *Definition; Fixed-for-Floating; Swap Rate; Specifications.*\
 A **swap** works as follows:
@@ -844,7 +844,7 @@ mess." In SOFR-swap days, both legs typically pay annually on the same
 date: "nice and easy." For the example, he picked annual payments at the
 end of each of ten years.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **How do we set $c_{\text{sw}}$?** The fixed rate must be chosen such
 that the swap has zero value at $t=0$. Three candidate rules are on the
@@ -889,7 +889,7 @@ formula below is the theoretical no-arbitrage identity that connects
 
 ## Swaps as bonds, swaps as forwards {#L4-sec:sw-asbonds}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 16--18.** *Swaps, Forwards, and Floaters.*\
 **Swap as bonds.** A fixed-for-floating swap can be replicated with
@@ -931,7 +931,7 @@ swap-rate formula is the closed form of this sum.
 
 ## The swap curve {#L4-sec:sw-curve}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 19--34.** *Swap Pricing and the Swap Curve.*\
 On a given date, the quoted swap rate $c_{\text{sw}}(0,T)$ across swap
@@ -995,7 +995,7 @@ near the current policy rate.
 
 ## Swap value and the swap-rate formula {#L4-sec:sw-value}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 35--46.** *Swap Value.*\
 The swap's cashflow (from the paying-fixed, receiving-floating side) is
@@ -1041,7 +1041,7 @@ $P_{\text{flt}}(0,T;0)$ equals par at the quote date (the FRN identity
 from §2.4); second, that the fixed leg at par gives the closed form
 above. The lecturer walked through the second step slowly.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The floating leg equals par at any reset date
 because the coupon payment on the floating leg is *defined* as the
@@ -1079,7 +1079,7 @@ product.
 
 ## Negative swap spreads --- a puzzle {#L4-sec:sw-spread}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 48.** *Negative Swap Spreads.*\
 Prior to the financial crisis of 2008, the swap rate was typically
@@ -1179,7 +1179,7 @@ spot rate, the first term equals $1$ and the whole expression telescopes
 down to face. The lecturer called this "the cleanest identity in fixed
 income" and said the homework's swap pricer leans on it directly.
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (homework Week 4).** Using the 2023 Treasury data provided,
 compute the swap rate for a 10-year SOFR swap with quarterly floating and

@@ -51,7 +51,7 @@ three combined" --- so the case is pedagogical, not commercial.
 
 ## Setup of the simplified bond {#L6-sec:freddie-setup}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (Page *Case Study --- Freddie Mac Bonds*).**
 *(Bond info, simplified.)*\
@@ -102,7 +102,7 @@ than pretending the choice is clean.
 
 ## Why Black, not Black--Scholes {#L6-sec:freddie-blackvsbs}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Quick recap.** Black--Scholes is a poor model here for two
 reasons:
@@ -138,7 +138,7 @@ not exactly) a Brownian-like process.
 
 ## The forward price in this problem: a 3-year forward on a 2-year bond {#L6-sec:freddie-fwd}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **What forward do we need?**
 A forward always references two dates: the date the contract is
@@ -171,7 +171,7 @@ positive carry: the bond's coupon rate ($4.41\%$) exceeds the forward
 rates over the next three years, so the forward buyer who pays
 later, and therefore misses those coupons, requires a discount.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer was loose about which forward
 formula version to plug in. The version that matters here is the one
@@ -187,7 +187,7 @@ is not a zero-coupon-bond price.
 
 ## Implied vol: rate-vol times duration {#L6-sec:freddie-vol}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Bloomberg's implied vol is on the rate, not the price.**
 Bloomberg quoted an implied vol in the low-twenties for this bond.
@@ -217,7 +217,7 @@ the duration approximation was for small rate movements? ... We
 could certainly tighten that up, but that's not going to explain
 this difference."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why does $\sigma_{\text{price}} \approx
 \mathrm{MD}\cdot\sigma_{\text{rate}}$ work? Linearize the bond's price
@@ -238,7 +238,7 @@ $\$1.42$ low.
 
 ## Reading the model-vs-market gap as an OAS {#L6-sec:freddie-oas}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells (Page *Callable Bonds*).**
 *(OAS as the apples-to-apples spread.)* An option-adjusted spread
@@ -284,7 +284,7 @@ threshold, sell when it tightens. The lecturer's reply was a long
 narrative on the practical frictions, three of which are worth
 keeping.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Practical wrinkles when trading callable OAS.**
 
@@ -310,7 +310,7 @@ keeping.
 
 ## YTM and duration of the callable {#L6-sec:freddie-dur}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Two reported numbers.**
 
@@ -354,7 +354,7 @@ going to put you over some discrete threshold. But Black's formula is
 going to consider that the call option has gained value and your bond
 price is not going to move as much."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why Macaulay rather than modified? In the
 callable case there is no single yield to shift. Each maturity along
@@ -379,7 +379,7 @@ calculating the duration of the callable."
 
 ## Wrap-up exercise: options on STIR futures {#L6-sec:freddie-stir}
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (assigned).** Apply the same Black-formula apparatus
 to options on a SOFR (or other STIR) future. The exercise notebook
@@ -419,7 +419,7 @@ Lecture 5 had left it: the single-period caplet and floorlet. The
 goal of this section is to anchor the unit conventions and the
 time-mismatch before stringing the caplets together into caps.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (Page *Forward Volatility and Caps* ·
 Caplets and Floorlets.)**
@@ -444,7 +444,7 @@ caplet payoff." The factor $1/n$ converts the annualized rate
 difference $r - K$ into a per-period payment. The factor $100$ is
 the notional; bond conventions inherited from earlier lectures.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Cap Timing*.** *(The two awkward implications
 of arrears.)*
@@ -463,7 +463,7 @@ of arrears.)*
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer asked the class to remind him
 "what exactly the mismatch is in the formula?" The clean way to
@@ -488,7 +488,7 @@ other.
 
 # Caps, floors, and the swap-replication identity {#L6-sec:capsfloors}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Caps and Floors*.** *(The two products.)*
 
@@ -515,7 +515,7 @@ The lecturer then asked the question that motivates the whole chapter:
 caplet-strip stitched together this way and traded as a single
 product?
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The replication identity.**
 For European caplets, floorlets, and FRAs all struck at the same rate:
@@ -545,7 +545,7 @@ turns the long-cap-short-floor portfolio into a swap.
 
 ## Black's formula for a cap; the time-mismatch on display {#L6-sec:capformula}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Black's Formula* ·
 *Parameterization*.** *(Cap pricing.)*\
@@ -579,7 +579,7 @@ here." On the slide for a quarterly cap with $T = 1$ year, the
 substitution he wanted the class to make is $Z(0, 1)$ for the
 discount and $\tau = 0.75$ for the variance.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The strike used inside $d_1, d_2$ is in
 *rate units*, which means $f^{(j)}$ and $K$ both denote
@@ -605,7 +605,7 @@ price when summed across caplets. The internal vols of individual
 caplets, the *forward volatilities*, are the consistent objects;
 flat vols are a quoting convention sitting on top of them.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell *Flat Volatility*.**
 *(The flat-vol quote.)*\
@@ -621,7 +621,7 @@ bundle.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Forward Volatility*.**
 *(The vol that actually prices each caplet.)*\
@@ -645,7 +645,7 @@ the individual pricings correct, but we do think this prices the
 whole bundle correctly?" The lecturer responded: "you just grabbed
 the punchline."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The YTM analogy.**
 
@@ -662,7 +662,7 @@ the punchline."
 
 ## Stripping caps to forward vols {#L6-sec:stripping}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Stripping Caps* · *Getting
 Caplet Prices and Forward Vols*.** *(The bootstrap.)*\
@@ -690,7 +690,7 @@ $T = 0.5, 0.75, 1.0, 1.25, \ldots$:
 The picture the lecturer drew next is the diagnostic for whether the
 forward-vol curve is plausible:
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *flat_to_forward_vol*.** *(Plot of flat vols
 and forward vols against tenor.)*
@@ -717,7 +717,7 @@ lecturer made the class read this off the picture: "as I see these
 flat vols going up and up and up, what do I know must be true of
 these caplet vols, of the forward vols? They have to be even higher."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The bootstrap is exactly identified. A
 question from the class: should we worry about an over-identified
@@ -733,7 +733,7 @@ exactly one number from one equation.
 
 ## Why we wanted the forward vols: pricing other products {#L6-sec:why-fwdvol}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **What forward vols buy us.**
 The forward vols are implied volatilities on *forward interest
@@ -765,7 +765,7 @@ underlyings.
 
 # Black vs Bachelier and the ATM convention {#L6-sec:blackbachelier}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell *"Normal" quotes*.**
 *(Bachelier in addition to Black.)*\
@@ -800,7 +800,7 @@ class will be handed in the homework has been pre-converted to Black,
 and the conversion formula is small enough not to affect dollar
 prices materially.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **ATM, again.**
 The at-the-money strike for a cap, floor, or swaption is *not*
@@ -828,7 +828,7 @@ short-floor portfolio replicates a zero-NPV swap.
 
 ## Swap refresher {#L6-sec:swap-refresh}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (Page *Swaptions* ·
 *Swap*).**
@@ -847,7 +847,7 @@ machinery required.
 
 ## Swaption definitions {#L6-sec:swaption-defs}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Swaptions*.**
 *(Two swaptions, two perspectives.)*
@@ -876,7 +876,7 @@ thing here. You can be long the receiver swaption, short the receiver
 swaption, long the payer swaption, short the payer swaption. They're
 all different."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Three dates.**
 A swaption involves three dates:
@@ -912,7 +912,7 @@ it." Hence: receiver swaption is the put.
 A student wondered whether swaptions are "redundant," since long-cap-short-floor already replicates a swap. The lecturer's answer
 hinges on which kind of swap the parity replicates.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Three put-call parities.**
 
@@ -947,7 +947,7 @@ also struck at $K$, with the floor's first floorlet (at $T_1 = 0.5$)
 included. Same dates, same payments, same strike --- but very
 different products.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell *Forward Vols* (Page 7.2).** *(The structural
 distinction.)*
@@ -979,7 +979,7 @@ decision).
 
 # Black's formula for swaptions {#L6-sec:swaption-black}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells *Black's Formula for Swaptions*.**
 *(One Black call, scaled by the swap discount factor.)*\
@@ -1029,7 +1029,7 @@ option, and thus is priced identically in Black's formula. The only
 adjustment is to discount the exercised payoffs appropriately,
 reflecting that they have different maturities."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why does the swap-discount-factor sum work
 as a numeraire substitute? The clean justification (which the
@@ -1046,7 +1046,7 @@ martingale pricing and you can just go ahead and use it."
 
 ## The forward swap rate {#L6-sec:fwd-swap-rate}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell *Discount Factor Formula* (Page 7.2).**
 *(The forward swap rate.)*
@@ -1077,7 +1077,7 @@ spot rates is done as usual, the same as for treasury rates" --- if
 you have today's swap discount curve, you have everything you need to
 compute the forward swap rate without any vol input.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** For a $1Y \to 2Y$ annual swaption (so
 $T_o = 1$, $T = 3$, payments at $T_i = 2, 3$), the forward swap rate
@@ -1119,7 +1119,7 @@ the class faced when picking a discount curve in Lecture 4.
 The lecturer announced three exercises for the week and previewed a
 case study.
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (assigned). Cap stripping.** Given a Bloomberg cap
 quote sheet (flat vols at quarterly tenors out to $T = 10$), strip
@@ -1132,7 +1132,7 @@ matches in level at $T = 0.5$.
 
 :::
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (assigned). Swaption pricing.** Given Bloomberg
 swaption data from June 2025 (expiry $T_o$, swap tenor $T$, ATM
@@ -1161,7 +1161,7 @@ business-relevant focus.
 
 :::
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Case study (forthcoming). Capped floaters.** The lecturer
 flagged but did not yet hand out a case study on capped floaters ---

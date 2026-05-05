@@ -35,22 +35,52 @@ def test_remove_checkpoint_blocks_strips_nested_tikz():
     assert "tikzpicture" not in out
 
 
-def test_convert_color_blocks_keyblock():
+def test_convert_color_blocks_inserts_sentinels():
     src = "\\begin{keyblock}\nbody\n\\end{keyblock}"
     out = convert.convert_color_blocks(src)
-    assert ":::{.callout-important" in out
-    assert "Key concept" in out
-    assert out.endswith(":::")
+    assert convert.SENTINEL_OPEN["keyblock"] in out
+    assert convert.SENTINEL_CLOSE in out
+    assert "\\begin{keyblock}" not in out
+    assert "\\end{keyblock}" not in out
 
 
-def test_convert_color_blocks_all_four():
+def test_convert_color_blocks_all_four_envs_sentineled():
     src = "".join(
         f"\\begin{{{e}}}x\\end{{{e}}}\n"
         for e in ("keyblock", "exerciseblock", "noteblock", "tipblock")
     )
     out = convert.convert_color_blocks(src)
-    for cls in ("important", "caution", "note", "tip"):
-        assert f".callout-{cls}" in out
+    for env in ("keyblock", "exerciseblock", "noteblock", "tipblock"):
+        assert convert.SENTINEL_OPEN[env] in out
+    assert out.count(convert.SENTINEL_CLOSE) == 4
+
+
+def test_restore_callout_sentinels_keyblock():
+    src = (
+        "before\n" + convert.SENTINEL_OPEN["keyblock"] +
+        "\nbody\n" + convert.SENTINEL_CLOSE + "\nafter"
+    )
+    out = convert.restore_callout_sentinels(src)
+    assert ':::{.callout-important title="Key concept"}' in out
+    assert "\n:::\n" in out
+    assert "§§" not in out
+
+
+def test_restore_callout_sentinels_all_four():
+    src = "".join(
+        convert.SENTINEL_OPEN[e] + "x" + convert.SENTINEL_CLOSE
+        for e in ("keyblock", "exerciseblock", "noteblock", "tipblock")
+    )
+    out = convert.restore_callout_sentinels(src)
+    for cls, title in [
+        ("important", "Key concept"),
+        ("caution", "Exercise"),
+        ("note", "Note"),
+        ("tip", "Filling the gap"),
+    ]:
+        assert f':::{{.callout-{cls} title="{title}"}}' in out
+    assert out.count(":::") == 8  # 4 opens + 4 closes
+    assert "§§" not in out
 
 
 def test_replace_tikz_blocks_counts_and_substitutes():

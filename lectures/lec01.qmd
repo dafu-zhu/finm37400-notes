@@ -20,7 +20,7 @@ is properly the territory of Lecture 2 and is not reproduced here.
 
 ## The Spot Curve and No-Arbitrage {#L1-sec:spot-noarb}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 1.** *(Page 1.1 · setup)*\
 The notebook opens with the standard scientific-Python setup,
@@ -49,7 +49,7 @@ because no-arbitrage statements only hold on dirty prices: a clean price
 ignores accrued interest, and a clean-price equality between two cashflow-equivalent
 bonds would be off by exactly the accrued-interest discrepancy.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 4--9.** *The Spot Curve and No-Arbitrage.*\
 **Above we saw that:**
@@ -88,7 +88,7 @@ Because spot rates do not depend on the originating bond, they automatically
 satisfy the no-arbitrage statement above --- two bonds with the same cashflow
 schedule, discounted with the same spot rates, must price to the same number.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer said "YTM assigns a discount rate to
 the security across all its cashflows" as if it were obvious. To unpack: for
@@ -106,7 +106,7 @@ cross-bond pricing.
 
 ## The Spot Curve {#L1-sec:spot-curve}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 11--19.** *The Spot Curve definition.*\
 We seek a spot curve of discount rates $r(t,T)$ such that we can price
@@ -143,7 +143,7 @@ exercise that we revisit below.
 
 ## The Discount Curve {#L1-sec:disc-curve}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 20--24.** *The Discount Curve and compounding.*\
 **Discount Factor vs Compounded Rates.** All compounded rates imply the
@@ -175,7 +175,7 @@ $\sum_i c_i\, Z(t,T_i)$. There is no rate-arithmetic involved. Whenever a
 calculation gets tangled in compounding, the recommended sanity check is to
 re-do it with $Z$.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 25--27.** *Example.*\
 Consider the annually compounded spot rate of 5% at maturity $T-t=1$.
@@ -199,7 +199,7 @@ convention we will default to for spot rates later.
 
 ## The Curve {#L1-sec:curve}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 28--32.** *The Curve.*\
 Denote the discount curve as $Z(t,T)$. This value depends on the maturity. It
@@ -223,7 +223,7 @@ discount factor should make you suspect a data error.
 
 ## Coupon Bonds and the Modeling Pipeline {#L1-sec:coupon}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 33--34.** *Coupon bond.*\
 **Use.** If we estimate the discount curve (equivalent to estimating the
@@ -244,7 +244,7 @@ identifiability is far from automatic.
 
 ## Modeling the Spot Curve --- Filtering and Cashflow Mapping {#L1-sec:filter-map}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 35--36.** *Modeling the Spot Curve.*\
 **Filter Data.** Filter to eliminate maturities that are too short or
@@ -252,7 +252,7 @@ too long, quotes that do not have transparent pricing, and so on.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 37--38.** *Map Cashflows.*
 
@@ -300,7 +300,7 @@ matter for what comes next:
 
 ## Estimating the Discounts {#L1-sec:estimate}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 39--42.** *Estimating the discounts.*\
 Notation:
@@ -330,7 +330,7 @@ $\boldsymbol{\epsilon}$ term is a concession to the practical reality that
 quotes are noisy --- bid-ask spreads, stale prints, occasional special tax
 treatment --- not a statement about a true data-generating process.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 43--45.** *Which estimation?*\
 What if $\mathbf{C}$ is square, $n=k$; tall, $n>k$; wide, $k>n$?
@@ -353,7 +353,7 @@ in the unrestricted form and is what motivates a parametric model.
 
 ## Perfect Estimation: Bootstrap and OLS {#L1-sec:perfect}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 46--50.** *Perfect Estimation of Spot Curve.*\
 **Bootstrap.**
@@ -373,7 +373,7 @@ in the unrestricted form and is what motivates a parametric model.
 The lecturer skipped what he called "the tedium of the bootstrap story" but
 the mechanics are worth recording in writing because they are easy to misread:
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The bootstrap is the iterative procedure that solves
 the system one date at a time, starting from the shortest maturity:
@@ -401,7 +401,7 @@ and is well-defined whenever $\mathbf{C}$ has full column rank.
 
 ## Spot Curve Output {#L1-sec:spot-output}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 51--55.** *Spot Curve.*\
 The spot curve of interest rates can be calculated for any compounding
@@ -418,7 +418,7 @@ the date-uniqueness restrictions are imposed.
 
 ## Why not Bootstrap the Entire Curve? {#L1-sec:why-not}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 56--71.** *Why not bootstrap the entire curve?*\
 We have quotes with maturities out to nearly 30 years. We restricted the
@@ -468,7 +468,7 @@ is multicollinearity in $\mathbf{C}$, the topic of the next subsection.
 
 ## Multicollinearity {#L1-sec:multicol}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 72--78.** *Multicollinearity.*\
 The problem with using the bootstrap (or more generally, OLS) is
@@ -500,7 +500,7 @@ plot: discount factors that swing through tens of percentage points between
 adjacent maturities, even producing negative-or-greater-than-one discount
 factors that cannot be true.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer mentioned "$x'x$" in passing but did
 not write out the connection. The standard expression
@@ -517,7 +517,7 @@ quote-level noise becomes large discount-factor swings.
 
 ## Nelson--Siegel Model of the Yield Curve {#L1-sec:NS}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 79--92.** *Nelson--Siegel.*\
 We need a model for the curve to avoid missing data and overfitting in-sample.
@@ -571,7 +571,7 @@ not affect identification.
 
 ## Fitted Spot and Discount Curves {#L1-sec:fitted}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 93--98.** *Use these fitted parameters to calculate the
 Spot Curve, then convert to the Discount Curve.*
@@ -605,7 +605,7 @@ financial interpretation.
 
 ## Spot Curve vs YTM Curve {#L1-sec:vs-ytm}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 99--105.** *Spot Curves vs YTM.*\
 We immediately calculate the YTM for each issue, and plotting these YTMs
@@ -631,7 +631,7 @@ context to know whether someone means the spot curve, the YTM curve, or
 sometimes a CMT (constant-maturity Treasury) curve interpolated by the
 Treasury Department itself.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer said "YTM is a certain average of
 semi-compounded spot rates" and moved on. The precise statement: for a
@@ -648,7 +648,7 @@ curves.
 
 ## Model Prices and Errors {#L1-sec:errors}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 106--114.** *Model Prices and Errors.*\
 How well does Nelson--Siegel fit market prices? How well do the bootstrap
@@ -689,7 +689,7 @@ involve some version of this tradeoff.
 
 ## Motivation {#L1-sec:fwd-motiv}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 0--4.** *Forward Rates.*\
 A given date's term structure encodes information about rates in the future.
@@ -710,7 +710,7 @@ quote, and what is the no-arbitrage value of that rate?
 
 ## Looking at the Data {#L1-sec:fwd-data}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 5--7.** *Looking at the Data.*\
 Consider the quoted treasuries on the date shown below.
@@ -729,7 +729,7 @@ constraint.
 
 ## The Answer: Forward Rate via Replication {#L1-sec:fwd-answer}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 8--13.** *The answer.*\
 The rate we can guarantee today, effective starting 6 months from now,
@@ -768,7 +768,7 @@ $+P_2/P_1 \cdot 100$m flow at $T_2$ (the maturing 12mo). That cashflow stream
 *is* a 6mo--12mo loan at the rate that solves
 $P_2/P_1 = 1/(1+f/2)$, hence the forward rate.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer wrote "the forward rate must equal
 the gain from the 12mo t-bill" but didn't write the algebra. Setting up:
@@ -788,7 +788,7 @@ which is the basic forward-rate identity in semi-compounded form.
 
 ## The Guaranteed Forward Rate {#L1-sec:fwd-guar}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 14--16.** *The guaranteed forward rate.*\
 Given this forward dollar exposure, the investor is guaranteed the following
@@ -802,7 +802,7 @@ semiannual compounded rate:
 
 ## Interim Risk {#L1-sec:fwd-interim}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 17--21.** *Interim Risk.*\
 Above, we did not deal with the price of the forward replication *but
@@ -828,7 +828,7 @@ unwinds.
 
 ## Calculating Forward Rates {#L1-sec:fwd-calc}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 22--27.** *Calculating Forward Rates.*\
 Extract the forward rate from the spot curve $r(t,T)$, or equivalently, from
@@ -852,7 +852,7 @@ $-\ln/(T_2-T_1)$ converts it to a continuously-compounded rate.
 
 ## The Forward Curve {#L1-sec:fwd-curve}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 28--32.** *The Forward Curve.*\
 The forward curve holds constant $t$ and the interval $\Delta = T_2 - T_1$
@@ -874,7 +874,7 @@ to verify intuitively before showing the picture.
 
 ## Extracting the Forward Curve from the Spot Curve {#L1-sec:fwd-extract}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 33--42.** *Extracting the forward curve from the spot curve.*\
 Using the formulas above, calculate
@@ -890,7 +890,7 @@ the forward curve from the spot curve*.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 39--41 (output).**\
 
@@ -922,7 +922,7 @@ the forward curve dips below.
 
 ## Compounding for Forward Rates {#L1-sec:fwd-compound}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 43--50.** *Compounding.*\
 As for any rate, we must specify the compounding. Above, $f(t,T_1,T_2)$ is
@@ -948,7 +948,7 @@ your computation when you need to display or compare*.
 
 ## Extracting the Spot Curve from the Forward Curve {#L1-sec:fwd-spot}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 51--57.** *Extracting the spot curve from the forward curve.*\
 It is possible to "bootstrap" the spot curve from forward rates. Consider:
@@ -966,7 +966,7 @@ forward rates $f(0,T_{i-1},T_i)$ that bridge today to $T_n$.
 
 ## A Smooth Spot Curve? {#L1-sec:fwd-smooth}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 58--61.** *A Smooth Spot Curve?*\
 Given that the forward curve is a derivative of the spot curve, a small
@@ -989,7 +989,7 @@ curve."
 
 ## Forward Rate Agreements {#L1-sec:FRA}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 62--64.** *Forward Rate Agreements.*\
 **Definition.** A Forward Rate Agreement (FRA) is similar to the
@@ -1015,7 +1015,7 @@ instrument for locking in a future short rate.
 
 ## Forward Contracts on Treasury Bonds {#L1-sec:fwd-contract}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 65--72.** *Forward Contracts.*\
 **Definition.** A forward contract is an agreement to buy a bond with
@@ -1035,7 +1035,7 @@ forward *price* (the agreed exchange price) from the forward
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer used "price" and "value"
 distinctly without writing the formal distinction. The forward *price*
@@ -1053,7 +1053,7 @@ i.e., the difference in forward prices, discounted from $T_0$ back to $s$.
 
 ## Pricing Forward Contracts on Treasuries {#L1-sec:fwd-treas}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 73--82.** *Forward Contracts on Treasury Bonds --- Pricing.*\
 Pricing forward contracts on Treasuries is straightforward: *just use
@@ -1092,7 +1092,7 @@ with a different discount."
 
 ## Appendix: Mathematical Details on FRAs {#L1-sec:fra-math}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 87--93.** *Appendix: FRA Value.*\
 The equation above gives the net cashflow of the FRA at maturity. The value
@@ -1106,7 +1106,7 @@ spot rate fix date $T_1$, and the cashflow date $T_2$.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 96--100.** *Boundaries.*\
 For $t = 0$, the value is $0$:
@@ -1130,7 +1130,7 @@ the period length, and the discount.
 
 ## Appendix: No-Arbitrage Construction of the Forward Rate {#L1-sec:fwd-noarb}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 110--124.** *Forward Rates via No-Arbitrage.*\
 The answer above is implied by the two Treasury securities along with an
@@ -1147,7 +1147,7 @@ defining property of the no-arbitrage replication.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 125--127 (output).**\
 With the forward prices set as derived, the replicating portfolio has a

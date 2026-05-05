@@ -41,7 +41,7 @@ curve is mildly downward-sloping, so the roles flip and the spot curve sits
 reason this sign out without computing anything, "you didn't do enough on
 week one."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer argued the direction verbally but never
 wrote the identity. For a coupon bond priced off a spot curve $r(t,T_i)$,
@@ -92,7 +92,7 @@ the day's substantive material.
 
 ## Motivation and Three Equivalent Statements {#L2-sec:EH-forms}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 2--6.** *What Determines the Shape of the Term Structure?*\
 Many theories, including...
@@ -134,7 +134,7 @@ investors expect rates to go, the first thing I would look at is what
 forwards have encoded about those expectations." The rest of the lecture
 tests whether that shortcut is justified.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 7--10.** *The Expectations Hypothesis (EH).*\
 The Expectations Hypothesis has three equivalent forms. Conceptually, they are:
@@ -168,7 +168,7 @@ best guess for how the short-term spot curve will evolve over time; statement 1
 expresses the same idea with log yields on both sides; statement 3 expresses
 the same idea as a statement about expected excess returns.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Statements 1, 2, 3 look like three different facts
 but they are algebraic rearrangements of each other under continuous
@@ -197,7 +197,7 @@ annually and largely sidesteps inflation risk. A rational risk-averse investor
 would demand a premium for the five-year bet, which the EH says is zero. So
 the EH is bold.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 11.** *Testable Implications.*\
 
@@ -218,7 +218,7 @@ the EH is bold.
 The lecturer grouped the empirical analysis into three "facts," each the
 unconditional version of one of the EH's three statements.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 14--18.** *Fact #1. Long-term yields are higher than
 short-term yields --- even averaged over long periods of time.* This means
@@ -243,7 +243,7 @@ the EH is driving the positive mean term spread, and the most natural
 candidate is a risk premium for inflation, not unlike the equity-risk premium
 the class encountered in portfolio theory last quarter.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 19--22.** *Fact #2. Forward rates are higher on average
 than the future yield.* The forward overestimates the realized future spot.
@@ -269,7 +269,7 @@ consistent with forwards being the risk-*neutral* expectation of the
 future spot, with the true physical expectation sitting below because of
 investor risk aversion.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 23--26.** *Fact #3. Excess returns are not zero.*
 
@@ -305,7 +305,7 @@ $\beta$ equals one: does the forward move one-for-one with the future spot?"
 A $\beta$ not equal to one refutes the EH in a way no term-premium rescue can
 fix.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 27--40.** *Dynamic Fact #1.* Use a forecasting regression
 to test statement 1. The relation
@@ -337,7 +337,7 @@ relative to the one-year, the EH says to expect the next five years of
 one-year yields to average a full percent higher --- the regression says
 expect about a third of that.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer mentioned twice that subtracting
 $y^{(1)}_t$ from both sides "improves statistical power." The reason,
@@ -353,7 +353,7 @@ course.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 41--47.** *Dynamic Fact #2.* Test statement 2 directly by
 regressing the realized future one-year yield on the corresponding forward
@@ -380,7 +380,7 @@ the $\beta$ has to be exactly one." The data says no. He noted that the
 failure is larger at longer maturities: the ten-year-ahead forecast is
 essentially uninformative, while the two-year-ahead has some content.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 48--56.** *Dynamic Fact #3. Excess returns differ across
 maturities in predictable ways.* Define the *forward spread*
@@ -418,7 +418,7 @@ The lecturer scrolled through the appendix cells quickly. They set up the
 notation used throughout the empirical analysis and the student should know
 how to reconstruct the formulas, even if the lecturer skipped them in class.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 58--68.** *Zero-coupon (discount) bonds and log notation.*
 Zero-coupon (discount) bonds with face value \$1 have prices like $0.99$,
@@ -433,7 +433,7 @@ Then $p^{(n)} = -n\,y^{(n)}$, equivalently $y^{(n)} = -\frac{1}{n}\,p^{(n)}$.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 71--73.** *Log prices and log yields, data check.*
 
@@ -450,7 +450,7 @@ negative (they are discount rates times maturity, with a sign flip).
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 74--80.** *Forward Rate Summary and Data Note.*
 The log forward rate of zero-coupon bonds has the simple formula
@@ -570,7 +570,7 @@ Risk*. His framing: the previous notebooks looked at the *yield curve*,
 which is a range of rates quoted on a single date. Now we flip it: a range of
 dates for a single bond issue.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 2--7.** *Prices of a bond.*\
 We have discussed the yield curve, which is a range of rates quoted on a
@@ -598,7 +598,7 @@ the coupon date, \$3 of value leaves the bond (the coupon is paid), and the
 dirty price drops discretely. The clean price (excluding accrued interest)
 removes this artifact and is the series analysts typically plot.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer's "selling a used car with a
 \$5,000 suitcase inside" analogy makes the point: clean price = dirty price
@@ -679,7 +679,7 @@ approximation plots --- "you'd be the only one doing it, and there would be
 nothing of interest in it." Options products with negative convexity can
 behave differently, but those are later in the course.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The full Taylor expansion of $P(r)$ around a base
 rate $r_0$ is
@@ -727,7 +727,7 @@ shares. The coupon twenty-eight years out is worth far less than \$3 today,
 so it gets a small weight; the coupon next month is worth essentially \$3
 and gets a near-full weight.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** To see that differentiation preserves the linear
 structure: if $P = \sum_i c_i\,Z_i$ with $Z_i = e^{-rT_i}$, then
@@ -856,7 +856,7 @@ manager is thinking about tonight's market move, a level shock is by far
 the most likely thing to happen, and a parallel-shift sensitivity (duration)
 captures $97\%$ of the risk.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The PCA is performed on the matrix of daily yield
 changes $\Delta \boldsymbol{y}_t$ (days $\times$ maturities). The first

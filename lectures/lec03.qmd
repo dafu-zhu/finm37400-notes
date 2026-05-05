@@ -56,7 +56,7 @@ trade. Lucy, one of the students on camera, contributed the first cautionary
 point: the two issues have wildly different dollar sizes and, more
 importantly, different modified durations.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer's slogan "YTM is a rescaled price"
 hides a small derivation. For a coupon bond with cashflows $c_i$ at times
@@ -102,7 +102,7 @@ curve. Modified duration is the percentage price sensitivity to a change in
 YTM; scaled by the dirty price, it gives the dollar sensitivity to YTM, and
 that is what needs to balance out.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The sized trade (\$1M own capital, 2% repo haircut).**
 $$P^{\text{long}} \;=\; \text{\$50M notional} \;\text{of the 1985 bond, financed through 1-day repo},$$
@@ -134,7 +134,7 @@ duration is a linear (calculus-style) approximation, the exact split
 between the two legs does not matter --- any decomposition of the 35 bp
 convergence gives roughly the same total P&L at first order.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The 25K-per-basis-point sensitivity is the
 compact statement of
@@ -239,7 +239,7 @@ vocabulary.
 
 ## STIR Futures --- Overview and Payoff Convention {#L3-sec:stir-overview}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 1--9.** *(Page 3.1 · STIR Futures.)*\
 **Short-Term Interest Rate (STIR) Futures** are contracts
@@ -293,7 +293,7 @@ Cash bonds, Treasury futures, and STIR futures all obey the
 "rates up, price down" rule. Long a STIR contract therefore means you
 lose when rates rise, exactly as for a long bond.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The affine form also makes the STIR future
 *hedgeable* against a floating-rate loan. A lender who has extended
@@ -309,7 +309,7 @@ would fail this hedge --- it would leave a residual loss when rates rise.
 
 ## Fed Funds Futures {#L3-sec:stir-fff}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 10--18.** *Fed Funds Futures (FFF).*\
 **Reference rate:**
@@ -372,7 +372,7 @@ $$\$5{,}000{,}000 \cdot \frac{30}{360} \cdot 0.0001 \;\approx\; \$41.67$$
 per basis point. The sign is negative because a rate rise corresponds to a
 price fall for the long position.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The factor of $\tfrac{30}{360}$ is not really
 about calendar days --- in February it does not become $\tfrac{28}{360}$ ---
@@ -396,7 +396,7 @@ time.
 
 ## Market Expectations from FFF {#L3-sec:stir-market-exp}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 19.** *Market Expectations.*\
 The quoted Fed Funds futures prices are used to extract the market
@@ -421,7 +421,7 @@ reliable signal available.
 
 ## SOFR --- Rate and Futures {#L3-sec:stir-sofr}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 20--23.** *Understanding SOFR.*\
 **What is SOFR?** The **Secured Overnight Financing Rate**
@@ -472,7 +472,7 @@ LIBOR for these reasons after the LIBOR scandal, and, as the lecturer
 noted, much of the over-the-counter derivatives market that used to settle
 off 3-month LIBOR has been re-papered to 3-month SOFR.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 24--28.** *SOFR Futures.*\
 The CME trades both 1-month and 3-month SOFR futures.
@@ -523,7 +523,7 @@ $$\$1{,}000{,}000 \cdot \frac{90}{360} \cdot 0.0001 \;=\; \$25{,}$$
 so a 1 bp rise in the 3-month reference rate costs the long \$25 per
 contract.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why compounding on 3-month SOFR but not on
 1-month SOFR or 1-month FFF? The lecturer explained it as "over 30 days,
@@ -553,7 +553,7 @@ up to 12--18 months out.
 
 ## Technical Points --- Discount Curves, Convexity, Basis Risk {#L3-sec:stir-tech}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 29--32.** *Technical Points.*\
 **STIR futures for estimating discounts.** For any pricing, we need
@@ -624,7 +624,7 @@ a *higher* implied rate. Hence $r^{\text{fut}} > r^{\text{fwd}}$, and
 a desk that reads rates off the futures chain and treats them as forwards
 will systematically *overstate* the short-end of the forward curve.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The quadratic $\tfrac12 \tau^2 \sigma^2$ form is
 not obvious from the verbal argument alone. The standard derivation
@@ -661,7 +661,7 @@ exposure whose reset dates are not on the quarterly SOFR schedule.
 
 # Inferring the Fed Funds Path {#L3-sec:infer}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 1--2.** *(Page 3.2 · Inferring FF
 Futures.)*\
@@ -685,7 +685,7 @@ comparison.
 
 ## The Fed Funds Curve as a Menu {#L3-sec:infer-menu}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 3.** *Chart the Fed Futures Rates.*\
 We will chart the Fed Funds curve at `2025-01-26` and
@@ -708,7 +708,7 @@ $100 - P_i$ gives the implied Fed funds rate for each contract expiry.
 
 ## Extracting the Expected Path {#L3-sec:infer-path}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 4--7.** *Extracting the Expected Path of Fed Funds Rates.*\
 Assume the Fed:
@@ -738,7 +738,7 @@ where $r^{\text{pre}}$ is fixed by the previous no-meeting month's
 contract and $r^{\text{post}}$ is the unknown post-meeting rate. Solving
 for $r^{\text{post}}$ gives the implied expected rate after the meeting.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 8--9.** *Technical Point.*\
 Consider months $t$ where there is a meeting, but such that in month
@@ -754,7 +754,7 @@ These are both reasonable and will likely not differ much.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The "two reasonable ways" are equivalent under
 the model but use different inputs, so they can differ in practice by
@@ -771,7 +771,7 @@ cross-check.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 17.** *(Output) Implied Fed Funds Rate step plot.*
 
@@ -803,7 +803,7 @@ chain.
 
 ## Comparing Across Quote Dates {#L3-sec:infer-compare}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 20--24.** *Compare to the Historic Curve.*\
 Use the price data in 2024 to extract the expectations at the previous
@@ -813,7 +813,7 @@ problem, for the current data.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 19.** *(Output) Change in Expected Rates between quote dates.*
 
@@ -849,7 +849,7 @@ monetary-policy surprise measurement.
 
 ## Open Interest and Chain Liquidity {#L3-sec:infer-oi}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 25--26.** *Looking at Open Interest on the Chain.*\
 
@@ -887,7 +887,7 @@ intermediate steps as self-study.
 
 ## Setup --- Volume and Open Interest {#L3-sec:discount-oi}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 9.** *(Output) Volume vs. Open Interest by Contract.*
 
@@ -940,7 +940,7 @@ $r^{\text{fwd}}(T_i, T_i + \tfrac{1}{4}) = r^{\text{fut}}_i$. That is not
 quite right --- the convexity adjustment from §[2.5](#L3-sec:stir-tech){reference-type="ref" reference="L3-sec:stir-tech"}
 applies --- but for short horizons it is a good first approximation.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 18.** *(Output) Short-term rates from SOFR futures.*
 
@@ -966,7 +966,7 @@ splice in the swap curve from that point onward in a real calibration.
 
 ## Convexity Adjustment in Practice {#L3-sec:discount-conv}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 13.** *(Output) Convexity bias and adjusted rates, Bloomberg vs. in-house.*
 

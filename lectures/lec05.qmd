@@ -39,7 +39,7 @@ second is a story about hedging duration.
 
 ## Notional, gross market value, and net {#L5-sec:swaps-notional}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.1.** *(How big is the swap market?)*\
 Total notional outstanding on interest-rate swaps is on the order of
@@ -90,7 +90,7 @@ the room for the missing story. One student offered *speculation*
 on rates, which the lecturer accepted but redirected; the canonical
 answer is closer to the rates-trader analog of equity-beta hedging.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.2.** *(Why swaps are huge.)* The dominant driver
 of swap demand is *level-of-rates risk management* --- the
@@ -123,7 +123,7 @@ swap is essentially a long-duration leg paired with a zero-duration
 leg, and trading the swap moves duration the same way trading the
 underlying Treasury would.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer's claim "the floating-rate
 note has no duration" is the punchline of *2.4 Floating-Rate
@@ -157,7 +157,7 @@ because part of the class was new to it and because the
 fixed-income-derivatives course will return to it through swaptions,
 forward-vol trades, and CTD-like relative-value structures.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.3.** *(Swap-spread trade in 2008.)* The
 30-year US Treasury at par pays a 4.5% coupon. The 30-year swap rate
@@ -193,7 +193,7 @@ sized the trade in the first place. "If your long-treasury position
 is down, your repo counterparty will say the haircut isn't big enough
 anymore --- you have to put up more."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer asked the class *why* the
 swap spread has stayed negative for 15 years, contrary to the
@@ -212,7 +212,7 @@ funding.
 
 # From spot options to options on rates {#L5-sec:transition}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.4.** *(Today: options on rates and bonds.)* The
 remainder of the course --- and the entirety of this lecture from this
@@ -258,7 +258,7 @@ wrinkle worth seeing.
 
 # Callable bonds: the embedded short call {#L5-sec:callable-setup}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 6.2.0--9.** *(Page 6.2 · Callable
 Bonds.)*\
@@ -284,7 +284,7 @@ convexity* on the bond is the same statement as *negative gamma*
 on the embedded call once the bond's own positive convexity is
 overwhelmed.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The decomposition $V^{\text{callable}} =
 V^{\text{vanilla}} - C$ is the entire pricing strategy and deserves
@@ -344,7 +344,7 @@ of the US government. "Even though it's not issued as a Treasury
 bond, it should seemingly have identical credit risk because it
 ultimately is the same issuer."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 6.2.2--6.** *(Why Freddie Mac.)*\
 **Freddie Mac (Federal Home Loan Mortgage Co.).** A US housing
@@ -365,7 +365,7 @@ choice.
 
 ## The bond table the lecturer used {#L5-sec:freddie-table}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 6.2.7.** *(The Freddie Mac bonds in scope.)*\
 Quotes from February 2024. Three bonds, all issued in
@@ -418,7 +418,7 @@ maturity, the bond price will be *drifting* toward \$100 from
 above (when rates have fallen and the bond trades over par) or from
 below (when rates have risen and the bond trades under par).
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.5.** *(Pull to par, illustrated.)* The 30-year
 Treasury issued in 1993 was originally priced at par. Rates fell
@@ -435,7 +435,7 @@ expected path was *up*; not random.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why is this the killer for the original
 Black--Scholes derivation? Black--Scholes pricing does not depend on
@@ -467,7 +467,7 @@ machinery used in FINMAT 330 carries through.
 
 ## From the spot formula to the forward formula {#L5-sec:black-classic}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 6.1.9--16.** *(Black's Model -- Constant Rates.)*\
 Under *constant* rates and lognormal forward prices, the European
@@ -484,7 +484,7 @@ in $d_1$ is just $\tfrac{1}{2}\sigma^2$ --- not $r + \tfrac{1}{2}\sigma^2$
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** "Where did the $r$ go in $d_1$?" The
 Black--Scholes $d_1$ has $r + \tfrac{1}{2}\sigma^2$ because the
@@ -537,7 +537,7 @@ of the bracket. The next step --- and the technical core of the
 lecture --- is to allow $r$ to be stochastic without losing the
 clean expectation structure.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 6.1.27--35.** *(Black's General Formula -- Stochastic
 Rates.)*\
@@ -561,7 +561,7 @@ observable, term-structure-dependent discount factor $Z(t,T)$.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The change of numeraire is the one piece of
 this lecture the lecturer explicitly outsourced: "go back to your
@@ -600,7 +600,7 @@ Freddie Mac problem when we do not have an option-pricing engine).
 
 ## Implied vol is to options what YTM is to bonds {#L5-sec:ivol-language}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.6.** *(Implied vol as a quoting language.)*
 The implied volatility of a market-traded option is
@@ -654,7 +654,7 @@ not the volatility of its *forward price*. The case study quotes
 "the realized vol on its YTM is roughly 2.68% per year" for the
 underlying. Black's formula expects the vol of the forward price.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 6.2.13.** *(Implied Volatility -- the rate-to-price
 conversion.)*\
@@ -668,7 +668,7 @@ forward-versus-spot price level).
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The first-order linkage
 $\Delta P / P \approx -\mathrm{MD} \cdot \Delta y$ is the modified-duration
@@ -692,7 +692,7 @@ flagged earlier.
 
 ## The decomposition, operationally {#L5-sec:pricing-decomp}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 6.2.14--16.** *(Pricing approach.)*\
 $$V^{\text{callable}}_t
@@ -730,7 +730,7 @@ The case study notebook shows the model price the procedure above
 produces and compares it to the market quote. The two will not match
 exactly. The OAS is the standardized way of expressing that gap.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 6.2.17.** *(Option-Adjusted Spread.)*\
 The *option-adjusted spread* is the parallel shift to the spot
@@ -765,7 +765,7 @@ quoted and not just a curiosity:
     compared directly any more than dirty prices on different
     bonds can be compared.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer flagged what a non-zero OAS
 *does not* mean. "If you truly believed Black's model is
@@ -790,7 +790,7 @@ and the callable bond on the other (the downward-sloping bond curve
 flattened from above by the call option's exercise barrier). The
 lecturer used the picture to anchor the negative-convexity language.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 6.2.18--19.** *(Differences with callable bonds.)*
 
@@ -817,7 +817,7 @@ convex."
 
 ## Are callable bonds systematically overpriced? {#L5-sec:longstaff}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 6.2.23.** *(Are callable bonds overpriced?)*\
 Empirical work --- Longstaff and others --- has documented that
@@ -857,7 +857,7 @@ which exercise was visibly delayed. "Even in the last two years of
 doing this case study, I've seen that in the data --- they don't call
 when it seems they should."
 
-:::.callout-caution title=\"Exercise\"
+:::{.callout-caution title="Exercise"}
 
 **Exercise (assigned).** The case study notebook walks through
 the full Black-based valuation of one of the Freddie Mac callable
@@ -880,7 +880,7 @@ for next week.
 
 ## Caplets and floorlets {#L5-sec:caplets}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.7.** *(Caplet definition.)*\
 A caplet is a single-period European call option on an interest-rate
@@ -905,7 +905,7 @@ floating leg of an interest-rate swap, designed to make the caplet a
 clean hedge against a single floating-rate payment. "It's mimicking
 the way swaps' floating side has been quarterly for decades."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer pressed the unit-conversion
 point: a strike of $K = 4\%$ and a locked rate of $r_{\text{lock}} =
@@ -921,7 +921,7 @@ swaps.
 
 ## Caps and floors as portfolios; the time-mismatch {#L5-sec:caps-portfolio}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.8.** *(Caps and floors.)*
 
@@ -958,7 +958,7 @@ cash arrives. The variance term uses time to *lock-in* ($T_j -
 giving a closed-book exam I would absolutely catch a bunch of wrong
 answers for this."
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why is the variance term scaled by
 $\tau^{(j)} = T_j - 1/m - t$? The implied vol $\sigma$ is the standard
@@ -979,7 +979,7 @@ $Z(t, T_j)$ and the forward rate $f^{(j)}_t$ be bootstrapped from the
 Treasury curve or from the swap curve? The lecturer gave a strong
 recommendation.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Slide L5.9.** *(Curve choice for cap/floor pricing.)* For
 caps, floors, and swaptions, the convention is to bootstrap discount

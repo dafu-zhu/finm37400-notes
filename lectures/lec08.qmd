@@ -63,7 +63,7 @@ ability to fit a single day's curve.
 
 ## Why this is a case study, not a project {#L8-sec:caseornot}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (Page *SABR Skews for Futures* --- Estimation).**
 *(What the case study does.)*\
@@ -98,7 +98,7 @@ panel. The class had walked through these in Lecture 7's first
 section; the lecturer's purpose in revisiting them was to set up
 which markets are SABR's natural home and which are not.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Empirical pattern across futures markets.**
 
@@ -132,7 +132,7 @@ us at the next slide.
 
 ## The negative-slope between forward and ATM vol {#L8-sec:negslope}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 22 (Page *SABR Skews for Futures* --- Vol Path).**
 *(SABR's empirical signature: forward $\downarrow$ implies
@@ -157,7 +157,7 @@ correlated with a rise in vol. That is not a definition; it is
 something the data tells us about the cross-correlation in this
 market, fit through SABR's machinery.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The lecturer dropped "Saber thinks there's
 a negative relationship between the forward rate and the vol" as if
@@ -193,7 +193,7 @@ quite well in the correlation."
 
 The lecturer drew the comparative-static picture explicitly.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Comparative static.** Draw three implied-vol-vs-strike
 curves: the original (blue), the SABR-shifted curve when the
@@ -241,7 +241,7 @@ equities? The lecturer's answer was empirical, not theoretical:
 > $0.7$, the moderate $\nu$ --- happen to fit best. Sometimes useful
 > for FX. Mostly a curve-fitting tool for crude."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The market-by-market verdict.**
 
@@ -273,7 +273,7 @@ expectations were jumping around enough to test SABR's dynamic
 content. "I was just interested in whether we'd see something
 here."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 25 (Page *SABR Skews for Futures* --- Other Assets).**
 *(How the comparison was structured.)*\
@@ -298,7 +298,7 @@ correlation."
 
 ## The fit-grid and the case-study questions {#L8-sec:fitgrid}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 27 (Page *SABR Skews for Futures* --- code).**
 *(The estimation loop.)*\
@@ -337,7 +337,7 @@ of what we do in FinMath 320." The chapter therefore reads as a
 *landmark tour* rather than a self-contained development. Three
 families of methods sit on the option-pricing pricing menu:
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The pricing-method menu.**
 
@@ -364,7 +364,7 @@ machinery for jumps or path-dependent payoffs --- those are FinMath
 320's territory --- but we will see the entire tree mechanic for the
 fixed-income case.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** "Why a *tree* for an American option,
 and why does Black not work?" Black's formula assumes the holder
@@ -382,7 +382,7 @@ backward in time, exactly*. That is the algorithmic contribution.
 
 ## What this lecture will not cover {#L8-sec:notcover}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Out of scope (and which course covers each).**
 
@@ -419,7 +419,7 @@ replication is in the foreground, not the bookkeeping.
 
 ## The setup {#L8-sec:setup}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell (Page *Intro to Binomial Trees*, Setup).**
 *(One period of uncertainty: $t = 0$ and $t = T$, no trading
@@ -446,7 +446,7 @@ no statement about how likely up is.
 
 ## The hedge ratio {#L8-sec:hedge}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Hedge ratio (delta).** The number of shares of stock that
 moves dollar-for-dollar with the call across the two states is
@@ -463,7 +463,7 @@ of a dollar of option in this discrete world. So $0.25$ shares of
 stock matches one short call." The hedge ratio is the "coverage
 ratio" for moving dollar-for-dollar with the call.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why does the formula above give the
 *unique* hedge ratio that makes a long-stock-short-call
@@ -487,7 +487,7 @@ into one number across both branches.
 With $\Delta = 0.25$, we go long $0.25$ shares of stock and short
 one call. The terminal portfolio value is the same in both states:
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 7 (Page *Intro to Binomial Trees*, Replicating
 Cash).**
@@ -531,7 +531,7 @@ formulation.
 
 ## The pricing formula {#L8-sec:priceformula}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 13 (Pricing Formula).**
 The cost of setting up the riskless portfolio is $S_0\,\Delta - C_0$
@@ -549,7 +549,7 @@ $0.5 \cdot 5 + 0.5 \cdot 0 = 2.5$.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The algebra from the riskless equality
 $S_0\,\Delta - C_0 = (S_u\,\Delta - C_u)\,Z$ where $Z$ is the
@@ -570,7 +570,7 @@ discounted weighted average of $C_u$ and $C_d$ with weights that
 
 ## Three ways to read $p^*$ {#L8-sec:threereads}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 16 (Probability interpretation).**
 Read $p^*$ as a "probability" of the up-state. Then
@@ -589,7 +589,7 @@ it a probability because the formula has the shape of an expected
 value, and that label is going to be a powerful organizing device.
 But $p^*$ is a pricing object, not a forecast."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 17 (State-contingent payoffs).**
 A second reading: define $U$ and $D$ to be the time-zero prices of
@@ -606,7 +606,7 @@ the formula.
 
 ## Key features of the binomial pricing solution {#L8-sec:keyfeatures}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 18 (Key features).**
 
@@ -642,7 +642,7 @@ that handles real-world derivatives.
 
 ## General notation {#L8-sec:gennotation}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 22--25 (General notation).**
 For a generic underlying $S$ over a time interval $\Delta t$,
@@ -670,7 +670,7 @@ changed."
 The next question is parametric: how do we choose $u$ and $d$? The
 lecturer's slide gave the standard answer:
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 30 (Setting $u$ and $d$ via volatility).**
 The variance of one step (a Bernoulli with up-probability the true,
@@ -686,7 +686,7 @@ $$u \;=\; e^{\sigma\sqrt{\Delta t}},
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why $ud = 1$ as a side-condition, and why
 that closed form? Two equations are needed to pin down $u$ and $d$:
@@ -705,7 +705,7 @@ CRR is the standard for fixed-income work.
 
 ## Adjusting $A$ for dividends and futures {#L8-sec:adjustA}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 31 (Other settings).**
 The growth factor $A$ depends on what the underlying is:
@@ -729,7 +729,7 @@ of the machinery is unchanged."
 
 ## Two concerns: market incompleteness and time discretization {#L8-sec:concerns}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 32 (Concerns).**
 
@@ -753,7 +753,7 @@ you take 30 steps for a vanilla American, more for an exotic, the
 convergence is fine." The first concern is the deeper one and
 deserves a tipblock.
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** What does "three states break replication"
 mean concretely? Suppose the stock can go to $S_u$, $S_m$, $S_d$
@@ -781,7 +781,7 @@ rather *interest rates*."
 
 ## Why this is more delicate {#L8-sec:moredelicate}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The crucial twist.** The interest rate $r$ is *not*
 itself a traded security. It is a quantity the bond market lets us
@@ -801,7 +801,7 @@ $\Delta t$ price is uncertain because rates have moved."
 
 ## Setup: the rate tree {#L8-sec:ratetree}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 33--37 (Rate tree setup).**
 Use $\Delta t = 0.5$ years (six-month tree step). At each node,
@@ -837,7 +837,7 @@ states* of the rate at $\Delta t$.
 
 ## Why continuously compounded? {#L8-sec:contcompound}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 40 (Why continuous compounding).**
 "This is miles vs kilometers, not a modeling choice. There is a
@@ -862,7 +862,7 @@ short-rate model that fixed-income textbooks treat.
 
 ## The contract {#L8-sec:contract}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 42--44 (rate option).**
 A simple interest-rate option, treated by analogy to a put on a stock:
@@ -890,7 +890,7 @@ The crucial difference from the equity case: instead of replicating
 with stock and cash, we replicate with the *1-period* bond and
 the *2-period* bond.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 45--50 (replication portfolio).**
 Let $\alpha$ be the position in the 1-period bond and $\beta$ the
@@ -920,7 +920,7 @@ $$\beta \;=\; \frac{1.05 - 0}{99.53 - 98.32} \;=\; \frac{1.05}{1.21}
   \qquad
   \alpha \;=\; \frac{f_u - \beta\,P^{(2)}_u}{100} \;\approx\; -0.853.$$
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** Why does the 2-period bond play the role
 of "stock" in this replication? Because its time-$\Delta t$ price
@@ -943,7 +943,7 @@ underlyings have changed.
 
 ## Pricing by no-arbitrage {#L8-sec:rateprice}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Pricing the rate option.**
 The cost at $t = 0$ of the replicating portfolio is
@@ -956,7 +956,7 @@ $f_0 \approx 0.34$ per \$100 face.
 
 ## Risk-neutral check {#L8-sec:rncheck}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cells 54--56 (risk-neutral pricing of the rate option).**
 The risk-neutral probability satisfies (using the 2-period bond as
@@ -973,7 +973,7 @@ The two routes (replication and risk-neutral) give the same price.
 
 ## Independence from drift {#L8-sec:noDrift}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 64 (true probability vs risk-neutral).**
 By Girsanov's theorem the true expectation and the risk-neutral
@@ -1000,7 +1000,7 @@ arguments do not need the drift.
 
 ## Recap of the one-period structure {#L8-sec:oneprecap}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 66 (Reminder).**
 The one-period tree has handed us:
@@ -1024,7 +1024,7 @@ recursively.
 
 ## Building the multiperiod tree {#L8-sec:multitree}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 67--70 (multiperiod tree).**
 Continue the equity tree to a second period:
@@ -1063,7 +1063,7 @@ total number of nodes (including all interior ones) is $\binom{n+2}{2}
 
 ## Choosing the time grid {#L8-sec:timegrid}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 73 (choosing $\Delta t$).**
 The time grid must be fine enough for the discrete tree's terminal
@@ -1087,7 +1087,7 @@ path-dependent ones).
 
 ## Specific underlying values: trinomial alternative {#L8-sec:trinomial}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 74 (specific underlying values).**
 The CRR tree does not let us hit a specific terminal stock price
@@ -1114,7 +1114,7 @@ each fixed-income product the course has covered.
 
 ## The calibrated rate tree as a primitive {#L8-sec:ratetreeprim}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 7 (Page *Using Binomial Trees*).**
 *(The rate tree, displayed.)*\
@@ -1139,7 +1139,7 @@ Ho-Lee --- is the FinMath 320 / FINM 37500 material flagged earlier.
 
 ## Pricing a floor on the rate tree {#L8-sec:floortree}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 9 (Page *Using Binomial Trees*, floor).**
 *(Pricing a 3-year, quarterly floor as a floorlet sum.)*
@@ -1167,7 +1167,7 @@ backward induction sums them with the right discount factors. So
 the floor's price comes out as one number at the root --- a
 weighted average of all the floorlets' state-by-state payoffs."
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The mechanics displayed.**
 For each terminal-state node (each leaf), compute
@@ -1185,7 +1185,7 @@ root is the floor's value today.
 
 ## European versus American swaption {#L8-sec:eurusdam}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 18--22 (Page *Using Binomial Trees*, swaptions).**
 For a swaption with European exercise, the algorithm is:
@@ -1228,7 +1228,7 @@ American option."
 
 ## Bonds and callable bonds {#L8-sec:callable}
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 24--25 (Page *Using Binomial Trees*, bond / callable).**
 For a bond, the tree-based pricing is just the discounted
@@ -1254,7 +1254,7 @@ call option as the difference straight $-$ callable.
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The $\min$ in the callable bond's
 backward induction encodes the issuer's optimal exercise rule.
@@ -1273,7 +1273,7 @@ The lecturer's closing point on the tree machinery: it is most
 valuable for products with *rich early-exercise structure*, not
 for vanilla European products.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Where the tree's value is highest.**
 
@@ -1304,7 +1304,7 @@ explicitly: *how do we build the rate tree in the first place?*
 Setting $u$ and $d$ via volatility-matching --- the way we did for
 equities --- runs into a problem in the rate setting.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 6 (Page *Rate Models for Binomial Trees*).**
 "How do we build the nodes for $r$? Matching volatility and using
@@ -1313,7 +1313,7 @@ required to fit the current market price may be outside $(0, 1)$."
 
 :::
 
-:::.callout-tip title=\"Filling the gap\"
+:::{.callout-tip title="Filling the gap"}
 
 **Filling the gap.** The issue: in the equity tree we set $u$
 and $d$ to match the equity vol, then $p^*$ falls out of the no-
@@ -1330,7 +1330,7 @@ case $p^*$ falls outside $(0, 1)$ --- an arbitrage in the model.
 
 :::
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **The fix (BDT, Ho-Lee, LIBOR Market Model).**
 Rather than setting $u$ and $d$ from rate vol and solving for
@@ -1366,7 +1366,7 @@ The lecturer closed the course with a brief retrospective and a
 final orienting message about how to think about the fixed-income
 markets going forward.
 
-:::.callout-important title=\"Key concept\"
+:::{.callout-important title="Key concept"}
 
 **Cell 16 (Page *Rate Models for Binomial Trees*, Example).**
 The closing illustration was a full rate tree calibrated to a
