@@ -141,3 +141,25 @@ def test_clean_pandoc_output_unescapes_underscores_in_image_paths():
     md = "![](../figures/L1\\_1\\_compounding.png)"
     out = convert.clean_pandoc_output(md)
     assert "../figures/L1_1_compounding.png" in out
+
+
+def test_replace_figures_with_cached_tables_swaps_when_cached(tmp_path, monkeypatch):
+    cache = tmp_path / "cached_tables"
+    cache.mkdir()
+    (cache / "L1_1_c02_load_quotes.html").write_text(
+        "<table><tr><td>x</td></tr></table>", encoding="utf-8"
+    )
+    monkeypatch.setattr(convert, "CACHE_DIR", cache)
+    md = "before\n![](../figures/L1_1_c02_load_quotes.png)\nafter"
+    out = convert.replace_figures_with_cached_tables(md)
+    assert "```{=html}" in out
+    assert '<div class="table-scroll">' in out
+    assert "<table>" in out
+    assert "L1_1_c02_load_quotes.png" not in out
+
+
+def test_replace_figures_with_cached_tables_leaves_uncached_alone(tmp_path, monkeypatch):
+    monkeypatch.setattr(convert, "CACHE_DIR", tmp_path / "empty")
+    md = "![](../figures/L1_1_c50_ols.png)"
+    out = convert.replace_figures_with_cached_tables(md)
+    assert out == md

@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "source-tex"
 OUT = ROOT / "lectures"
+CACHE_DIR = ROOT / "cached_tables"
 
 BLOCK_MAP = {
     "keyblock":      ("important", "Key concept"),
@@ -141,6 +142,32 @@ def clean_pandoc_output(md: str) -> str:
     return md
 
 
+def replace_figures_with_cached_tables(md: str) -> str:
+    """Post-pass: where ![](../figures/X.png) has a sibling
+    cached_tables/X.html, swap the markdown image for a raw HTML block
+    containing the table.
+
+    Wraps each table in <div class="table-scroll">…</div> so wide tables
+    get a horizontal scrollbar instead of overflowing the page.
+    Idempotent: if the cached HTML is missing, the markdown is unchanged.
+    """
+    pattern = re.compile(r"!\[[^\]]*\]\(\.\./figures/([A-Za-z0-9_]+)\.png\)")
+
+    def sub(m):
+        fig_name = m.group(1)
+        cached = CACHE_DIR / f"{fig_name}.html"
+        if not cached.exists():
+            return m.group(0)
+        html = cached.read_text(encoding="utf-8").strip()
+        return (
+            "\n\n```{=html}\n"
+            f'<div class="table-scroll">\n{html}\n</div>\n'
+            "```\n\n"
+        )
+
+    return pattern.sub(sub, md)
+
+
 def wrap_with_yaml(md: str, title: str, lecture_num: int) -> str:
     header = (
         "---\n"
@@ -166,6 +193,7 @@ def convert_file(tex_path: Path) -> None:
     md = run_pandoc(tex)
     md = restore_callout_sentinels(md)
     md = clean_pandoc_output(md)
+    md = replace_figures_with_cached_tables(md)
     md = wrap_with_yaml(md, title, lecture_num)
     out = OUT / f"lec{lecture_num:02d}.qmd"
     out.write_text(md, encoding="utf-8")
