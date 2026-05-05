@@ -1,0 +1,195 @@
+# Maps PNG figure name (without extension) to a table on Mark's site.
+# Required when kind != skip:
+#   url:         relative to https://markhendricks.github.io/finm-fixedincome/
+#   table_index: 1-based ordinal of <table> on the page (top-to-bottom)
+# Optional:
+#   kind: "skip" leaves the screenshot in place. Absent (or any other value)
+#         means "fetch and embed".
+#   note: free-form human comment, ignored by tooling.
+#
+# Coverage: every figure in figures/ appears below. Skip entries serve as
+# documentation that they were considered.
+
+# ============================================================
+# Lecture 1.1 — The Spot Discount Curve  (Mark's notebook 1.1)
+# ============================================================
+L1_1_c02_load_quotes:
+  url: "discussions/1.1. The Spot Discount Curve.html"
+  table_index: 1
+  note: "Treasury quote frame head"
+L1_1_c105_ytm_vs_spot:
+  kind: skip   # YTM vs spot comparison plot
+L1_1_c38_cashflows:
+  kind: skip   # cashflow matrix visualization
+L1_1_c48_bootstrap:
+  kind: skip   # bootstrap discount curve plot
+L1_1_c50_ols:
+  kind: skip   # OLS spot curve plot
+L1_1_c54_spot_curve:
+  kind: skip   # spot curve plot
+L1_1_c62_estimate_bad:
+  kind: skip   # error illustration plot
+L1_1_c71_vacillate_long:
+  kind: skip   # long-end vacillation plot
+L1_1_c78_condnum:
+  url: "discussions/1.1. The Spot Discount Curve.html"
+  table_index: 4
+  note: "Cashflow matrix condition numbers"
+L1_1_c92_ns_params:
+  url: "discussions/1.1. The Spot Discount Curve.html"
+  table_index: 3
+  note: "Nelson-Siegel parameter estimates"
+L1_1_c96_ns_spot:
+  kind: skip   # NS spot curve plot
+L1_1_c98_ns_disc:
+  kind: skip   # NS discount curve plot
+L1_1_compounding:
+  kind: skip   # board sketch (no upstream)
+L1_1_errors:
+  kind: skip   # error comparison plot
+L1_1_vacillating:
+  kind: skip   # board sketch / illustrative plot
+
+# ============================================================
+# Lecture 1.2 — Forward Rates  (Mark's notebook 1.2)
+# ============================================================
+L1_2_c100_fra_dates:
+  kind: skip   # FRA dates diagram
+L1_2_c13_forward_calc:
+  url: "discussions/1.2. Forward Rates.html"
+  table_index: 3
+  note: "Forward contract pricing details (best guess; verify)"
+L1_2_c16_rate_summary:
+  url: "discussions/1.2. Forward Rates.html"
+  table_index: 2
+  note: "Forward investment summary (best guess; verify)"
+L1_2_c21_tsdata:
+  kind: skip   # no time-series table on page; likely a plot
+L1_2_c41_fwd_disc:
+  kind: skip   # forward discount plot
+L1_2_c50_fwd_compounded:
+  kind: skip   # compounded forward plot
+L1_2_c57_extract_spot:
+  kind: skip   # spot extraction plot
+L1_2_c61_extract_loop:
+  kind: skip   # extraction loop plot
+L1_2_c83_display_bonds:
+  url: "discussions/1.2. Forward Rates.html"
+  table_index: 1
+  note: "Bond display table"
+L1_2_c86_fwd_contract:
+  kind: skip   # forward contract diagram
+L1_2_forward:
+  kind: skip   # board sketch
+L1_2_quotes:
+  kind: skip   # board sketch
+L1_2_spot:
+  kind: skip   # board sketch
+
+# ============================================================
+# Lecture 2.1 — Expectations Hypothesis  (Mark's notebook 1.3)
+# ============================================================
+L2_1_c18_fact1_unc:
+  kind: skip   # plot — Fact 1 unconditional
+L2_1_c22_fact2_unc:
+  kind: skip
+L2_1_c25_fact3_unc:
+  kind: skip
+L2_1_c40_fact1_dyn:
+  kind: skip
+L2_1_c47_fact2_dyn:
+  kind: skip
+L2_1_c55_fact3_dyn:
+  kind: skip
+L2_1_c71_logtails:
+  kind: skip
+L2_1_c73_logseries:
+  kind: skip
+
+# ============================================================
+# Lecture 2.2 — Interest Rate Risk  (Mark's notebook 2.1)
+# ============================================================
+L2_2_c07_dirty:
+  kind: skip   # no matching dirty-price table found on Mark's 2.1 page
+
+# ============================================================
+# Lecture 3 — STIR / SOFR (Mark's notebooks 3.2, 3.3)
+# ============================================================
+L3_2_c17_implied_ff:
+  kind: skip
+L3_2_c19_change:
+  kind: skip
+L3_2_c26_oi_scatter:
+  kind: skip
+L3_3_c09_volume_oi:
+  kind: skip
+L3_3_c13_bloomberg_comp:
+  url: "discussions/3.3. Discount via SOFR Futures.html"
+  table_index: 4
+  note: "Bloomberg vs Our Calculations comparison"
+L3_3_c18_shortterm_rates:
+  kind: skip
+
+# ============================================================
+# Lecture 4 — Treasury Futures  (Mark's notebook 4.2)
+# ============================================================
+L4_2_c09_volume_zoom:
+  kind: skip
+L4_2_c41_net_basis:
+  url: "discussions/4.2. Treasury Futures.html"
+  table_index: 4
+  note: "Net basis calculation (verify index — page has an image that may shift ordinals)"
+L4_2_c62_bbg_ctd:
+  url: "discussions/4.2. Treasury Futures.html"
+  table_index: 6
+  note: "Bloomberg CTD comparison"
+L4_2_c65_confirm_ctd:
+  url: "discussions/4.2. Treasury Futures.html"
+  table_index: 5
+  note: "CTD confirmation"
+
+# ============================================================
+# Lecture 5 — Black's Formulas / Callable Bonds  (Mark's 6.1, 6.2)
+# ============================================================
+L5_1_c06_otc_products:
+  kind: skip   # Mark's 6.1 has no HTML tables
+L5_1_c27_ten_year_ts:
+  kind: skip
+L5_1_c29_curves_dates:
+  kind: skip
+L5_1_c34_factor_structure:
+  kind: skip
+L5_1_c47_swap_rate_panels:
+  kind: skip
+
+# ============================================================
+# Lecture 6 — Forward Volatility  (Mark's notebook 7.1)
+# ============================================================
+L6_1_c58_flat_vs_fwd:
+  kind: skip
+
+# ============================================================
+# Lecture 7 — Vol Skew / SABR  (Mark's notebooks 8.1, 8.3)
+# ============================================================
+L7_1_c07_skew_examples:
+  kind: skip   # plot
+L7_3_c22_sabr_fit:
+  kind: skip   # SABR params shown as text output, not a real <table>
+L7_3_c24_volpath:
+  kind: skip
+L7_3_c25_atm_sensitivity:
+  url: "discussions/8.3. Fitting SABR.html"
+  table_index: 1
+  note: "ATM Volatility Sensitivity table"
+
+# ============================================================
+# Lecture 8 — generated TikZ diagrams (NEVER replace)
+# ============================================================
+L8_tikz_1:
+  kind: skip
+L8_tikz_2:
+  kind: skip
+L8_tikz_3:
+  kind: skip
+L8_tikz_4:
+  kind: skip
