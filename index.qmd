@@ -48,4 +48,4 @@ Hover any chapter to see what it depends on and what it feeds into.
 ## Source
 
 - Site source: [github.com/dafu-zhu/finm37400-notes](https://github.com/dafu-zhu/finm37400-notes)
-- LaTeX source + canonical PDF: `D:/GitHub/good-student-note/notes/finm37400`
+- LaTeX source: maintained privately; regeneration is for maintainer use only.

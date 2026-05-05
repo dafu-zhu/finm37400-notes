@@ -12,6 +12,8 @@ quarto preview
 
 ## Regenerate from source
 
+> The source LaTeX repo (`good-student-note`) is maintained privately. This recipe is for the maintainer; outside contributors only need the existing `source-tex/` snapshot and `scripts/`.
+
 When source `.tex` changes upstream:
 
 > Note: paths assume this repo and `good-student-note` are siblings. Adjust `SRC_ROOT` mentally if your layout differs.

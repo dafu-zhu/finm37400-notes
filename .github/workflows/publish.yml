@@ -31,7 +31,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install Python deps
-        run: pip install matplotlib numpy
+        run: pip install matplotlib numpy pytest
+
+      - name: Run converter unit tests
+        run: python -m pytest scripts/tests/ -v
 
       - name: Render TikZ replacements
         run: python scripts/render_tikz.py

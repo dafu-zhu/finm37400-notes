@@ -22,5 +22,3 @@ def render():
     plt.close(fig)
     print(f"  wrote {OUT.relative_to(OUT.parents[2])}")
 
-if __name__ == "__main__":
-    render()

@@ -154,7 +154,10 @@ def wrap_with_yaml(md: str, title: str, lecture_num: int) -> str:
 
 def convert_file(tex_path: Path) -> None:
     raw = tex_path.read_text(encoding="utf-8")
-    lecture_num, title = extract_part_title(raw)
+    try:
+        lecture_num, title = extract_part_title(raw)
+    except ValueError as e:
+        raise ValueError(f"{tex_path.name}: {e}") from e
     tex = strip_part(raw)
     tex = remove_checkpoint_blocks(tex)
     tex = convert_color_blocks(tex)
