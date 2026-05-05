@@ -1,0 +1,51 @@
+---
+title: "FINM 37400: Fixed Income"
+subtitle: "Lecture notes — University of Chicago Financial Mathematics"
+toc: false
+---
+
+These are study notes for the first half of UChicago's fixed income /
+derivatives sequence (FINM 37400 → FINM 37500), taught by Mark Hendricks.
+Source course site:
+[markhendricks.github.io/finm-fixedincome](https://markhendricks.github.io/finm-fixedincome).
+Notes typeset by Dafu Zhu; original lectures © Mark Hendricks.
+
+## Chapter dependency map
+
+Hover any chapter to see what it depends on and what it feeds into.
+
+```{=html}
+<iframe src="assets/finm37400_learning_map.html"
+        style="width:100%; height:780px; border:0; border-radius:8px;"
+        loading="lazy"
+        title="FINM 37400 chapter dependency map">
+</iframe>
+```
+
+## Lectures
+
+| #  | Topic                                                              |
+|----|--------------------------------------------------------------------|
+| [Lec 1](lectures/lec01.qmd) | Spot Discount and Forward Rates                |
+| [Lec 2](lectures/lec02.qmd) | Expectations Hypothesis, Interest-Rate Risk, and Duration |
+| [Lec 3](lectures/lec03.qmd) | Treasury Arbitrage and STIR Futures            |
+| [Lec 4](lectures/lec04.qmd) | Treasury Futures, the Basis Trade, and Swaps   |
+| [Lec 5](lectures/lec05.qmd) | Black's Formula and Callable Bonds             |
+| [Lec 6](lectures/lec06.qmd) | Forward Volatility, Caps, Floors, and Swaptions |
+| [Lec 7](lectures/lec07.qmd) | Volatility Skew and the SABR Model             |
+| [Lec 8](lectures/lec08.qmd) | SABR for Futures and Numerical Methods — Binomial Trees |
+
+## How to read these notes
+
+- **Color callouts**: <span style="color:#185FA5">**Key concept**</span> (blue),
+  <span style="color:#712B13">**Exercise**</span> (orange),
+  <span style="color:#3C3489">**Note**</span> (gray-violet),
+  <span style="color:#085041">**Filling the gap**</span> (green).
+- Math is rendered with KaTeX and works once the page finishes loading.
+- "Cell N" / "Cells N–M" references point to the original course Jupyter
+  notebooks at the source course site above.
+
+## Source
+
+- Site source: [github.com/dafu-zhu/finm37400-notes](https://github.com/dafu-zhu/finm37400-notes)
+- LaTeX source + canonical PDF: `D:/GitHub/good-student-note/notes/finm37400`
