@@ -28,3 +28,42 @@ figure img { max-width: 90%; height: auto; }
   .callout-note      { background-color: rgba(60, 52, 137, 0.30); }
   .callout-tip       { background-color: rgba(8, 80, 65, 0.30); }
 }
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.5em 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-scroll table.dataframe {
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.table-scroll table.dataframe th,
+.table-scroll table.dataframe td {
+  padding: 4px 10px;
+  border: 1px solid var(--bs-border-color, #ddd);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.table-scroll table.dataframe th {
+  background: var(--bs-secondary-bg, #f5f5f5);
+  font-weight: 600;
+}
+
+.table-scroll table.dataframe tbody tr:nth-child(odd) {
+  background: var(--bs-tertiary-bg, #fafafa);
+}
+
+@media (prefers-color-scheme: dark) {
+  .table-scroll table.dataframe th {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .table-scroll table.dataframe tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
