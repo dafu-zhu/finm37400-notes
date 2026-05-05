@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Helvetica, Arial, sans-serif;
+
+/*-- scss:rules --*/
+.callout {
+  margin: 1.25em 0;
+  border-radius: 6px;
+}
+
+.callout .callout-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.callout-important { background-color: rgba(230, 241, 251, 0.65); }
+.callout-caution   { background-color: rgba(250, 236, 231, 0.65); }
+.callout-note      { background-color: rgba(238, 237, 254, 0.55); }
+.callout-tip       { background-color: rgba(225, 245, 238, 0.65); }
+
+figure { margin: 1.5em auto; text-align: center; }
+figure img { max-width: 90%; height: auto; }

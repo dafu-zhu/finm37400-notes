@@ -1,0 +1,130 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "FINM 37400: Fixed Income"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Lectures
+        menu:
+          - text: "1. Spot & Forward Rates"
+            href: lectures/lec01.qmd
+          - text: "2. Risk & Duration"
+            href: lectures/lec02.qmd
+          - text: "3. STIR Futures & SOFR"
+            href: lectures/lec03.qmd
+          - text: "4. Treasury Futures, Swaps, FRNs"
+            href: lectures/lec04.qmd
+          - text: "5. Callables & Black's Formula"
+            href: lectures/lec05.qmd
+          - text: "6. MBS Intro"
+            href: lectures/lec06.qmd
+          - text: "7. MBS Pricing & OAS"
+            href: lectures/lec07.qmd
+          - text: "8. Term-Structure Models"
+            href: lectures/lec08.qmd
+    right:
+      - icon: github
+        href: https://github.com/dafu-zhu/finm37400-notes
+        aria-label: GitHub repo
+  sidebar:
+    style: docked
+    contents:
+      - section: "Lectures"
+        contents:
+          - lectures/lec01.qmd
+          - lectures/lec02.qmd
+          - lectures/lec03.qmd
+          - lectures/lec04.qmd
+          - lectures/lec05.qmd
+          - lectures/lec06.qmd
+          - lectures/lec07.qmd
+          - lectures/lec08.qmd
+  page-footer:
+    left: "Source: Mark Hendricks, FINM 37400 (UChicago)"
+    right: "Notes by Dafu Zhu"
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles/custom.scss]
+      dark:  [darkly, styles/custom.scss]
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: true
+    code-copy: true
+    smooth-scroll: true
+    citations-hover: true
+    html-math-method:
+      method: katex
+      url: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/"
+    include-in-header:
+      - text: |
+          <script>
+            window.MathJax = window.MathJax || {};
+            window.katexMacros = {
+              "\\R":  "\\mathbb{R}",
+              "\\N":  "\\mathbb{N}",
+              "\\Z":  "\\mathbb{Z}",
+              "\\Q":  "\\mathbb{Q}",
+              "\\C":  "\\mathbb{C}",
+              "\\E":  "\\mathbb{E}",
+              "\\P":  "\\mathbb{P}",
+              "\\cA": "\\mathcal{A}", "\\cB": "\\mathcal{B}",
+              "\\cC": "\\mathcal{C}", "\\cD": "\\mathcal{D}",
+              "\\cF": "\\mathcal{F}", "\\cG": "\\mathcal{G}",
+              "\\cH": "\\mathcal{H}", "\\cL": "\\mathcal{L}",
+              "\\cM": "\\mathcal{M}", "\\cN": "\\mathcal{N}",
+              "\\cO": "\\mathcal{O}", "\\cP": "\\mathcal{P}",
+              "\\cS": "\\mathcal{S}", "\\cT": "\\mathcal{T}",
+              "\\cX": "\\mathcal{X}",
+              "\\Var":  "\\operatorname{Var}",
+              "\\Cov":  "\\operatorname{Cov}",
+              "\\Corr": "\\operatorname{Corr}",
+              "\\Tr":   "\\operatorname{Tr}",
+              "\\rank": "\\operatorname{rank}",
+              "\\diag": "\\operatorname{diag}",
+              "\\sgn":  "\\operatorname{sgn}",
+              "\\argmax": "\\operatorname*{arg\\,max}",
+              "\\argmin": "\\operatorname*{arg\\,min}",
+              "\\abs":   "\\left|#1\\right|",
+              "\\norm":  "\\left\\|#1\\right\\|",
+              "\\inner": "\\left\\langle#1,#2\\right\\rangle",
+              "\\set":   "\\left\\{#1\\right\\}",
+              "\\floor": "\\left\\lfloor#1\\right\\rfloor",
+              "\\ceil":  "\\left\\lceil#1\\right\\rceil",
+              "\\dd":    "\\,\\mathrm{d}",
+              "\\dv":    "\\frac{\\mathrm{d}#1}{\\mathrm{d}#2}",
+              "\\pdv":   "\\frac{\\partial #1}{\\partial #2}",
+              "\\given": "\\,|\\,",
+              "\\iid":   "\\stackrel{\\text{iid}}{\\sim}",
+              "\\indep": "\\perp\\!\\!\\!\\perp",
+              "\\bm":    "\\boldsymbol{#1}"
+            };
+          </script>
+    include-after-body:
+      - text: |
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                  delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$",  right: "$",  display: false},
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                  ],
+                  macros: window.katexMacros,
+                  throwOnError: false,
+                  trust: true,
+                  strict: false
+                });
+              }
+            });
+          </script>
+
+bibliography: references.bib
