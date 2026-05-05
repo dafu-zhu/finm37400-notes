@@ -928,7 +928,50 @@ options they can differ substantially.
 Changes*).** *(Numerical sensitivity table.)*
 
 ::: center
-![image](../figures/L7_3_c25_atm_sensitivity.png){width="70%" height="45%"}
+
+
+```{=html}
+<div class="table-scroll">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Unnamed: 0</th>
+<th>CLA Comdty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>name</td>
+<td>WTI CRUDE FUTURE  Sep25</td>
+</tr>
+<tr>
+<th>1</th>
+<td>last update date</td>
+<td>2025-08-01 00:00:00</td>
+</tr>
+<tr>
+<th>2</th>
+<td>last update time</td>
+<td>15:22:57</td>
+</tr>
+<tr>
+<th>3</th>
+<td>price</td>
+<td>67.28</td>
+</tr>
+<tr>
+<th>4</th>
+<td>hist vol 30d</td>
+<td>0.248169</td>
+</tr>
+</tbody>
+</table>
+</div>
+```
+
+{width="70%" height="45%"}
 :::
 
 For the WTI crude calibration, a $\pm 5\%$ shift in the forward price
