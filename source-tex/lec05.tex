@@ -1,0 +1,1142 @@
+\part*{Lecture 5: Black's Formula and Callable Bonds}
+\addcontentsline{toc}{part}{Lecture 5: Black's Formula and Callable Bonds}
+\beginlecture{05}
+
+Lecture~5 is the first session of FINM~37400 in name, but the lecturer
+treated it as a continuation of FINMAT~374: ``for those of you in both
+courses, this is really going to feel like you did the pre-midterm work,
+you did the midterm, now we're doing the post-midterm work up to the
+final.'' The single 147-minute session does roughly four jobs: it
+\emph{closes out} the swap discussion that ran out of clock in
+Lecture~4 (notional vs.\ gross vs.\ net market value, the real drivers
+of swap demand, and a short LTCM-flavoured revisit of the swap-spread
+trade); it \emph{transitions} to options on rates and bonds without
+re-doing FINMAT~330's Black--Scholes derivation; it \emph{works through}
+Black's formula and the pricing of a callable Freddie~Mac bond,
+introducing the option-adjusted spread (OAS) along the way; and it
+\emph{previews} caps, floors, and swaptions, which the lecturer flagged
+as the actually-important products of fixed-income derivatives. The
+notebooks in scope are \emph{6.1.~Black's Formulas}, \emph{6.2.~Callable
+Bonds}, and the appendix \emph{6.X.1.~Note on Black-Scholes} (referenced
+but not lectured on --- ``go back to your FINMAT~330 notes if you want
+to derive it''). The cap-and-floor primer at the end is taught from
+slides that belong to the next chapter (7.1.~Forward Volatility and
+7.2.~Swaptions); these notes preserve the order in which the lecturer
+presented them.
+
+\section{Wrapping up swaps from FINMAT~374}\label{L5-sec:swaps-wrap}
+
+The lecturer opened by noting that swaps ``straddle both courses'' ---
+they were started in FINMAT~374 but the punchline was deferred. Two
+loose ends needed tying off: \emph{why} the swap notional is so
+enormously larger than the actual capital at risk, and \emph{why} the
+swap market is the most liquid rate market we will see, larger even
+than the Treasury market. The first is a definitional question; the
+second is a story about hedging duration.
+
+\subsection{Notional, gross market value, and net}\label{L5-sec:swaps-notional}
+
+\begin{keyblock}
+\textbf{Slide L5.1.} \emph{(How big is the swap market?)}\\
+Total notional outstanding on interest-rate swaps is on the order of
+\$400~trillion. This is \emph{not} \$400~trillion of wealth tied up
+in the asset class.
+\begin{itemize}
+  \item \emph{Notional} is the face amount used to scale the cash flows.
+        It is never exchanged.
+  \item \emph{Gross market value} is the sum of the absolute mark-to-market
+        values across all positions. For interest-rate swaps, this number
+        is roughly \$10~trillion --- a few percent of notional.
+  \item \emph{Net market value} is gross net of offsetting positions held
+        by the same counterparty.
+\end{itemize}
+\end{keyblock}
+
+The lecturer warmed up with a thought experiment: ``if you told a
+family member there's \$400~trillion of wealth in swaps, they would
+say, you fell asleep in class.'' The reason that headline figure is so
+misleading is that the dollar exposure on a single swap is
+\emph{zero} the moment the contract is signed --- the fixed leg is set
+exactly so that the swap has no entry cost. Only after rates move does
+either leg accrue value. On a \$100~million 10-year swap, even a
+substantial rate move builds maybe a percent or two of dollar value per
+year of remaining life --- ``maybe \$10~million on \$100~million
+notional, certainly nothing close to the notional itself.'' That is
+how \$400~trillion notional becomes order \$10~trillion gross.
+
+The further compression from gross to net comes from how swap
+positions are managed in practice. The lecturer used an in-class
+example: a student who is up \$10~million on a swap with the lecturer,
+but down \$7~million on an offsetting swap with a third student, holds
+the same notional of \$100~million but a \emph{net} value of around
+\$3~million. ``These contracts are not typically created and
+destroyed; when you want to get out, you create an offsetting swap.''
+The headline notional inflates as the population of contracts grows,
+but the net dollar value grows much more slowly.
+
+\begin{checkpoint}
+\textbf{My note.} Even after every netting adjustment, the swap market
+dwarfs the equity-options market on the same gross-vs-net measure ---
+``\$400~trillion notional, \$10~trillion gross, some smaller fraction
+net, but still much, much bigger than the netted value of US equity
+call options.'' That asymmetry is what makes swaps the dominant
+rate-derivatives market. The reasons \emph{why} are the subject of the
+next subsection.
+\end{checkpoint}
+
+\subsection{Why is the swap market so large? Duration management}\label{L5-sec:swaps-duration}
+
+The naive story --- corporates issue floating but want fixed, find an
+opposite-handed corporate, and the two swap --- is real but not the
+main driver. ``It seems hard to believe that's driving what is
+essentially the biggest market we've seen yet.'' The lecturer pressed
+the room for the missing story. One student offered \emph{speculation}
+on rates, which the lecturer accepted but redirected; the canonical
+answer is closer to the rates-trader analog of equity-beta hedging.
+
+\begin{keyblock}
+\textbf{Slide L5.2.} \emph{(Why swaps are huge.)} The dominant driver
+of swap demand is \emph{level-of-rates risk management} --- the
+fixed-income analogue of equity-beta hedging.
+
+\textbf{Equity analogy.} An equities portfolio manager runs many
+long/short positions she has views on. She insists her bets are
+about specific stock pairs, not the market. The risk manager replies:
+``you've still taken on a lot of beta. Keep doing your thing; I will
+quietly overlay an S\&P-future hedge to neutralize broad-market
+exposure.''
+
+\textbf{Rates analog.} A rates trading desk runs many bond positions
+based on relative-value views. Incidentally, those positions inherit
+\emph{duration} --- exposure to the level of rates. The risk manager
+will use \emph{swaps} to neutralize that duration without disturbing
+the underlying trades.
+\end{keyblock}
+
+The lecturer then unpacked why a swap is uniquely good at this. A
+\emph{receiving-fixed} 10-year swap mimics owning a 10-year Treasury:
+the duration of the fixed leg is roughly the modified duration of a
+fixed-coupon bond with the same maturity (around 7--8 for a 10-year).
+The floating leg on the other side has near-zero duration --- the
+floating-rate-note result from Lecture~2 says that the cash flows
+adjust to rate moves and are simultaneously discounted at moving rates,
+and the two effects cancel almost exactly. So a fixed-for-floating
+swap is essentially a long-duration leg paired with a zero-duration
+leg, and trading the swap moves duration the same way trading the
+underlying Treasury would.
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer's claim ``the floating-rate
+note has no duration'' is the punchline of \emph{2.4~Floating-Rate
+Notes}. A floating-rate note pays $r_t \cdot \tau$ each period and
+returns face at maturity. Each coupon is set in arrears by the same
+short rate that discounts it back, so a parallel shift in the term
+structure leaves both numerator and denominator scaled identically and
+the present value unchanged. This is exactly the duration-equals-zero
+result; it does not require taking derivatives explicitly.
+\end{tipblock}
+
+The lecturer's punchline was that swaps then do duration-management
+\emph{on better terms} than the equivalent Treasury short would. A
+short Treasury position must be repo'd for years and consumes balance
+sheet through the haircut and the rolled financing. A swap, in
+contrast, is no-cost to enter: ``I'm offloading a massive amount of
+duration by promising her \$100~million swap, but how much did it take
+on my balance sheet? Nearly nothing, because I'm not paying her
+\$100~million.'' Margin posted to the central counterparty is small,
+much like a futures margin account. That balance-sheet efficiency is
+what makes swaps the rate-hedger's instrument of choice and the reason
+the swap market dwarfs the cash-Treasury market on the
+DV01-scaled-volume measure introduced in Lecture~4.
+
+\begin{checkpoint}
+\textbf{My note.} The lecturer ranked swaps ``closer to the order of
+Treasuries than on the order of looking at bond options.'' For
+intuition: when sizing the toolkit of fixed-income products, swaps
+belong with the underlying-rate instruments (Treasuries, repo, STIR
+futures), not with the derivatives layer above them. They are big
+enough and deep enough that \emph{everything else} is priced relative
+to a swap curve.
+\end{checkpoint}
+
+\subsection{Revisiting the swap-spread trade}\label{L5-sec:swap-spread}
+
+Before moving to today's content, the lecturer reopened the
+\emph{5.2~Swap-Spread Trade} case from the FINMAT~374 homework, both
+because part of the class was new to it and because the
+fixed-income-derivatives course will return to it through swaptions,
+forward-vol trades, and CTD-like relative-value structures.
+
+\begin{keyblock}
+\textbf{Slide L5.3.} \emph{(Swap-spread trade in 2008.)} The
+30-year US Treasury at par pays a 4.5\% coupon. The 30-year swap rate
+is 4.26\%. The cash-flow trade:
+\[
+  \text{long Treasury (receive 4.50\%) } + \text{ pay-fixed swap (pay 4.26\%)}.
+\]
+Repo finances the long Treasury at $r_{\text{repo}}$, and the swap
+floating leg pays $r_{\text{repo}}$ approximately. The two financing
+flows cancel, leaving a net carry of $4.50\% - 4.26\% = 24$~bps per year.
+At 30$\times$ leverage on a 2\% repo haircut, that becomes roughly
+$24~\text{bps} \times 30 \approx 7.5\%$ on equity.
+\end{keyblock}
+
+The lecturer's first question to the class was the obvious one:
+\emph{is this an arbitrage}? In the strict sense, no --- the position
+is not zero-state at every horizon. But over the full 30-year life,
+abstracting from credit risk on the clearing party and the
+convexity-adjustment frictions of the daily-settled swap leg, the two
+``risk-free'' rates at maturity must coincide; the spread is
+mechanically forced to converge. ``By assuming away these frictions, I
+have two different risk-free providers for cash, and cash has to have
+the same price.''
+
+The much more interesting question is over what \emph{horizon} the
+trade pays off. The lecturer pushed: ``is it overnight? a week? a
+month? Absolutely not --- there's no mathematical law forcing the
+spread to converge tomorrow.'' And once you put on 50$\times$ leverage,
+intermediate margin calls become the dominant risk. He walked the
+class through the LTCM-style death spiral: at 24~bps the trade looks
+boring, so you lever it; once levered, an adverse move in the spread
+generates margin calls big enough to consume the equity capital that
+sized the trade in the first place. ``If your long-treasury position
+is down, your repo counterparty will say the haircut isn't big enough
+anymore --- you have to put up more.''
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer asked the class \emph{why} the
+swap spread has stayed negative for 15 years, contrary to the
+arbitrage intuition. His answer pulled from Boyarchenko (Federal
+Reserve) and the post-2009 regulatory regime. Bank prop-trading desks
+had the balance sheet to attack such trades and were the natural
+arbitrageurs; Dodd-Frank/Volcker reduced their appetite. The
+remaining capital --- hedge funds, prop traders --- prices in the
+financing risk and the indeterminate horizon, and the trade is not
+attractive at the size that would tighten the spread. This is the
+``limits to arbitrage'' phenomenon Vrugt-style spread trades exhibit
+generally: the math says converge, the institutions say it depends on
+funding.
+\end{tipblock}
+
+\begin{checkpoint}
+\textbf{My note.} The swap-spread case is also a sneak peek at why
+\emph{forward volatility} (Lecture~6) matters: a leveraged
+relative-value trader cares about the path between today and
+convergence, not just the terminal payoff. Forward-vol surfaces tell
+you what option-implied movement to expect at \emph{intermediate}
+horizons. The swap-spread trade is essentially a directional bet that
+those intermediate movements will not consume the equity --- a bet
+that some forward distribution is tighter than the market thinks.
+\end{checkpoint}
+
+\section{From spot options to options on rates}\label{L5-sec:transition}
+
+\begin{keyblock}
+\textbf{Slide L5.4.} \emph{(Today: options on rates and bonds.)} The
+remainder of the course --- and the entirety of this lecture from this
+point on --- addresses derivatives whose underlying is a rate, a
+forward rate, or a bond price. The plan is \emph{not} to redo
+FINMAT~330's Black--Scholes derivation; that course remains the
+prerequisite. Today's job is to identify what breaks when the
+underlying is fixed-income, fix it with the smallest possible
+modification (Black's model), and price one example end-to-end (the
+Freddie~Mac callable bond).
+\end{keyblock}
+
+The lecturer's framing was deliberate. FINMAT~330 covered the
+classical Black--Scholes formula in depth: replication, the partial
+differential equation, the greeks, and the risk-neutral expectation. A
+student who took it should be able to use the formula, recognize the
+implied-volatility input, and reason about a Greek. The fixed-income
+derivatives course assumes that comfort and treats the formula as a
+\emph{starting point} from which two things must be patched: (1) the
+risk-free rate is not constant, and (2) the underlying does not look
+remotely like a Brownian motion when the underlying is a bond.
+
+The lecturer also signalled what is being deferred. The \emph{6.X.1
+Note on Black-Scholes} appendix on the live page contains a
+self-contained derivation --- Brownian motion, geometric Brownian
+motion for the stock, Itô's lemma, the replicating portfolio, the
+fundamental PDE, the greeks, the theta--gamma identity, and the
+risk-neutral expectation form. He was explicit: ``go back to your
+FINMAT~330 notes if you want to derive it; I am not going to spend
+two more hours on it to prove the forward measure exists.'' The
+appendix is on the live notebook for self-study; it is not part of
+what the lecture covered.
+
+\subsection{Why callable bonds, when they are the least important
+product?}\label{L5-sec:why-callable}
+
+The lecturer was up-front that callable bonds will not be a major
+working object of the course. ``Callable bonds are probably the least
+important derivative we are going to talk about.'' The motivation for
+spending the day on them was pedagogical: they are the \emph{minimum
+modification} of a FINMAT~330 problem that exposes every fixed-income
+wrinkle worth seeing.
+
+\begin{checkpoint}
+\textbf{My note.} The hierarchy of importance for the rest of the
+course, in the lecturer's ranking:
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Swaps} (already covered in FINMAT~374; the dominant rate
+        derivative).
+  \item \emph{Treasury futures} (covered in Lecture~4 alongside the
+        cash market).
+  \item \emph{Caps and floors} --- ``a monster in terms of size
+        compared to many of these other things you've heard of.''
+  \item \emph{Swaptions} --- ``one of our big three.''
+  \item \emph{Callable bonds} --- the gateway, ``a perfect
+        intersection of those worlds.''
+\end{enumerate}
+The order matters: caps/floors and swaptions are the marquee
+fixed-income derivatives, but pricing them requires forward-volatility
+machinery that does not appear until Lecture~6. The callable bond is
+the simplest object that requires Black's formula plus a
+fixed-income-aware vol input, so it is the right exercise for today.
+\end{checkpoint}
+
+\section{Callable bonds: the embedded short call}\label{L5-sec:callable-setup}
+
+\begin{keyblock}
+\textbf{Cells~6.2.0--9.} \emph{(Page 6.2 \textperiodcentered{} Callable
+Bonds.)}\\
+\textbf{Definition.} A callable bond is a vanilla bond plus an
+embedded call option held by the \emph{issuer}: at certain dates the
+issuer may pay the strike (typically face value) and reclaim the bond.
+The bondholder is therefore \emph{short} the call. Equivalently
+\[
+  V^{\text{callable}}_t \;=\; V^{\text{vanilla}}_t \;-\; C_t,
+\]
+where $V^{\text{vanilla}}_t$ is the price of an otherwise identical
+non-callable bond and $C_t$ is the value of the embedded call option
+on the bond, struck at face.
+\end{keyblock}
+
+The student answer the lecturer harvested in the room captured the
+intuition: ``a callable bond is one the issuer has an option to recall
+at face value; usually the issuer calls when they can refinance later
+at a lower rate.'' The same student noted negative convexity --- the
+issuer calls precisely when the bond would otherwise be valuable, so
+the holder's upside is capped while the downside is unchanged. The
+lecturer translated both into FINMAT~330 language: \emph{negative
+convexity} on the bond is the same statement as \emph{negative gamma}
+on the embedded call once the bond's own positive convexity is
+overwhelmed.
+
+\begin{tipblock}
+\textbf{Filling the gap.} The decomposition $V^{\text{callable}} =
+V^{\text{vanilla}} - C$ is the entire pricing strategy and deserves
+unpacking. The issuer's call, evaluated at the bond's clean price,
+pays the issuer $\max(P_{\text{bond}} - K, 0)$ on exercise. The
+bondholder receives the lesser of $P_{\text{bond}}$ and $K$ at the
+call date --- their position is $P_{\text{bond}} - \max(P_{\text{bond}}
+- K, 0) = \min(P_{\text{bond}}, K)$. Subtracting a long call from a
+long bond is the same algebra. To value the callable, value the
+vanilla and value the call separately; the work shifts entirely to
+producing the call value via Black.
+\end{tipblock}
+
+\subsection{Bermudan exercise}\label{L5-sec:callable-bermudan}
+
+The room's first guess was that the callable's exercise window is
+``European'' or ``American.'' Both are wrong. Freddie~Mac callables ---
+and most agency callables --- are \emph{Bermudan}: exercisable on a
+discrete set of pre-specified dates, typically every six months
+beginning some lockout period after issue. ``Every time the agency
+pays a coupon, they have the choice of whether to call the bond back
+in.''
+
+The lecturer emphasised \emph{when} the Bermudan-ness matters and when
+it doesn't. There are two regimes:
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Long lockout, short remaining life} --- e.g.\ a 10-year
+        bond first callable in 7 years. From issue to first-call this
+        looks essentially European; the embedded option is exercised
+        only if the lockout-end value is above strike.
+  \item \emph{Short lockout, long remaining life} --- e.g.\ a 15-year
+        bond first callable in 6 months. There are 30+ semi-annual
+        exercise dates; this is much closer to American. ``If I had to
+        approximate one or the other, I would approximate it as
+        American.''
+\end{enumerate}
+The Freddie~Mac bonds the case study uses are in regime~(2). The
+lecturer's plan for today was to ignore the Bermudan structure
+entirely and price the call as European with strike $K=100$ and
+expiration at the first call date; the case study and exercise revisit
+that approximation numerically. The justification, beyond
+convenience, is that exercising a Bermudan call \emph{early} discards
+the remaining optionality, so the issuer typically waits unless the
+bond is deeply in the money or close to maturity.
+
+\begin{checkpoint}
+\textbf{My note.} Why \emph{not} exercise an American/Bermudan call
+early? Same reason a stockholder does not exercise an American call on
+a non-dividend-paying stock: cashing out terminates the gamma. The
+issuer will exercise only when the remaining gamma is small relative
+to the dollar gain from calling. Translating the FINMAT~330
+heuristic: vol low, time-to-maturity short, deeply in the money. For a
+bond with 15 years remaining and the dirty price still near par, none
+of those conditions hold, and the European approximation should be
+tight.
+\end{checkpoint}
+
+\subsection{Why a Treasury proxy: Freddie Mac}\label{L5-sec:freddie}
+
+Most callable corporate bonds carry the issuer's credit risk on top of
+the embedded call, and credit modeling is explicitly out of scope for
+this course (it lives in Alex Popovici's spring class). The
+\emph{agency} callables --- Freddie~Mac, Fannie~Mae, Ginnie~Mae --- are
+the workaround. The agencies were absorbed into the Treasury after the
+2008 financial crisis and remain backed by the full faith and credit
+of the US government. ``Even though it's not issued as a Treasury
+bond, it should seemingly have identical credit risk because it
+ultimately is the same issuer.''
+
+\begin{keyblock}
+\textbf{Cells~6.2.2--6.} \emph{(Why Freddie Mac.)}\\
+\textbf{Freddie Mac (Federal Home Loan Mortgage Co.).} A US housing
+agency, taken into the Treasury after 2008. For pricing purposes,
+treat its debt as credit-risk-free (Treasury-equivalent issuer).
+
+\textbf{Spread to Treasuries.} Freddie~Mac bonds typically trade about
+20~bps higher in yield than maturity-matched Treasuries. This is real
+but small; it reflects mostly liquidity (small issue size, irregular
+issuance, less global attention) rather than credit.
+
+\textbf{Why use them in this course?} The Treasury itself does not
+issue callable bonds today. To get a clean callable instrument
+\emph{without} corporate credit risk, agency callables are the only
+choice.
+\end{keyblock}
+
+\subsection{The bond table the lecturer used}\label{L5-sec:freddie-table}
+
+\begin{keyblock}
+\textbf{Cell~6.2.7.} \emph{(The Freddie Mac bonds in scope.)}\\
+Quotes from February~2024. Three bonds, all issued in
+January--February~2024 (so essentially fresh issues at quote date).
+\begin{itemize}
+  \item Maturities in 2034 and 2039 --- a 10-year and a 15-year.
+  \item First call date is six months after issue. Subsequent call
+        dates every six months thereafter.
+  \item Coupons are 5\%, 8\%, and 6\% --- fixed, paid semi-annually.
+  \item Issue sizes are tiny relative to Treasury sizes; liquidity
+        will not match the deep cash-Treasury market.
+\end{itemize}
+\end{keyblock}
+
+The lecturer pointed at the dirty price column and noted that the most
+recently-issued bond traded essentially at par on the quote date,
+which makes the embedded call \emph{at-the-money} from the start ---
+the strike is~100, the price is near~100, and there are 30
+semi-annual exercise dates ahead. That arrangement should produce a
+substantial call value. The case study notebook has the reader walk
+through the actual valuations; today's job is to set up the machinery.
+
+\section{Why Black--Scholes will not work directly}\label{L5-sec:bs-fails}
+
+With the instrument defined, the lecturer turned to the modeling
+question: can the call option on the bond be priced with the
+classical Black--Scholes formula? The class diagnosed two failures.
+
+\subsection{Constant rates is absurd in fixed income}\label{L5-sec:bs-fail-1}
+
+The classical Black--Scholes model assumes a constant risk-free rate
+$r$ that appears (a)~as the growth rate inside $d_1$ and (b)~as the
+discount factor $e^{-r(T-t)}$ in front of the formula. In equity-options
+land that assumption is a moderate inconvenience that practitioners
+patch up with a flat term-structure approximation. In fixed-income
+land it is fatal: the entire interest of the problem is that the rate
+\emph{is} stochastic. ``If the interest rate is fixed and the same at
+all maturities, we can just end class right now.''
+
+\subsection{Pull to par: bonds are not Brownian}\label{L5-sec:bs-fail-2}
+
+The deeper failure is that a bond price is \emph{predictable} in a
+way that no stock price is. The class converged on the term ``pull to
+par.'' At maturity the bond pays exactly~\$100 of face, so the bond
+price as $t \to T_{\text{bond}}$ has a hard pin. Anywhere away from
+maturity, the bond price will be \emph{drifting} toward~\$100 from
+above (when rates have fallen and the bond trades over par) or from
+below (when rates have risen and the bond trades under par).
+
+\begin{keyblock}
+\textbf{Slide L5.5.} \emph{(Pull to par, illustrated.)} The 30-year
+Treasury issued in 1993 was originally priced at par. Rates fell
+steadily through the 2000s, and by 2012 the bond traded around
+\$160. By maturity in 2023 the price must return to \$100. So a
+holder in 2012 knew with certainty that the price would fall by about
+\$60 over the next 11 years --- ``is your best prediction of the future
+price~\$160? It's impossible.''
+
+The reverse case (Silicon Valley Bank, 2023) was just as predictable
+in the other direction: SVB held Treasuries issued at 2\% coupons,
+rates jumped to 4.5\%, the bond prices fell well below par. Their
+expected path was \emph{up}; not random.
+\end{keyblock}
+
+\begin{tipblock}
+\textbf{Filling the gap.} Why is this the killer for the original
+Black--Scholes derivation? Black--Scholes pricing does not depend on
+the stock's expected return $\mu$, by replication. Equivalently, in
+the financial-economics view: a stock with high expected return has
+high risk and is discounted at a correspondingly high rate; the two
+exactly offset, and $\mu$ does not appear. For a bond, the expected
+\emph{price path} comes from the difference between the bond's coupon
+and the prevailing rate (the carry), \emph{not} from a risk premium
+that is balanced by a discount adjustment. Concretely, a bond at
+\$160 with an 8\% coupon when the risk-free rate is 5\% has expected
+price-return roughly $-(8\%-5\%) \cdot \text{years remaining}/\text{remaining
+amortization} \approx -5\%$ per year, while the holding period total
+return is around the risk-free rate. The two no longer cancel ---
+``the expected price path is not its expected return in a way that's
+going to cancel out in Black--Scholes.''
+\end{tipblock}
+
+\begin{checkpoint}
+\textbf{My note.} The lecturer's diagnosis is that Black--Scholes
+needs an underlying whose expected drift is exactly absorbed by the
+discount-rate machinery, leaving only volatility. Bond \emph{prices}
+have a drift coming from carry that is not absorbed. Bond \emph{yields}
+do better but introduce their own awkwardness; the lecturer is going
+to use a third option --- bond \emph{forward prices} --- which absorb
+carry by construction. The next section is that idea.
+\end{checkpoint}
+
+\section{Black's model: model the forward price}\label{L5-sec:black76}
+
+The fix is the same one used in Black~(1976) for commodity futures: do
+not model the spot price; model the \emph{forward} price. A forward
+price already incorporates the carry between today and the forward
+date, so it does not have the predictable drift that broke
+Black--Scholes for bonds. Under the appropriate \emph{forward
+measure}, the forward price is a martingale and the same Brownian
+machinery used in FINMAT~330 carries through.
+
+\subsection{From the spot formula to the forward formula}\label{L5-sec:black-classic}
+
+\begin{keyblock}
+\textbf{Cells~6.1.9--16.} \emph{(Black's Model -- Constant Rates.)}\\
+Under \emph{constant} rates and lognormal forward prices, the European
+call price on a forward-priced underlying is
+\[
+  c_t \;=\; e^{-r(T-t)}\,\Bigl[\, F_t\,\cN(d_1) \;-\; K\,\cN(d_2)\,\Bigr],
+\]
+\[
+  p_t \;=\; e^{-r(T-t)}\,\Bigl[\, K\,\cN(-d_2) \;-\; F_t\,\cN(-d_1)\,\Bigr],
+\]
+where
+\[
+  d_1 \;=\; \frac{\ln(F_t/K) + \tfrac{1}{2}\sigma^2\tau}{\sigma\sqrt{\tau}},
+  \qquad d_2 \;=\; d_1 - \sigma\sqrt{\tau},
+  \qquad \tau = T - t.
+\]
+The forward price $F_t$ replaces the spot $S_t$ throughout. The drift
+in $d_1$ is just $\tfrac{1}{2}\sigma^2$ --- not $r + \tfrac{1}{2}\sigma^2$
+--- because the forward price already absorbs the cost-of-carry.
+\end{keyblock}
+
+\begin{tipblock}
+\textbf{Filling the gap.} ``Where did the $r$ go in $d_1$?'' The
+Black--Scholes $d_1$ has $r + \tfrac{1}{2}\sigma^2$ because the
+risk-neutral drift of the spot price $S_t$ is $r$ (minus dividends).
+The forward price has zero risk-neutral drift under its own measure
+--- it is already the price of the future under no-arbitrage. So when
+you re-express the formula in terms of $F_t$, the $r$ in the drift
+disappears, and only the $\tfrac{1}{2}\sigma^2$ from the lognormal
+correction remains. The discount factor $e^{-r(T-t)}$ in front does
+not change.
+\end{tipblock}
+
+The lecturer pressed the class to spot the difference between this and
+the textbook Black--Scholes. ``Can you see? In the old formula, what
+was the top line? $S\cN - K^{*}\cN$ where $K^{*}$ is the present-valued
+strike. Now it's $F\cN - K\cN$, and the entire bracket is multiplied by
+$e^{-rT}$.'' The bracket-and-discount form is the practical
+arrangement: pull the discount out so the bracket is the
+\emph{undiscounted} expected payoff under the risk-neutral (here:
+forward) measure.
+
+\subsection{Why this is what we want for bonds}\label{L5-sec:black-bond-intuition}
+
+The key sanity check is that the forward price of a bond is not pulled
+to par the way the spot price is. The forward price satisfies the
+carry identity from Lecture~4:
+\[
+  F_t \;=\; \frac{P_t - \sum_{T_i \in (t,T]} c_i Z(t,T_i)}{Z(t,T)},
+\]
+which already prices in the coupons collected and the financing accrued
+between $t$ and $T$. Once those are stripped, the residual $F_t$ has no
+deterministic drift and is much more nearly Brownian than $P_t$ is.
+``On the forward price we are not going to have the issue that it's
+just going down, down, down.''
+
+For the Freddie~Mac problem the lecturer reminded the class \emph{which}
+forward they need: not the forward to bond maturity (where there is no
+uncertainty), but the forward to the option's expiration. ``The bond
+matures in 15~years; the option expires whenever the option expires.
+If the embedded option expires in 10~years, I need the forward I can
+lock in today to buy a 15-year bond 10~years from now.'' That is the
+$P_{\text{fwd}}(t, T_{\text{opt}}, T_{\text{bond}})$ object from
+Lecture~4's forward-pricing formula --- with the option-expiration date
+in the middle slot. Building it requires the discount factors $Z(t,
+\cdot)$ from Lecture~1 and the bond's coupon schedule.
+
+\subsection{Black's general formula: stochastic rates}\label{L5-sec:black-general}
+
+The Black-1976 form above still has the constant-$r$ pathology in front
+of the bracket. The next step --- and the technical core of the
+lecture --- is to allow $r$ to be stochastic without losing the
+clean expectation structure.
+
+\begin{keyblock}
+\textbf{Cells~6.1.27--35.} \emph{(Black's General Formula -- Stochastic
+Rates.)}\\
+\textbf{Switch numeraire.} Choose the zero-coupon bond $Z(t,T)$ as
+numeraire. Under the corresponding measure (the \emph{$T$-forward
+measure}, $\E^T$), the ratio $f(F_t,t)/Z(t,T)$ is a martingale for any
+function $f$ of the forward price.
+
+\textbf{Pricing identity.} The value of any derivative paying $H(F_T)$
+at $T$ is
+\[
+  V_t \;=\; Z(t,T)\,\E^T_t\!\bigl[H(F_T)\bigr].
+\]
+For a European call $H(F_T) = (F_T - K)^+$ with $F_T$ lognormal under
+$\E^T$, this reduces to
+\[
+  c_t \;=\; Z(t,T)\,\Bigl[\, F_t\,\cN(d_1) \;-\; K\,\cN(d_2)\,\Bigr],
+\]
+\[
+  p_t \;=\; Z(t,T)\,\Bigl[\, K\,\cN(-d_2) \;-\; F_t\,\cN(-d_1)\,\Bigr],
+\]
+with the same $d_1, d_2$ as before:
+\[
+  d_1 \;=\; \frac{\ln(F_t/K) + \tfrac{1}{2}\sigma^2\tau}{\sigma\sqrt{\tau}},
+  \qquad d_2 \;=\; d_1 - \sigma\sqrt{\tau}.
+\]
+The constant-$r$ discount $e^{-r(T-t)}$ has been replaced by the
+observable, term-structure-dependent discount factor $Z(t,T)$.
+\end{keyblock}
+
+\begin{tipblock}
+\textbf{Filling the gap.} The change of numeraire is the one piece of
+this lecture the lecturer explicitly outsourced: ``go back to your
+FINMAT~330 notes if you want to derive it.'' The intuition: the
+risk-neutral expectation form $V_t = \E^Q[e^{-\int_t^T r_s\,\dd s}
+H(F_T)]$ has the random discount factor \emph{inside} the expectation.
+Because $r$ and $F$ are correlated, that integral cannot be pulled
+out. Re-expressing the price as $V_t = Z(t,T) \E^T[H(F_T)]$ via
+Girsanov's theorem and the change-of-numeraire formula extracts the
+discount $Z(t,T)$ as a deterministic factor, leaving an expectation
+over only the forward price. The extracted $Z(t,T)$ is the
+\emph{price of a zero-coupon bond}, which the curve-fitting machinery
+of Lecture~1 already produces. Operationally that is a strict win: the
+hard input becomes a pre-existing course deliverable.
+\end{tipblock}
+
+The lecturer's verdict on this whole development was self-mocking:
+``this is going to win the prize for the longest discussion you ever
+had in financial math for the smallest amount of changes to the
+equation. So I'm confident we just won that trophy.'' The Black~1976
+classic and the Black general formula differ in exactly one place:
+$e^{-r(T-t)}$ becomes $Z(t,T)$. Everything else is identical to the
+formula from FINMAT~330. The justifying machinery (forward measure,
+Radon--Nikodym, martingale property of $F_t/Z(t,T)$) lives in
+FINMAT~330 and FINMAT~320; for this course it is enough to know what
+to plug in.
+
+\begin{checkpoint}
+\textbf{My note.} The substitution $e^{-r(T-t)} \to Z(t,T)$ also tells
+us \emph{which} discount curve we should use to price the call.
+Whichever curve we use to bootstrap $Z(t,T)$ \emph{is} the curve we
+implicitly trust as the risk-free rate in the model. For Treasuries
+that's the on-the-run Treasury curve; for swap-related products
+(coming up) the analogous choice is the swap curve. Different choices
+of curve give different OAS values for the same option price; that
+mismatch is one of the mechanisms behind a non-zero OAS, which we will
+discuss shortly.
+\end{checkpoint}
+
+\section{Implied volatility, treated as a language}\label{L5-sec:ivol}
+
+With Black's general formula in hand, the only remaining input is
+$\sigma$. The lecturer used the implied-volatility discussion to make
+two points: a methodological one (how implied vol is conceptually
+analogous to YTM), and a practical one (what to plug in for our
+Freddie~Mac problem when we do not have an option-pricing engine).
+
+\subsection{Implied vol is to options what YTM is to bonds}\label{L5-sec:ivol-language}
+
+\begin{keyblock}
+\textbf{Slide L5.6.} \emph{(Implied vol as a quoting language.)}
+The implied volatility of a market-traded option is
+\[
+  \sigma^{\text{imp}} \;=\;
+   \bigl\{\, \sigma : C^{\text{Black}}(F_t, K, T-t, Z(t,T), \sigma)
+              = C^{\text{market}} \,\bigr\}.
+\]
+That is, $\sigma^{\text{imp}}$ is the unique number that makes Black's
+formula reproduce the market price. It is \emph{not} the realized
+volatility of the underlying, and it is \emph{not} the model's
+forecast of future volatility per se. It is a quote, like YTM is a
+quote --- a single number that translates a dollar price into a
+comparable scale across strikes and expirations.
+\end{keyblock}
+
+The lecturer drew the analogy explicitly. A yield to maturity is
+neither a return nor a discount rate; it is a re-scaled price that
+makes two bonds with different coupons and maturities directly
+comparable. A 4\%-coupon bond at \$140 dirty and a 1\%-coupon bond at
+\$98 dirty cannot be directly compared by dollars, but their YTMs put
+them on a single axis. Implied volatility plays exactly the same role
+for options. Two call options on the same underlying with different
+strikes and different expirations cannot be directly compared by
+premium, but their implied vols can. ``The 30-cent option and the
+70-cent option --- which is the better deal? You'd have no idea. But
+the 18\% implied-vol option vs the 35\% implied-vol option on the same
+underlying tells you a story.''
+
+The deepest point is that implied vol is computed using \emph{Black's
+formula} regardless of whether the market actually uses Black to
+price. American and Bermudan options are quoted in Black-implied vol
+even though Black's derivation assumes European exercise. The quant
+group inside a bank may use a Lévy-process model with stochastic
+volatility and jumps; the trader will read its output, compare it
+against the Bloomberg Black-implied-vol screen, and make a decision.
+``Black is the universal translator.''
+
+\subsection{What to plug in for our Freddie Mac call}\label{L5-sec:ivol-plug}
+
+The intellectually honest workflow for valuing the Freddie~Mac
+embedded call would be (a) build a serious bond-option pricing model,
+(b) extract the model's implied vol on liquid quoted bond options, (c)
+feed that vol into Black for the specific instrument. The lecturer
+made clear we are not going to do (a) this week. ``We are going to
+plug in a realized vol for the implied vol because we don't actually
+have an engine yet to build a valuation of the option.''
+
+That choice forces a unit conversion. The realized vol that is easiest
+to estimate from data is the volatility of the bond's \emph{yield},
+not the volatility of its \emph{forward price}. The case study quotes
+``the realized vol on its YTM is roughly 2.68\% per year'' for the
+underlying. Black's formula expects the vol of the forward price.
+
+\begin{keyblock}
+\textbf{Cell~6.2.13.} \emph{(Implied Volatility -- the rate-to-price
+conversion.)}\\
+Given the realized vol of the bond's YTM, $\sigma_y$, the corresponding
+vol of the bond's price is approximately
+\[
+  \sigma_P \;\approx\; \mathrm{MD}(P) \cdot \sigma_y,
+\]
+where $\mathrm{MD}(P)$ is the modified duration of the bond at the
+quote date. The vol of the \emph{forward} bond price is approximately
+the same as $\sigma_P$ for our purposes (small adjustment for
+forward-versus-spot price level).
+\end{keyblock}
+
+\begin{tipblock}
+\textbf{Filling the gap.} The first-order linkage
+$\Delta P / P \approx -\mathrm{MD} \cdot \Delta y$ is the modified-duration
+identity. Squaring and taking expectations,
+$\Var(\Delta P / P) \approx \mathrm{MD}^2 \, \Var(\Delta y)$, so
+$\sigma_P \approx \mathrm{MD} \cdot \sigma_y$. This conversion ignores
+convexity (a second-order term), which the lecturer flagged as
+acceptable for a rough plug-in vol but not for a serious quote.
+For the Freddie~Mac with $\mathrm{MD} \approx 7$--$10$ and
+$\sigma_y \approx 2.68\%$ per year, $\sigma_P$ is somewhere in the
+range of 19--27\% per year --- order-of-magnitude consistent with
+liquid bond-option implied vols.
+\end{tipblock}
+
+\begin{checkpoint}
+\textbf{My note.} The lecturer was explicit that this is a hack:
+``we're really cheating, and we're saying we're just going to plug in
+a realized vol for the implied vol.'' The case study notebook walks
+the reader through the dollar pricing this produces. Lectures~6 and~7
+will get into actual bond-option implied-vol surfaces (forward vol,
+the vol skew); the same machinery will produce a more defensible
+$\sigma$ input.
+\end{checkpoint}
+
+\section{Pricing the Freddie Mac callable end-to-end}\label{L5-sec:pricing}
+
+With Black's general formula and a vol plug-in, the rest of the
+pricing procedure is the bond-pricing-plus-option-subtraction logic
+flagged earlier.
+
+\subsection{The decomposition, operationally}\label{L5-sec:pricing-decomp}
+
+\begin{keyblock}
+\textbf{Cells~6.2.14--16.} \emph{(Pricing approach.)}\\
+\[
+  V^{\text{callable}}_t
+   \;=\; V^{\text{vanilla}}_t \;-\; C_t.
+\]
+\begin{enumerate}[label=(\arabic*)]
+  \item Build $V^{\text{vanilla}}_t$ from the discount curve $Z(t,T_i)$
+        and the bond's coupon schedule:
+        $V^{\text{vanilla}}_t = \sum_i c_i Z(t, T_i) + 100\, Z(t,
+        T_{\text{bond}})$.
+  \item Compute the forward price $F_t$ of the underlying bond \emph{to
+        the option expiration} using the carry identity from
+        Lecture~4.
+  \item Plug $F_t$, $K=100$, $\sigma_P = \mathrm{MD}\cdot\sigma_y$, $Z(t,
+        T_{\text{opt}})$, and $\tau = T_{\text{opt}} - t$ into Black's
+        general call formula to get $C_t$.
+  \item Subtract: $V^{\text{callable}}_t = V^{\text{vanilla}}_t - C_t$.
+\end{enumerate}
+\end{keyblock}
+
+The lecturer emphasised that every input in this procedure has been
+pre-built by earlier weeks of the course: $Z(\cdot, \cdot)$ comes
+from Lecture~1's curve, $F_t$ from Lecture~4's forward-pricing
+formula, the modified duration from Lecture~2's bond-math toolkit, and
+the realized $\sigma_y$ from the time series of the YTM. ``This is why
+I keep saying you need a good Python function to get forward prices
+easily and to get that implied vol --- you'll use them every day for
+the rest of the course.''
+
+\subsection{Option-Adjusted Spread (OAS)}\label{L5-sec:oas}
+
+The case study notebook shows the model price the procedure above
+produces and compares it to the market quote. The two will not match
+exactly. The OAS is the standardized way of expressing that gap.
+
+\begin{keyblock}
+\textbf{Cell~6.2.17.} \emph{(Option-Adjusted Spread.)}\\
+The \emph{option-adjusted spread} is the parallel shift to the spot
+discount curve that makes the model (here: Black's general formula)
+reproduce the observed market price of the option-embedded security.
+Formally, OAS is the unique scalar $\lambda$ such that
+\[
+  V^{\text{model}}_t\bigl(Z(t,\cdot)\,e^{-\lambda(\cdot - t)}\bigr)
+  \;=\; V^{\text{market}}_t.
+\]
+A positive OAS means the security trades cheaper than the model would
+predict given the curve --- it offers a yield pickup beyond what the
+risk-free curve plus Black's formula explains.
+\end{keyblock}
+
+The lecturer made the parallel to YTM explicit again. ``YTM is just
+reverse-engineered to match the market quote and help you understand
+how expensive the bond is. OAS is just reverse-engineered to make
+Black hit that number and tell you how expensive the option-embedded
+security is.'' Two more practical points anchored why OAS is widely
+quoted and not just a curiosity:
+
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{It is model-light.} OAS uses Black's general formula or a
+        similarly standard model. Any market participant with the
+        zero-coupon curve can compute it. There is no proprietary
+        valuation engine required to read OAS off a Bloomberg screen,
+        which is why ``Bloomberg defaults to showing OAS using
+        Black, and sometimes Bachelier as well.''
+  \item \emph{It compares apples to apples.} An OAS on a Freddie~Mac
+        callable can be sized against an OAS on a callable-corporate or
+        a mortgage-backed security. The dollar prices cannot be
+        compared directly any more than dirty prices on different
+        bonds can be compared.
+\end{enumerate}
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer flagged what a non-zero OAS
+\emph{does not} mean. ``If you truly believed Black's model is
+appropriate not just for translation but for actual valuation, then any
+OAS would be an arbitrage.'' But Black's formula is wrong in the same
+ways for fixed-income options that it is wrong for equity options: the
+implied-vol surface has a skew (Lecture~7), the underlying has fat
+tails, and the replication argument fails in the presence of frictions
+and finite liquidity. A 50~bp OAS on an illiquid Freddie~Mac is far
+more likely a vol-skew effect or a liquidity premium than a free
+lunch. ``A non-zero OAS is not a signal there's free money to be had,
+but if it's substantially non-zero it would make us look twice.''
+\end{tipblock}
+
+\subsection{Negative convexity, visualised}\label{L5-sec:neg-convex}
+
+The case study notebook produces a plot of model price as a function
+of the level of rates: the vanilla bond on one axis (the standard
+downward-sloping price-versus-rate curve, with positive convexity),
+and the callable bond on the other (the downward-sloping bond curve
+flattened from above by the call option's exercise barrier). The
+lecturer used the picture to anchor the negative-convexity language.
+
+\begin{keyblock}
+\textbf{Cells~6.2.18--19.} \emph{(Differences with callable bonds.)}
+\begin{itemize}
+  \item The callable's price is \emph{lower} than the vanilla's at
+        every rate level, by exactly the value of the embedded call.
+  \item The callable price as a function of rates is \emph{negatively
+        convex}: as rates fall, the call moves into the money for
+        Freddie~Mac and the price stops rising near \$100. As rates
+        rise, the bond loses value normally.
+  \item The callable can rise modestly above \$100 between exercise
+        dates --- the Bermudan structure leaves windows in which the
+        issuer is mid-period and cannot call until the next semi-annual
+        date.
+\end{itemize}
+\end{keyblock}
+
+The economic interpretation is that the callable is a one-sided
+instrument from the bondholder's perspective: capped on the upside,
+not capped on the downside. ``You can lose a lot when rates go up, and
+you can't gain when rates go down. What do we call that? Negatively
+convex.''
+
+\begin{checkpoint}
+\textbf{My note.} The duration-hedging consequence is the practically
+important one. A vanilla-bond holder who duration-hedges with swaps
+benefits regardless of which way rates move (positive convexity earns
+on volatility). A callable-bond holder who duration-hedges with swaps
+\emph{loses} on rate volatility on either side --- the negative gamma
+on the embedded call dominates the bond's positive convexity in
+typical parameter ranges. The lecturer warned: ``if you bought this
+callable bond and you duration-hedged it, you would essentially lose
+either way if rates move, which is the opposite of our usual
+result.''
+\end{checkpoint}
+
+\subsection{Are callable bonds systematically overpriced?}\label{L5-sec:longstaff}
+
+\begin{keyblock}
+\textbf{Cell~6.2.23.} \emph{(Are callable bonds overpriced?)}\\
+Empirical work --- Longstaff and others --- has documented that
+callable bonds in the data trade \emph{above} their model values
+based on Black's formula. The standard narrative attributes this to
+suboptimal exercise by issuers: the call option is held by an entity
+(an agency, a corporate Treasury) for whom the dollar gain from
+calling is small relative to the operational friction. So in the
+data, calls happen later than they ``should'' happen, and the
+embedded short call is therefore worth less to the bondholder than a
+fully-optimal-exercise model would say.
+\end{keyblock}
+
+The lecturer pointed at Francis Longstaff (UCLA, of the Longstaff--Schwartz
+American-option algorithm) as the canonical reference. The story the
+data tells is that a model-implied price of \$95 against a market
+price of \$98 has at least three potential explanations:
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Wrong inputs.} The discount curve, the implied vol, the
+        forward price are all noisy; small errors in any of them push
+        the model price.
+  \item \emph{Wrong model.} Black's formula assumes lognormal forward
+        prices and instantaneous re-balancing. Bond options exhibit
+        skew (Lecture~7) and the bonds themselves are illiquid enough
+        that the replication argument is suspect.
+  \item \emph{Suboptimal exercise.} The agency or corporate issuer
+        does not call at the optimal time; the embedded call is worth
+        less than a fully-rational-issuer model would say; subtracting
+        a smaller call from the vanilla gives a higher callable price,
+        consistent with the observed quote.
+\end{enumerate}
+The case study and exercise will revisit a real Freddie~Mac bond in
+which exercise was visibly delayed. ``Even in the last two years of
+doing this case study, I've seen that in the data --- they don't call
+when it seems they should.''
+
+\begin{exerciseblock}
+\textbf{Exercise (assigned).} The case study notebook walks through
+the full Black-based valuation of one of the Freddie~Mac callable
+bonds in Cell~6.2.7's table, including: bootstrapping the discount
+curve, computing $F_t$ to first call, plugging into Black's general
+formula, and inferring the OAS implied by the market quote. A separate
+exercise repeats the procedure for an option on a SOFR future, where
+the underlying is a STIR future on an interest rate (not the rate
+itself); compare to a Treasury-future option as a sanity check.
+\end{exerciseblock}
+
+\section{Looking ahead: caps, floors, and the time-mismatch quirk}\label{L5-sec:caps}
+
+The lecturer had time to launch into the cap-and-floor primer that
+properly belongs to Lecture~6's first section. He covered the
+\emph{single-period} caplet and floorlet here; the multi-period
+machinery (cap volatility, the term-structure of caplet vols) waits
+for next week.
+
+\subsection{Caplets and floorlets}\label{L5-sec:caplets}
+
+\begin{keyblock}
+\textbf{Slide L5.7.} \emph{(Caplet definition.)}\\
+A caplet is a single-period European call option on an interest-rate
+\emph{index} (e.g.\ SOFR, a 90-day T-bill rate). With strike $K$ (a
+rate) and expiration $T$, the payoff at $T$ is
+\[
+  \text{payoff}_T \;=\; \frac{N}{m}\,\bigl(r_{\text{lock}} - K\bigr)^+,
+\]
+where $N$ is a notional, $m$ is the period frequency (4 for quarterly,
+2 for semi-annual, 1 for annual), and $r_{\text{lock}}$ is the rate
+\emph{set in arrears}: locked at $T - 1/m$ but paid at $T$.
+
+A floorlet is the corresponding put: payoff
+$\frac{N}{m}(K - r_{\text{lock}})^+$.
+\end{keyblock}
+
+The class flagged the timing convention as the most surprising feature.
+A caplet on a quarterly rate that pays at $T = 1$~year locks in its
+payoff at $T - 0.25 = 0.75$~years. ``All the uncertainty is resolved at
+9~months, but you don't get paid for a year.'' The lecturer was
+explicit that this is a \emph{convention} inherited from the LIBOR-era
+floating leg of an interest-rate swap, designed to make the caplet a
+clean hedge against a single floating-rate payment. ``It's mimicking
+the way swaps' floating side has been quarterly for decades.''
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer pressed the unit-conversion
+point: a strike of $K = 4\%$ and a locked rate of $r_{\text{lock}} =
+4.5\%$ on a quarterly caplet pays $\frac{100}{4}(0.045 - 0.040) =
+\$0.125$ per dollar of notional. The factor $1/m$ converts the
+annualised rate-difference into a period-payment. The notional $N=
+100$ is the same convention used throughout the bond chapter ---
+keeping all dollar quantities scaled to face $100$ avoids unit
+arithmetic mistakes when the same instrument is mixed with bonds and
+swaps.
+\end{tipblock}
+
+\subsection{Caps and floors as portfolios; the time-mismatch}\label{L5-sec:caps-portfolio}
+
+\begin{keyblock}
+\textbf{Slide L5.8.} \emph{(Caps and floors.)}
+\begin{itemize}
+  \item A \emph{cap} is a portfolio of caplets on the same underlying
+        rate, at the same strike $K$, with sequential expirations from
+        a starting date out to the cap maturity $T$. ``A 10-year
+        quarterly cap is 40 caplets all struck at $K$, with
+        expirations one quarter, two quarters, $\ldots$, 40~quarters
+        out.''
+  \item The \emph{first} caplet (the one expiring at $T_1 = 1/m$) is
+        \emph{excluded}: by the lock-in-arrears convention, its payoff
+        is already known at $t=0$ (the rate has been observed), so
+        it is a deterministic cash flow rather than an option.
+  \item Black's general formula prices each caplet independently:
+        \[
+          c^{(j)}_t \;=\; \frac{N}{m}\,Z(t, T_j)
+            \,\bigl[\, f^{(j)}_t\,\cN(d_1^{(j)})
+                       \;-\; K\,\cN(d_2^{(j)})\,\bigr],
+        \]
+        with the forward rate $f^{(j)}_t$ for the period
+        $[T_j - 1/m,\, T_j]$ and time-to-uncertainty-resolution
+        $\tau^{(j)} = T_j - 1/m - t$ in $d_1^{(j)}, d_2^{(j)}$. The
+        cap value is $\sum_j c^{(j)}_t$.
+\end{itemize}
+\end{keyblock}
+
+The lecturer made a particular fuss about a subtlety that does not
+arise for any other instrument in the course: the time appearing in
+the discount factor $Z(t, T_j)$ is \emph{not} the same as the time
+appearing in $\tau^{(j)}$ inside $d_1^{(j)}, d_2^{(j)}$. The discount
+factor uses time to \emph{payment} ($T_j$) because that is when the
+cash arrives. The variance term uses time to \emph{lock-in} ($T_j -
+1/m$) because that is when the uncertainty resolves. ``If I were
+giving a closed-book exam I would absolutely catch a bunch of wrong
+answers for this.''
+
+\begin{tipblock}
+\textbf{Filling the gap.} Why is the variance term scaled by
+$\tau^{(j)} = T_j - 1/m - t$? The implied vol $\sigma$ is the standard
+deviation of the log forward rate over the period during which the
+rate \emph{evolves}. Once the rate has been observed at $T_j - 1/m$,
+its log returns have stopped accumulating, so the cumulative variance
+is $\sigma^2 \tau^{(j)}$, not $\sigma^2(T_j - t)$. Equivalently:
+between $T_j - 1/m$ and $T_j$ the payoff is a deterministic cash
+amount, so its log-return variance is zero. Pick up the discount
+factor for the gap $1/m$, drop the variance accrual for the gap.
+\end{tipblock}
+
+\begin{checkpoint}
+\textbf{My note.} The mismatch between time-to-lock and time-to-pay is
+a real arithmetic trap. Practical advice from the lecturer: write the
+caplet pricing function with two separate time inputs, $T_{\text{pay}}$
+and $T_{\text{lock}} = T_{\text{pay}} - 1/m$, and never reuse one for
+the other. The discount factor $Z(t, T_{\text{pay}})$ scales the cash
+flow; $\tau = T_{\text{lock}} - t$ scales the variance.
+\end{checkpoint}
+
+\subsection{Why caps from the swap curve?}\label{L5-sec:cap-curve}
+
+A student asked the natural follow-up: should the discount factor
+$Z(t, T_j)$ and the forward rate $f^{(j)}_t$ be bootstrapped from the
+Treasury curve or from the swap curve? The lecturer gave a strong
+recommendation.
+
+\begin{keyblock}
+\textbf{Slide L5.9.} \emph{(Curve choice for cap/floor pricing.)} For
+caps, floors, and swaptions, the convention is to bootstrap discount
+factors and forward rates from the \emph{swap curve}, not the
+Treasury curve. The reasons:
+\begin{itemize}
+  \item Caps and floors are most often used to hedge swap floating
+        legs, and pricing them on the swap curve makes the hedge
+        relationship clean.
+  \item The swap-spread story (\S\ref{L5-sec:swap-spread}) implies the
+        swap curve and the Treasury curve disagree by tens of bps.
+        Choosing the swap curve gives the right answer for swap-related
+        derivatives.
+  \item Discount factors are \emph{product-dependent} --- the same
+        statement as the Lecture~4 case where the swap curve was
+        bootstrapped separately from the Treasury curve.
+\end{itemize}
+\end{keyblock}
+
+The lecturer's closing remark on this thread captured the recurring
+theme of the course. ``I told you back in Week~1: you will not do a
+single thing in this class where step one isn't get a curve that you
+trust.'' Caps, floors, and swaptions are no exception, and the curve
+that they trust is the swap curve.
+
+\begin{checkpoint}
+\textbf{My note.} The cap-pricing recipe is now five mechanical
+steps, all of which use earlier course objects: (1)~build the swap
+discount curve $Z^{\text{swap}}(t, \cdot)$ using the bootstrap from
+Lecture~4; (2)~extract forward rates $f^{(j)}_t$ from the swap curve;
+(3)~price each caplet via Black's general formula with two distinct
+time inputs ($T_j$ for the discount, $T_j - 1/m$ for the variance);
+(4)~scale by $N/m$; (5)~sum across $j$, excluding the first caplet.
+The remaining hard input --- the implied vol surface for caplets ---
+is what Lecture~6 introduces under the heading ``forward
+volatility.''
+\end{checkpoint}
+
+The lecturer closed with a quick announcement that homework~1 will
+exercise this exact procedure on a small cap and a small floor and
+``build us up to the actual hard problem next week.''
+
+\section{Closing the loop}\label{L5-sec:close}
+
+The lecture covered what is, structurally, a small set of changes to
+FINMAT~330's option-pricing toolkit:
+
+\begin{enumerate}[label=(\arabic*)]
+  \item Replace the spot-price form of Black--Scholes with the
+        forward-price form. This absorbs carry and makes the
+        underlying nearly Brownian even for instruments (bonds,
+        rates) whose spot dynamics are obviously not.
+  \item Replace the constant-rate discount $e^{-r(T-t)}$ with the
+        observable discount factor $Z(t,T)$. The technical justification
+        --- the change of numeraire to the $T$-forward measure ---
+        lives in FINMAT~330; the operational consequence is that the
+        same curve-bootstrapping you already do for cash bonds
+        produces the inputs for option pricing.
+  \item Treat implied volatility as a quoting language, not as a
+        belief. Black-implied vol is to options what YTM is to
+        bonds: a single comparable scale across strikes, expirations,
+        and exercise styles. Even American and Bermudan options are
+        quoted in Black-implied vol.
+  \item For our specific Freddie~Mac problem, value the callable as
+        $V^{\text{vanilla}} - C$, with the call $C$ priced via Black's
+        general formula and a vol input approximated by
+        $\mathrm{MD}\cdot\sigma_y$. Compare to the market quote via
+        OAS, but do not over-interpret a non-zero OAS.
+  \item For caps and floors --- which are the marquee instruments for
+        Lecture~6 onward --- price each caplet/floorlet with Black's
+        general formula and the lock-in-arrears time mismatch, using
+        the swap curve for both the discount factors and the forward
+        rates.
+\end{enumerate}
+
+The Freddie~Mac case study and an exercise on options on STIR futures
+are the working homework for this material. The next lecture begins
+the pivot to forward volatility, which underpins serious cap, floor,
+and swaption pricing --- replacing the realized-vol-times-modified-duration
+hack used here with a proper implied-vol surface.

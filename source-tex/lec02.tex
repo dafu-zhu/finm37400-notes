@@ -1,0 +1,931 @@
+\part*{Lecture 2: Expectations Hypothesis, Interest-Rate Risk, and Duration}
+\addcontentsline{toc}{part}{Lecture 2: Expectations Hypothesis, Interest-Rate Risk, and Duration}
+\beginlecture{02}
+
+The lecturer opened Week~2 with a short administrative segment (Group~A
+assignments, the reshuffle of Groups~16 and~18, the reminder that Group~B
+begins with Homework~3) and then spent roughly half an hour reviewing the
+Lecture~1 material --- the spot curve, the YTM curve, forward rates, and the
+bootstrap/OLS/Nelson--Siegel machinery --- before taking up the Expectations
+Hypothesis in earnest. The lecture then runs through an empirical dismantling
+of the EH (three facts, both unconditional and conditional), a topical case
+study on the 2022--2024 inverted yield curve, and, after the break, a turn to
+interest-rate risk: the observable volatility pattern in a long Treasury's
+price series, followed by a first-pass formal treatment of duration and
+convexity from the companion slide deck \emph{L.2 Slides --- Duration and
+Convexity}. Floating-rate notes (notebook~2.4) were flagged but not covered
+and are deferred to Lecture~3.
+
+\section{Opening --- Review of Lecture 1}\label{L2-sec:review}
+
+The lecturer used the first thirty minutes as a conceptual retread, and it is
+worth keeping the main points on the page for later reference. There was no
+new slide to reproduce; he was scrolling through the previously-covered
+notebooks \emph{1.1.~The Spot Discount Curve} and \emph{1.2.~Forward Rates}
+and answering live questions.
+
+The first pass was on the \emph{spot curve versus the YTM curve}. He
+emphasized that what we did in Lecture~1 was \emph{not} curve-fitting the
+black YTM dots with a smooth red line. Black prices a bundle (a particular
+bond, cashflow schedule and all), red prices a time (a single risk-free dollar
+delivered on a particular future date). In a perfectly flat yield environment
+the two coincide; in an upward-sloping environment the YTM is too high for
+short cashflows and too low for long ones, so the bond's single YTM
+\emph{averages out} these compensating errors, leaving the spot curve
+\emph{above} the YTM curve at the long end. In the actual 2023 data the yield
+curve is mildly downward-sloping, so the roles flip and the spot curve sits
+\emph{below} the YTM curve. The lecturer stressed that if the student cannot
+reason this sign out without computing anything, ``you didn't do enough on
+week one.''
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer argued the direction verbally but never
+wrote the identity. For a coupon bond priced off a spot curve $r(t,T_i)$,
+\[
+  P \;=\; \sum_i \frac{c_i}{\bigl(1+r(t,T_i)/n\bigr)^{n(T_i-t)}}
+         \;=\; \sum_i \frac{c_i}{\bigl(1+y/n\bigr)^{n(T_i-t)}},
+\]
+where the second equality \emph{defines} the YTM $y$. If the spot curve is
+upward-sloping, the left equation uses small $r(t,T_i)$ on short cashflows and
+large $r(t,T_i)$ on long ones; the right equation uses the same $y$ on every
+one. For the sums to match, $y$ must be a compromise --- too large for the
+short discount rates, too small for the long discount rates. A
+cashflow-weighted average is the easiest way to see this, which is also the
+Macaulay-duration decomposition that reappears in \S\ref{L2-sec:duration}.
+\end{tipblock}
+
+The second pass was on the \emph{linear-system framing}. He reminded the class
+that estimating the spot curve from a clean cashflow matrix $\mathbf{C}$ and a
+price vector $\boldsymbol{p}$ is a linear system, which may be exactly
+identified (bootstrap), over-identified (ordinary least squares), or
+under-identified (stuck --- must impose structure). The problem in the full
+quote file is that the matrix is wildly under-identified at maturities like
+year~11 where there are no bills or notes expiring: the columns for year~11
+and year~11.5 in $\mathbf{C}$ are identical, giving perfect
+multicollinearity. Nelson--Siegel resolves this by imposing a smooth,
+parametric curve rather than discount factors at every cashflow date, and the
+lecturer said this is what a real bank or asset manager would use in
+production.
+
+The third pass was on \emph{forward rates}. He re-stated the one thing a
+student on a desert island must remember:
+\[
+    F(t,T_1,T_2) \;=\; \frac{Z(t,T_2)}{Z(t,T_1)}.
+\]
+The forward discount factor is simply the ratio of the two spot discount
+factors; forward rates are not a separate market object but a mechanical
+transformation of the spot curve. In response to a student's question about
+pricing derivatives ``through the volatility of the spot curve day-to-day,''
+the lecturer made a clean distinction: the forward curve at an instant is
+\emph{not a forecast}. It is the only no-arbitrage quote you can give for a
+forward loan \emph{at this instant}, given the spot curve at this instant. Ten
+seconds from now the spot curve moves; the forward curve moves with it; that
+is not volatility being mis-modeled, it is the consistency requirement
+between the two sides of the same coin.
+
+\begin{checkpoint}
+\textbf{My note.} The lecturer's aside ``if I use blue I have to use orange,
+if I use orange I have to use blue'' is the right slogan to carry forward.
+Any firm that quotes spot products from one research team's curve and
+forward products from another team's curve is giving away free arbitrage
+to whoever notices. The spot and forward curves \emph{must} be the same
+object expressed differently at every instant.
+\end{checkpoint}
+
+With the review complete (``you should be comfortable with this now''), the
+lecturer pulled up notebook \emph{1.3.~The Expectations Hypothesis} and began
+the day's substantive material.
+
+\section{The Expectations Hypothesis}\label{L2-sec:EH}
+
+\subsection{Motivation and Three Equivalent Statements}\label{L2-sec:EH-forms}
+
+\begin{keyblock}
+\textbf{Cells~2--6.} \emph{What Determines the Shape of the Term Structure?}\\
+Many theories, including\dots
+\begin{itemize}
+  \item \emph{Segmented markets.} Long- and short-term bonds appeal to
+        different investors with differing supply and demand. This theory is
+        at odds with the tight factor structure (high correlation) seen
+        between bonds of different maturities, though it may explain some
+        frictions.
+  \item \emph{Economic explanations.}
+        \begin{itemize}
+           \item Liquidity preference theory.
+           \item Representative agent models.
+        \end{itemize}
+        These are used more in macroeconomic theorizing, not in pricing or
+        managing financial products.
+\end{itemize}
+
+\textbf{The baseline theory is the Expectations Hypothesis.} It is simplistic.
+It is empirically wrong. But it serves as a useful baseline in organizing the
+question.
+\end{keyblock}
+
+The lecturer opened the notebook with the framing that there are several
+theories for why the yield curve takes the shape it does, and one --- the
+Expectations Hypothesis (EH) --- dominates the conversation even though
+everyone in finance knows it fails. The reason, he said, is pragmatic: the
+full problem ``how do I have a joint view on every rate at every maturity for
+every future date?'' is unmanageable, and imposing \emph{no} structure means
+you will write down models for each rate that violate no-arbitrage with each
+other. The EH goes to the opposite extreme: all the interconnections collapse
+to the statement that a single object --- the current spot curve, and
+therefore the current forward curve --- encodes the market's expectations of
+every future rate. ``It is a pretty good starting point,'' he said. ``If I
+were going into an interview in five minutes and needed to talk about where
+investors expect rates to go, the first thing I would look at is what
+forwards have encoded about those expectations.'' The rest of the lecture
+tests whether that shortcut is justified.
+
+\begin{keyblock}
+\textbf{Cells~7--10.} \emph{The Expectations Hypothesis (EH).}\\
+The Expectations Hypothesis has three equivalent forms. Conceptually, they are:
+\begin{enumerate}
+  \item Long-term yields are the market's expectation of the average future
+        short-term yields.
+  \item Forward rates are the optimal forecasts of future (one-period)
+        yields.
+  \item Expected returns on holding bonds are equal across maturities.
+\end{enumerate}
+\textbf{Mathematically.} The $n$-period yield is the average of expected
+one-period yields:
+\[
+  y^{(n)}_t \;=\; \frac{1}{n}\,\E_t\!\left[
+     y^{(1)}_t + y^{(1)}_{t+1} + \cdots + y^{(1)}_{t+n-1}
+  \right].
+\]
+Equivalently, the forward rate is the expected future spot:
+\[
+   f_t^{(n,n+1)} \;=\; \E_t\!\left[y^{(1)}_{t+n}\right].
+\]
+Or, in terms of returns:
+\[
+   \E_t\!\left[r^{(n)}_{t+1}\right] \;=\; y^{(1)}_t \qquad \text{for every $n$.}
+\]
+\end{keyblock}
+
+A student offered statement~3 first (``rolling short-term bonds gives the same
+expected return as buying and holding a long-term bond''), and the lecturer
+used it as the entry point. The full set, he emphasized, is
+\emph{equivalent}: statement~2 says the orange forward curve you drew in
+Lecture~1 is not just a mechanical no-arbitrage identity but also the market's
+best guess for how the short-term spot curve will evolve over time; statement~1
+expresses the same idea with log yields on both sides; statement~3 expresses
+the same idea as a statement about expected excess returns.
+
+\begin{tipblock}
+\textbf{Filling the gap.} Statements~1, 2, 3 look like three different facts
+but they are algebraic rearrangements of each other under continuous
+compounding. From statement~1,
+\[
+   n\,y^{(n)}_t \;=\; \E_t\!\bigl[\sum_{i=0}^{n-1}y^{(1)}_{t+i}\bigr].
+\]
+Differencing the same equation at maturity $n+1$ and at maturity $n$ gives
+\[
+   (n+1)y^{(n+1)}_t - n\,y^{(n)}_t \;=\; \E_t\!\bigl[y^{(1)}_{t+n}\bigr].
+\]
+The left-hand side is the definition of the one-period forward rate
+$f_t^{(n,n+1)}$, which recovers statement~2. Statement~3 follows from pricing
+a zero-coupon bond at $t$ and at $t+1$ and equating expected log returns under
+the risk-neutral condition. The lecturer skipped this derivation because it
+is purely algebraic and the conceptual content is all in statement~2.
+\end{tipblock}
+
+The lecturer paused on the strength of statement~3. For a student with the
+previous quarter's portfolio course in hand, this is the most damning form:
+the EH asserts that there is \emph{no risk premium} for holding long-term
+bonds, which in a factor-model language means long-term bonds have zero
+exposure to any priced factor. That would be astonishing. Students offered
+candidate risks --- credit, liquidity, rate volatility, reinvestment risk,
+inflation --- and the lecturer highlighted the inflation point as the most
+compelling: locking in a five-year bond today exposes the holder to unexpected
+inflation over five years, whereas rolling one-year bills resets the rate
+annually and largely sidesteps inflation risk. A rational risk-averse investor
+would demand a premium for the five-year bet, which the EH says is zero. So
+the EH is bold.
+
+\begin{keyblock}
+\textbf{Cell~11.} \emph{Testable Implications.}\\
+\begin{itemize}
+  \item On average, all yields are equal (from statement~1: long-term yields
+        are averages of expected short-term yields, so over long samples they
+        coincide).
+  \item The current forward rate and the future short-term yield are equal on
+        average (statement~2).
+  \item Excess returns (long-bond return minus short-bond return) are zero on
+        average (statement~3).
+\end{itemize}
+\end{keyblock}
+
+\subsection{Empirical Analysis -- Three Facts Against the EH}\label{L2-sec:EH-empirics}
+
+The lecturer grouped the empirical analysis into three ``facts,'' each the
+unconditional version of one of the EH's three statements.
+
+\begin{keyblock}
+\textbf{Cells~14--18.} \emph{Fact \#1. Long-term yields are higher than
+short-term yields --- even averaged over long periods of time.} This means
+long-term yields cannot simply be an average of short-term yields.
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c18_fact1_unc.png}\end{center}
+The table reports the unconditional mean yield at each maturity over the full
+Fama--Bliss sample.
+\end{keyblock}
+
+The lecturer pointed at the table and said: if statement~1 held, all rows
+would be (roughly) equal. They are not. The one-year yield averages about
+$4.5\%$ while the five-year yield averages about $5.0\%$. Over many decades
+the long-term yields are persistently higher than the short-term yields. A
+student asked whether this could be a ``lurking variable'' --- some slow-moving
+macro factor --- and the lecturer accepted the point: \emph{something} beyond
+the EH is driving the positive mean term spread, and the most natural
+candidate is a risk premium for inflation, not unlike the equity-risk premium
+the class encountered in portfolio theory last quarter.
+
+\begin{keyblock}
+\textbf{Cells~19--22.} \emph{Fact \#2. Forward rates are higher on average
+than the future yield.} The forward overestimates the realized future spot.
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c22_fact2_unc.png}\end{center}
+The left column is the average forward rate $f_t^{(n,n+1)}$; the right column
+is the average realized one-year yield at $t+n$. If statement~2 held they
+would agree; they don't.
+\end{keyblock}
+
+The lecturer's analogy was the biased weatherman: it is winter, he forecasts
+35 degrees; it is summer, he forecasts 90. He is ``getting something right''
+in the sense that the forecast tracks the season. But he is systematically
+three degrees too high, and that is a failure of \emph{optimality}, even if
+his forecast is not useless. Forward rates in the data do the same thing ---
+they overestimate the realized future spot by what looks like a constant term
+premium at each maturity. The lecturer noted in passing that this is
+consistent with forwards being the risk-\emph{neutral} expectation of the
+future spot, with the true physical expectation sitting below because of
+investor risk aversion.
+
+\begin{keyblock}
+\textbf{Cells~23--26.} \emph{Fact \#3. Excess returns are not zero.}
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c25_fact3_unc.png}\end{center}
+The excess return (long bond return minus one-year bond return) averages
+positive at every maturity. \textbf{Conclusion.} The statistics above are
+evidence against the Expectations Hypothesis. Specifically: long-term yields
+are higher than short-term yields on average; forward rates overestimate
+future spot rates; excess returns are systematically positive.
+\end{keyblock}
+
+The lecturer summarized the unconditional case as ``three ways of saying the
+same thing: there is a term premium.'' A student's follow-up asked whether you
+could \emph{rescue} the EH by allowing a constant offset --- let the left and
+right sides of each statement differ by a constant $\alpha$, possibly one
+$\alpha$ per maturity. The answer: yes, you bail out the unconditional
+version. But the rescue is only cosmetic --- statement~2 still fails
+\emph{dynamically}, because the deviation between forward and future spot is
+not constant. It varies in predictable ways with the shape of the curve. That
+is the content of the conditional (regression) tests in the next subsection.
+
+\begin{checkpoint}
+\textbf{My note.} The three facts are \emph{unconditional} averages. That
+makes them stronger evidence than the conditional (regression) tests in one
+sense (you cannot blame a bad regression specification) but weaker in
+another (a small constant offset bails them out). The next subsection pairs
+each fact with a regression test that is harder to dismiss.
+\end{checkpoint}
+
+\subsection{Dynamic Tests -- Conditional Regressions}\label{L2-sec:EH-dynamic}
+
+The lecturer then ran conditional (regression-based) versions of the three
+tests. His framing: ``Yes, on average the forward overestimates the spot by
+some constant term premium. Fine --- I'll absorb that into the regression
+intercept $\alpha$. What I really want to test is whether the \emph{slope}
+$\beta$ equals one: does the forward move one-for-one with the future spot?''
+A $\beta$ not equal to one refutes the EH in a way no term-premium rescue can
+fix.
+
+\begin{keyblock}
+\textbf{Cells~27--40.} \emph{Dynamic Fact \#1.} Use a forecasting regression
+to test statement~1. The relation
+\[
+  y^{(n)}_t \;=\; \frac{1}{n}\,\E_t\!\bigl[y^{(1)}_t + \cdots + y^{(1)}_{t+n-1}\bigr]
+\]
+becomes (after replacing the expectation with an observed sample average and
+subtracting the current short rate $y^{(1)}_t$ from both sides to improve
+statistical power)
+\[
+  \frac{1}{n}\sum_{i=0}^{n-1}\tilde{y}^{(1)}_{t+i}
+    \;=\; \alpha^{(n)} \;+\; \beta^{(n)}\,\tilde{y}^{(n)}_t
+         \;+\; \varepsilon^{(n)}_{t+n},
+\]
+where $\tilde{y}^{(\cdot)}_t \equiv y^{(\cdot)}_t - y^{(1)}_t$.
+Under the EH, $\beta^{(n)} = 1$ at every $n$.
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c40_fact1_dyn.png}\end{center}
+The estimated betas are $0.32$, $0.31$, $0.30$, $0.30$ at maturities $n=2,3,4,5$
+--- nowhere near one --- and the $R^2$ values fall from $60\%$ at $n=2$ to
+$44\%$ at $n=5$.
+\end{keyblock}
+
+The lecturer highlighted the positive signs of the betas (the direction of
+the prediction is correct, which is why he said the EH is ``a pretty good
+starting point'') but stressed that $\beta \approx 0.3$ instead of $\beta = 1$
+is a serious quantitative failure. If today's five-year yield rises a percent
+relative to the one-year, the EH says to expect the next five years of
+one-year yields to average a full percent higher --- the regression says
+expect about a third of that.
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer mentioned twice that subtracting
+$y^{(1)}_t$ from both sides ``improves statistical power.'' The reason,
+which he glossed, is that yields are extremely serially correlated --- the
+year-ahead yield is well-predicted by today's yield. A regression of
+\emph{future level} on \emph{current level} will give an $R^2$ near $90\%$
+just because yesterday predicts today. That is not a forecast skill, it is
+persistence. Subtracting today's one-year yield removes the persistence
+component and forces the regression to predict only the \emph{deviation} from
+persistence, which is the content of the EH claim. This is the same
+``predict tomorrow's temperature minus today's'' trick from the portfolio
+course.
+\end{tipblock}
+
+\begin{keyblock}
+\textbf{Cells~41--47.} \emph{Dynamic Fact \#2.} Test statement~2 directly by
+regressing the realized future one-year yield on the corresponding forward
+rate. Again use the excess-forward form
+\[
+   \tilde{f}_t^{(n,n+1)} \;=\; f_t^{(n,n+1)} - f_t^{(0,1)},
+\]
+and regress
+\[
+   y^{(1)}_{t+n} - y^{(1)}_t \;=\; \alpha \;+\; \beta\,\tilde{f}_t^{(n,n+1)} \;+\; \varepsilon.
+\]
+Under the EH, $\beta = 1$.
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c47_fact2_dyn.png}\end{center}
+The betas are again far below one and decay to roughly one-quarter at the
+longer maturities, with $R^2$ values that offer little prospect of
+overcoming transaction costs.
+\end{keyblock}
+
+The lecturer was emphatic that a high $R^2$ is not what the EH claims.
+``The EH doesn't say the forward perfectly predicts the future spot. It says
+the forward is the \emph{best} predictor --- which in regression language means
+the $\beta$ has to be exactly one.'' The data says no. He noted that the
+failure is larger at longer maturities: the ten-year-ahead forecast is
+essentially uninformative, while the two-year-ahead has some content.
+
+\begin{keyblock}
+\textbf{Cells~48--56.} \emph{Dynamic Fact \#3. Excess returns differ across
+maturities in predictable ways.} Define the \emph{forward spread}
+\[
+   \tilde{f}^{(n)}_t \;\equiv\; f_t^{(n,n+1)} - f_t^{(0,1)}.
+\]
+The forecasting regression is
+\[
+   \tilde{r}^{(n)}_{t+12} \;=\; \alpha \;+\; \beta\,\tilde{f}^{(n)}_t \;+\; \varepsilon.
+\]
+Under the EH, \emph{no} regressor should predict excess returns, so
+$\beta$ should be zero. In the data:
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c55_fact3_dyn.png}\end{center}
+The estimated betas are \emph{positive and non-trivial}: when the forward
+spread is high, future excess returns tend to be high, meaning the forward
+curve contains information about future returns that the EH forbids.
+\end{keyblock}
+
+The lecturer tied this back to the homework case study. ``I did not ask you to
+code up these regressions. I asked you to build a naive trade the EH says
+should not have worked --- long the maturity with the highest yield, short the
+maturity with the lowest --- and see if it makes money over the long run. If
+the EH is right, your trade has zero expected excess return. If it makes
+money over seventy years, you have indirectly estimated a non-zero $\beta$ in
+this third regression.'' The answer, which he previewed at the end of this
+section and returned to in \S\ref{L2-sec:invyc}: the carry trade has earned
+about $1.5\%$ per year with a volatility of $4.8\%$, for a Sharpe ratio of
+roughly $0.33$ over the 1952--2025 sample. Not spectacular, but not zero
+either, and interesting as a diversifier.
+
+\begin{checkpoint}
+\textbf{My note.} The three dynamic regressions and the three unconditional
+facts test the same claim three ways. The unconditional facts are easy to
+bail out with constant term premia; the dynamic regressions insist on
+$\beta = 1$ and cannot be bailed out by any constant. This is why the
+conditional tests are ``harder to dismiss'' --- they are the version of
+the EH that a practitioner would actually want to assume, and they fail.
+\end{checkpoint}
+
+\subsection{Appendix: Mathematics of the EH}\label{L2-sec:EH-appendix}
+
+The lecturer scrolled through the appendix cells quickly. They set up the
+notation used throughout the empirical analysis and the student should know
+how to reconstruct the formulas, even if the lecturer skipped them in class.
+
+\begin{keyblock}
+\textbf{Cells~58--68.} \emph{Zero-coupon (discount) bonds and log notation.}
+Zero-coupon (discount) bonds with face value \$1 have prices like $0.99$,
+$0.95$ rather than $99$, $95$; yields are in decimals $(0.015, 0.02)$ not
+percentages $(1.5, 2)$. The $n$-maturity bond has price $P^{(n)}$ and y
+$Y^{(n)}$ satisfying
+\[
+  P^{(n)} \;=\; \frac{1}{(1+Y^{(n)})^n}.
+\]
+It is more convenient to use logs. Define
+\[
+  p^{(n)} \;\equiv\; \ln P^{(n)}, \qquad
+  y^{(n)} \;\equiv\; \ln(1+Y^{(n)}).
+\]
+Then $p^{(n)} = -n\,y^{(n)}$, equivalently $y^{(n)} = -\frac{1}{n}\,p^{(n)}$.
+\end{keyblock}
+
+\begin{keyblock}
+\textbf{Cells~71--73.} \emph{Log prices and log yields, data check.}
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c71_logtails.png}\end{center}
+The tails of \texttt{lprices} and \texttt{lys}; note that log prices are
+negative (they are discount rates times maturity, with a sign flip).
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_1_c73_logseries.png}\end{center}
+\end{keyblock}
+
+\begin{keyblock}
+\textbf{Cells~74--80.} \emph{Forward Rate Summary and Data Note.}
+The log forward rate of zero-coupon bonds has the simple formula
+\[
+   f_t^{(n,n+1)} \;=\; p^{(n)}_t - p^{(n+1)}_t
+                 \;=\; (n+1)\,y^{(n+1)}_t - n\,y^{(n)}_t.
+\]
+The data underlying the EH tests are the Fama--Bliss Treasury discount bonds
+at annual maturities out to $T=5$ years. Maturities beyond five years are
+omitted because CRSP/CMT-style Treasury indices require substantial
+cleaning to give reliable discount-bond prices beyond that horizon.
+\end{keyblock}
+
+The lecturer closed the Expectations Hypothesis section (to paraphrase): ``So
+the unconditional tests fail by a term premium, and the dynamic tests fail by
+a slope coefficient. The conclusion is not that the EH is useless --- it is a
+much better starting point than the CAPM, say --- but that it is
+\emph{wrong enough} that you would not set it as your firm's internal model.
+Now let's talk about where this takes us in practice.''
+
+\section{The Inverted Yield Curve Case}\label{L2-sec:invyc}
+
+Before the break, the lecturer pulled up a companion page titled \emph{The
+Inverted Yield Curve} (not among notebooks~1.3--2.4 but linked from the course
+site) to run a case study on the Estrella--Sack--Bernanke debate and the
+2022--2024 inversion. The page has no notebook cells to reproduce in a
+keyblock, so what follows is prose. A classmate who missed class should open
+the page \texttt{The Inverted Yield Curve} on the site before reading.
+
+\subsection{The Empirical Regularity}\label{L2-sec:invyc-empirical}
+
+The lecturer's starting chart was a time series of the 10-year Treasury yield
+minus the 2-year Treasury yield from the 1970s to 2024, with NBER recession
+dates shaded in gray. The striking pattern: every time the 10-year-minus-2-year
+spread goes negative (the yield curve \emph{inverts}), a recession follows
+within roughly a year or two. Every time. Except possibly now --- the
+2022--2024 inversion was the deepest and most sustained since the 1980s, and
+as of the lecture (January 2026) the United States had still not entered a
+recession.
+
+He noted that the specific choice of maturities (10-minus-2, 10-minus-1,
+10-minus-3-months, etc.) is not crucial --- empirical research at the New York
+Fed uses several variants and they all broadly agree. The signal is whether
+the curve is inverted at all, not which maturities are used.
+
+\subsection{The Estrella--Sack--Bernanke Debate}\label{L2-sec:invyc-debate}
+
+The Harvard case lays out three views on \emph{why} the empirical regularity
+exists, through the lens of the 2006--2007 inversion preceding the 2008
+recession:
+
+\textbf{Estrella and Sack (Fed/Goldman)} take the expectations-hypothesis
+view. If forward rates are the market's expectation of future spot rates,
+then an inverted yield curve --- where forwards are below current spot ---
+means the market expects \emph{rates to fall substantially} in the future.
+Rates fall when the Fed cuts, and the Fed cuts aggressively during
+recessions. So the yield curve inverts \emph{because the market anticipates a
+recession}, not the other way around. Sack's stronger version of this view:
+the correlation is not causal in either direction, the inversion and the
+recession both derive from the same underlying phenomenon --- a market
+consensus that a slowdown is coming.
+
+\textbf{Bernanke (Morgan Stanley, at the time)} takes the structural view.
+The relationship that held in prior decades need not hold now because of
+changes in how monetary policy operates and how the demand for long-term
+Treasuries has evolved. So even if the curve inverts in 2006--2007, that does
+not imply a recession is coming, because the old mechanism has broken. As we
+know now, a massive recession did follow. The lecturer drew out the parallel
+to today: ``For the last three years, people have been making the same
+argument. Some said the inversion guarantees a recession; others, that this
+time is different. So far it is coming out on the side of `no recession.'\,''
+
+\subsection{Forward Paths vs.~Realized Spot}\label{L2-sec:invyc-forwards}
+
+To illustrate how visibly the forward-as-forecast story fails, the lecturer
+showed a time-series chart of the realized 1-year spot rate (solid blue line
+from 2014 to 2024) with \emph{forward-rate paths} overlaid at several
+historical instants (orange dashed fans). At the beginning of 2018, when the
+1-year rate was around $2.5\%$, the forward curve predicted rates would
+continue to float around $2.5\%$ for several years. What actually happened was
+a drop to near-zero by 2020. The next fan, drawn in early 2022 when rates
+were still near zero, predicted a gradual rise to about $1.5\%$ over four
+years. What actually happened was a spike to $5\%$ within twelve months.
+
+The lecturer was careful not to frame this as a refutation of the EH
+(``the EH would say these forwards are the best forecast \emph{on average} ---
+in any single period they can be arbitrarily wrong''). But the visualization
+is a useful corrective to the intuition that ``forward rates are the market's
+forecast in a strong sense.'' They are the market's forecast in the sense
+that no one can systematically do better after accounting for transaction
+costs and risk premia, but they can and do miss drastic realized moves.
+
+\subsection{The Carry Trade over Seventy Years}\label{L2-sec:invyc-carry}
+
+The lecturer closed the case by showing what the homework's naive carry trade
+(long the high-yield maturity, short the low-yield maturity, rebalanced
+annually) would have earned from 1952 to 2025:
+\[
+  \text{average excess return} \approx 1.5\%, \quad
+  \text{volatility} \approx 4.8\%, \quad
+  \text{Sharpe ratio} \approx 0.33.
+\]
+
+He asked the class how to evaluate a Sharpe of $0.33$. It is lousy as a
+standalone bet but potentially interesting as a diversifier if it has low
+correlation with the student's other holdings. His point: the EH says this
+number should be zero. It is not zero. That is the quantitative content of
+Fact~\#3, and the entire fixed-income term-premium literature is built on
+exploiting and understanding it.
+
+\begin{checkpoint}
+\textbf{My note.} The homework version of the carry trade set it up once,
+in November 2020, and rode it for five years without rebalancing. Over
+that specific window the trade lost heavily (about 12\% on \$100M
+notional) because rates rose from near-zero to above 4\% --- a tail event
+for a long-duration long position. The seventy-year historical simulation
+with annual rebalancing makes it profitable, but the recent sample is a
+reminder that the $0.33$ Sharpe masks very large drawdowns.
+\end{checkpoint}
+
+Fifteen-minute break; the lecturer took one question on China's recent
+Treasury sales (liquidity-preference / segmented-markets explanation of curve
+shape), agreed it was ``an open question'' whether supply/demand effects at
+specific maturities partly drive the pattern, and broke.
+
+\section{Interest-Rate Risk: A Single Bond Over Time}\label{L2-sec:irr}
+
+After the break the lecturer turned to notebook \emph{2.1.~Interest Rate
+Risk}. His framing: the previous notebooks looked at the \emph{yield curve},
+which is a range of rates quoted on a single date. Now we flip it: a range of
+dates for a single bond issue.
+
+\begin{keyblock}
+\textbf{Cells~2--7.} \emph{Prices of a bond.}\\
+We have discussed the yield curve, which is a range of rates quoted on a
+single date. Now we consider a range of dates for a single bond issue.
+\begin{center}\includegraphics[width=0.9\linewidth,height=0.8\textheight,keepaspectratio]{figures/L2_2_c07_dirty.png}\end{center}
+The dirty price of a 30-year Treasury from 1992 through 2023. Note that the
+price varies substantially; there are periods where it is well above par and
+periods where it is near par. This is the dirty price, which includes
+accrued interest of the coupons. The quoted clean ask price would differ.
+\end{keyblock}
+
+The lecturer's question to the class: ``Why does this price move a lot early
+in its life and sit almost flat late in its life?'' The answer has two parts,
+one obvious and one subtle.
+
+\textbf{The obvious part} is mechanical: the ``staircase'' pattern in the
+late-life dirty price comes from the semiannual coupons. Between coupon
+dates, accrued interest accumulates, so the dirty price rises smoothly; on
+the coupon date, \$3 of value leaves the bond (the coupon is paid), and the
+dirty price drops discretely. The clean price (excluding accrued interest)
+removes this artifact and is the series analysts typically plot.
+
+\begin{tipblock}
+\textbf{Filling the gap.} The lecturer's ``selling a used car with a
+\$5,000 suitcase inside'' analogy makes the point: clean price = dirty price
+$-$ accrued interest. The formal identity is
+\[
+  P^{\text{dirty}}(t) \;=\; P^{\text{clean}}(t)
+       \;+\; \frac{c}{2}\,\frac{t - t_{\text{last coupon}}}{t_{\text{next coupon}} - t_{\text{last coupon}}},
+\]
+for a semiannual coupon $c$. Both are real prices; the dirty price is what
+changes hands in a transaction, the clean price is the one that behaves like
+a market signal because it strips the predictable coupon-accrual component.
+The plot above is the dirty price; the stepped pattern is the suitcase
+getting removed at each coupon date.
+\end{tipblock}
+
+\textbf{The subtle part} is that the clean price is quiet at the end of life
+\emph{even during periods of large rate moves}. Rates fell from roughly $3\%$
+in 2019 to near zero in 2020, and the 30-year bond's clean price barely
+budged, despite the bond still having four years of cashflows remaining.
+Students tossed out candidate explanations. One, the correct one, was:
+interest-rate sensitivity has collapsed because the remaining cashflow stream
+is short. A zero-coupon bond's price sensitivity to rates is proportional to
+its remaining time to maturity (we'll derive this in \S\ref{L2-sec:duration}),
+so a bond with four years left responds to a 1\% rate move by roughly $4\%$
+of price, while the same bond in its thirtieth year responded by roughly
+$30\%$.
+
+But the lecturer added a second cause: \emph{rates themselves barely moved
+in 2021--2023 for the segment of time visible in the plot}. The volatility of
+one-year yields over those years was essentially zero; with no input
+variation there can be no output variation, regardless of the bond's
+sensitivity. So the flat end-of-life clean-price segment is partly low
+sensitivity (short remaining life) and partly low rate volatility (an
+artifact of the 2021--2023 period).
+
+\begin{checkpoint}
+\textbf{My note.} The two explanations interact. In early 2019, rates
+dropped three percentage points in twelve months; the bond had ten years
+left, so it still had meaningful duration, and the plot shows a visible
+rally that matches. By 2022--2024, rates rose several percentage points
+again, but the bond had only two to three years left and the price-move
+is visible but small. The ``deadness'' at the very end of life is not a
+puzzle --- it is what duration and convexity will formalize next.
+\end{checkpoint}
+
+The lecturer then closed the 2.1 notebook with: ``Now, we could measure
+sensitivity statistically --- do a regression of daily price changes on daily
+rate changes, get a beta. But the beta would be mixing thirty years of
+different sensitivities (30-year bond, 29-year bond, \ldots, 1-year bond),
+which is not useful. We need a \emph{mathematical} notion of sensitivity that
+says something specific about each point in the bond's life.'' He clicked
+the \textbf{Slides} link in the table of contents of the course site and
+opened the PDF deck \emph{L.2.~Slides --- Duration and Convexity}, which
+occupied the rest of the lecture.
+
+\section{Duration and Convexity}\label{L2-sec:duration}
+
+The remaining hour was taught off the \texttt{L.2.~Slides --- Duration and
+Convexity.pdf} deck, which the lecturer had open in Preview (page 1 of 33
+visible at the start). The deck is linked from page 2.2 of the course site
+and downloadable from there. Unlike the other notebooks, the slide deck is
+not a Jupyter page with cells, so this section is written as prose that
+walks a reader through the same slide sequence the lecturer showed; a
+classmate who missed class should open the deck alongside these notes.
+
+\subsection{The Taylor Approximation}\label{L2-sec:taylor}
+
+\textbf{Slide 8, L.2 Slides.} The setup:
+\[
+  \frac{\dd P}{P} \;\approx\; -\,D\,\dd r \;+\; \tfrac{1}{2}\,C\,(\dd r)^2,
+\]
+where $D$ is \emph{duration} and $C$ is \emph{convexity}. Bond prices are
+nonlinear in rates, so this is a Taylor expansion around the current rate.
+
+The lecturer emphasized three conventions embedded in that formula. First,
+the expansion is in \emph{percentage} price change $\dd P/P$, not dollar price
+change, so that $D$ and $C$ are maturity-scaled numbers rather than dollar
+sensitivities. Second, the quadratic term carries a factor of $1/2$, just
+from Taylor (one could absorb it into $C$, but convention doesn't). Third,
+and most annoyingly, there is a \emph{negative sign} in front of the linear
+term --- the linear sensitivity $\partial P/\partial r$ is always negative for a
+vanilla bond (higher rate means lower price), and the convention is to
+strip the sign out so that we can report $D$ as a positive number. The
+lecturer's aside: ``If I could redesign the basics of fixed income from
+scratch, I would eliminate that convention. Duration is a negative number; we
+report $-D$ because someone thought positive numbers looked friendlier.''
+
+He also pointed out that stopping at the quadratic is the convention in
+fixed income, even though one \emph{could} go to third order. For vanilla
+Treasuries the cubic term is so small as to be invisible on the
+approximation plots --- ``you'd be the only one doing it, and there would be
+nothing of interest in it.'' Options products with negative convexity can
+behave differently, but those are later in the course.
+
+\begin{tipblock}
+\textbf{Filling the gap.} The full Taylor expansion of $P(r)$ around a base
+rate $r_0$ is
+\[
+  P(r) \;\approx\; P(r_0) + P'(r_0)(r-r_0) + \tfrac{1}{2}P''(r_0)(r-r_0)^2
+  + \tfrac{1}{6}P'''(r_0)(r-r_0)^3 + \cdots.
+\]
+Dividing by $P(r_0)$ and defining $D \equiv -P'/P$ and $C \equiv P''/P$, the
+stated approximation follows. For a 30-year bond at $r=4\%$, a 1\% rate
+shock is $\dd r = 0.01$; the cubic term scales as $(\dd r)^3 = 10^{-6}$,
+negligible even for a 5\% shock.
+\end{tipblock}
+
+\subsection{Duration of a Single Cashflow}\label{L2-sec:duration-single}
+
+\textbf{Slide 11, L.2 Slides.} For a zero-coupon bond paying \$1 at time $T$
+under continuous compounding, $P = e^{-rT}$ so
+\[
+  -\frac{1}{P}\frac{\dd P}{\dd r} \;=\; T.
+\]
+
+The lecturer dwelt on this result for a moment: for a single fixed cashflow
+under continuous compounding, \emph{duration equals time to maturity}. This
+is the magical coincidence that makes the concept work. It also, he warned,
+leads to a common misunderstanding --- ``some of you have taken the
+\emph{definition} of duration to be time to maturity. That is not the
+definition. It is a mathematical consequence for a single fixed cashflow. For
+a mortgage-backed security or a floating-rate bond, the duration is not time
+to maturity; you have to go back to the sensitivity calculation.''
+
+\subsection{Duration as a Linear Operator}\label{L2-sec:duration-linear}
+
+\textbf{Slide 13, L.2 Slides.} Because differentiation is a linear operator,
+the duration of a portfolio of cashflows is the value-weighted sum of the
+durations of its components:
+\[
+  D_{\text{portfolio}} \;=\; \sum_{i=1}^{n} w_i\,D_i,
+  \qquad
+  w_i \;=\; \frac{\text{PV}(\text{cashflow}_i)}{\text{PV}(\text{portfolio})}.
+\]
+
+A coupon Treasury is a portfolio of zero-coupon cashflows (a $0.5$-year
+coupon, a $1$-year coupon, \ldots, and the principal). Each has duration
+equal to its time to maturity. So for a coupon bond,
+\[
+  D \;=\; \sum_{i=1}^{n} w_i\,T_i,
+\]
+the \emph{value-weighted} average of the cashflow times. The lecturer was
+careful about the weights: they are not the nominal cashflow shares (\$3
+coupons divided by the \$100 bond), they are the present-value-weighted
+shares. The coupon twenty-eight years out is worth far less than \$3 today,
+so it gets a small weight; the coupon next month is worth essentially \$3
+and gets a near-full weight.
+
+\begin{tipblock}
+\textbf{Filling the gap.} To see that differentiation preserves the linear
+structure: if $P = \sum_i c_i\,Z_i$ with $Z_i = e^{-rT_i}$, then
+\[
+  \frac{\dd P}{\dd r} \;=\; \sum_i c_i \cdot (-T_i) e^{-rT_i}
+                 \;=\; -\sum_i T_i\,(c_i Z_i).
+\]
+Dividing by $-P$,
+\[
+  D \;=\; \frac{1}{P}\sum_i T_i\,(c_i Z_i)
+        \;=\; \sum_i T_i\,\frac{c_i Z_i}{P}
+        \;=\; \sum_i w_i\,T_i,
+\]
+with $w_i = c_i Z_i/P$ summing to one. This derivation is a few lines but
+the lecturer only stated the result; the weight structure is the key thing
+to see.
+\end{tipblock}
+
+\subsection{The Macaulay Closed-Form Formula}\label{L2-sec:duration-macaulay}
+
+\textbf{Slide 15, L.2 Slides.} For a textbook bond where every cashflow sits
+exactly $i/n$ years from today (compounding frequency $n$, maturity $N$
+periods) and with coupon rate $c/n$ per period and y-to-maturity
+$\tilde{y} = y/n$, the duration has a closed form:
+\[
+  D \;=\; \frac{1}{P}\,\frac{1}{n}\left[
+            \frac{c/n}{\tilde{y}^2}\left(
+              (1+\tilde{y}) - (1 + \tilde{y} + N\tilde{y}(c - y)/c)\,(1+\tilde{y})^{-N}
+            \right) + \frac{N(1+\tilde{y})^{-N}}{n}
+          \right].
+\]
+
+The lecturer did not write the formula on the board (he pointed to it on the
+slide) and cautioned that this is useful only for the idealized clean case.
+For real-world messy data --- a first coupon that's fourteen days away and then
+six-monthly after that --- the practical route is numerical: compute the
+present-value weights of each cashflow using the spot curve, multiply by the
+time to each cashflow, and sum. The messiness of real cashflow timing is a
+reason to prefer the numerical route at a production desk.
+
+A subtle point the lecturer paused on: the duration above is defined as the
+derivative with respect to a \emph{parallel shift in the spot curve}, but the
+closed-form formula above is expressed in terms of the \emph{y-to-maturity}
+$y$. These are different objects --- the spot shifts a curve; the YTM is one
+number summarizing the bond. The reason the formula works is that for a
+single bond, the derivative of $P$ with respect to the YTM and the derivative
+of $P$ with respect to a parallel spot-curve shift are related by a simple
+scaling factor. That scaling factor shows up again below as the difference
+between Macaulay duration and modified duration.
+
+\subsection{Dollar Duration, Macaulay, and Modified Duration}\label{L2-sec:duration-names}
+
+\textbf{Slides 17--19, L.2 Slides.} The lecturer walked through the
+``alphabet soup'' of duration definitions and emphasized that they are all
+the same derivative, rescaled in different ways.
+
+\begin{itemize}
+  \item \textbf{Macaulay duration} $D$ is
+        $-\tfrac{1}{P}\tfrac{\partial P}{\partial r}$
+        with $r$ a parallel shift in the spot curve. It is a percentage
+        sensitivity. This is the default ``duration'' if no qualifier is
+        given, especially in research.
+  \item \textbf{Dollar duration} is $-\tfrac{\partial P}{\partial r}$, the
+        \emph{dollar} price change per unit rate change. It is the Macaulay
+        duration multiplied by the bond price. Useful for reasoning about
+        position-level P\&L: a \$5M dollar duration on a \$1M position means
+        a 1bp rate move produces \$500 of P\&L.
+  \item \textbf{Modified duration} is the analogue of Macaulay duration, but
+        where the derivative is taken with respect to the bond's YTM (not a
+        parallel spot-curve shift). It is what the closed-form formula above
+        actually computes. It relates to Macaulay duration via
+        $D^{\text{mod}} = D / (1 + y/n)$ for semiannual compounding.
+\end{itemize}
+
+The lecturer was wry about the proliferation of names. ``Did we really need a
+whole new term just to say `same derivative, dollar units'? I suppose so.''
+He emphasized that for real-world portfolios, Macaulay duration is preferred
+because there are fixed-income products (mortgage-backed securities, options
+on bonds) where the YTM is not well-defined --- you cannot take a derivative
+with respect to something that doesn't exist --- whereas a parallel spot
+shift is always defined. Modified duration is ubiquitous in bond-desk jargon,
+though, and will appear in the Week~2 case study (bond arbitrage).
+
+\subsection{Convexity}\label{L2-sec:convexity}
+
+\textbf{Slides 22--27, L.2 Slides.} The second derivative enters through the
+convexity term:
+\[
+   C \;\equiv\; \frac{1}{P}\,\frac{\partial^2 P}{\partial r^2}.
+\]
+
+For a single zero-coupon cashflow at time $T$ (continuously compounded),
+differentiating $P = e^{-rT}$ twice gives $P'' = T^2 e^{-rT}$, so
+\[
+  C \;=\; T^2.
+\]
+By the same linearity argument as duration, a coupon bond's convexity is the
+value-weighted average of the $T_i^2$:
+\[
+  C \;=\; \sum_i w_i\,T_i^2, \qquad w_i \;=\; \frac{c_i Z_i}{P}.
+\]
+
+The lecturer brought up the \emph{Convexity Approximation} plot (slide 27 in
+the deck), which shows the price of an 18-year, 3\% coupon bond under
+parallel spot shifts from $-5\%$ to $+5\%$, overlaid with the
+duration-only approximation (straight line, below the true price everywhere)
+and the duration-plus-convexity approximation (very close to the true
+curve). His observation: the duration line \emph{always underestimates} the
+true price, meaning convexity is \emph{always positive} for a vanilla
+Treasury bond. This is the well-known ``convexity bonus'' of bond positions
+--- you gain more when rates fall than you lose when rates rise by the same
+amount. Mortgage-backed securities and callable bonds can have negative
+convexity, which is the subject of the second half of the course.
+
+\begin{checkpoint}
+\textbf{My note.} Convexity is \emph{not} the derivative of duration --- it
+is the second derivative of price, scaled by $1/P$. The difference is
+subtle: the derivative of duration would also pick up a $-(1/P^2) P' \cdot P'$
+term from differentiating $1/P$. That term turns out small for vanilla
+bonds but is the reason convexity is defined as $P''/P$ rather than
+$\dd D/\dd r$.
+\end{checkpoint}
+
+The lecturer also pointed out the size of the convexity correction in
+practice. For the 18-year bond shown, a $5\%$ parallel shift produces a price
+change that the duration line misses by roughly $2\%$ of bond value --- a
+meaningful correction when accumulated over a large portfolio, but
+near-invisible for the $1$--$10$ basis-point daily moves a risk manager cares
+about. This is why practitioners almost never bother with a cubic term: on
+daily horizons even the quadratic term is a minor correction.
+
+\subsection{Why Parallel Shifts? PCA of the Yield Curve}\label{L2-sec:pca}
+
+The lecturer closed the duration/convexity discussion with a justification for
+why every formula in the deck assumes \emph{parallel} shifts of the spot
+curve --- an assumption that is obviously wrong in detail but used anyway.
+
+He scrolled back to notebook \emph{2.1.~Interest Rate Risk} (cells~62--70)
+where a PCA of the daily yield-curve changes is computed. The result: the
+first principal component of daily yield changes explains roughly $97\%$ of
+the total variation, and its loading is essentially flat across maturities
+--- \emph{all yields shift by roughly the same amount}. The second principal
+component adds a slope factor and captures most of the remaining $2.5\%$; a
+third curvature factor captures nearly all of what's left. So when a risk
+manager is thinking about tonight's market move, a level shock is by far
+the most likely thing to happen, and a parallel-shift sensitivity (duration)
+captures $97\%$ of the risk.
+
+\begin{tipblock}
+\textbf{Filling the gap.} The PCA is performed on the matrix of daily yield
+changes $\Delta \boldsymbol{y}_t$ (days $\times$ maturities). The first
+eigenvector (the level factor) has the largest eigenvalue $\lambda_1$, and
+$\lambda_1 / \sum_i \lambda_i \approx 0.97$. The lecturer mentioned ``just
+defined up to a sign'' because if $\mathbf{v}$ is an eigenvector, so is
+$-\mathbf{v}$ --- the sign is a cosmetic choice made when plotting.
+\end{tipblock}
+
+The second (slope) and third (curvature) factors justify the existence of
+\emph{key duration}, a generalization of duration where the shock is not
+flat but concentrated around a specific maturity. The lecturer said these
+are used but are a small correction to the level-factor story: ``If you want
+to stress-test a portfolio before a Fed announcement, maybe you do a slope
+duration. But day-to-day, parallel-shift sensitivity is what drives 97\% of
+your P\&L.'' Beyond-parallel-shift extensions live in the deck's appendix
+and may be briefly revisited in Lecture~3.
+
+\section*{Closing Notes}
+
+The lecture covered the Expectations Hypothesis (three equivalent
+statements; three unconditional facts against; three conditional regressions
+against), the 2022--2024 inverted-yield-curve debate (Estrella vs.\ Sack
+vs.\ Bernanke), interest-rate risk framed through a single bond's 30-year
+price history, and a first pass at duration and convexity from the
+companion slide deck. The deck material --- Taylor approximation, duration
+of a cashflow, linearity and portfolio duration, the Macaulay/modified/dollar
+duration zoo, convexity, and the PCA justification of parallel shifts ---
+occupied roughly the last forty minutes.
+
+The lecturer closed by previewing Week~2's case study (\emph{Treasury
+Arbitrage}, a Harvard case using 2008 financial-crisis data) and a paired
+exercise where the student computes duration and convexity numerically on
+the 2023 Treasury sample. Floating-rate notes, which are notebook~2.4 in
+the class~2 set, were not covered; the lecturer explicitly said Lecture~3
+would finish duration and convexity in the first forty-five minutes and
+pick up FRNs and the subsequent material afterwards. Lecture~3 also
+introduces STIR (short-term interest rate) futures, which are the Class~3
+\texttt{web.yml} pages.

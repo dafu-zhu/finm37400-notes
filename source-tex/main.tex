@@ -1,0 +1,30 @@
+% main_template.tex - Starter template; copy to notes/<course>/main.tex
+% Scaffold for a new course: copy this file, SimpleArticle.sty, and references.bib
+% into notes/<course>/, then fill \title / \author below and \include each lecture.
+
+\documentclass[11pt]{article}
+\usepackage{SimpleArticle}
+
+\title{FINM 37400: Fixed Income}
+\author{Dafu Zhu}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% Uncomment each lecture's \include as its lec0N.tex file is written.
+\include{lec01}
+\include{lec02}
+\include{lec03}
+\include{lec04}
+\include{lec05}
+\include{lec06}
+\include{lec07}
+\include{lec08}
+% Add more \include lines as needed for courses with >7 lectures.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}
