@@ -14,6 +14,8 @@ quarto preview
 
 When source `.tex` changes upstream:
 
+> Note: paths assume this repo and `good-student-note` are siblings. Adjust `SRC_ROOT` mentally if your layout differs.
+
 ```bash
 # 1. Snapshot the latest source files
 cp ../good-student-note/notes/finm37400/src/*.tex source-tex/

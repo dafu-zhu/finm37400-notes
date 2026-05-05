@@ -21,3 +21,10 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
 
 figure { margin: 1.5em auto; text-align: center; }
 figure img { max-width: 90%; height: auto; }
+
+@media (prefers-color-scheme: dark) {
+  .callout-important { background-color: rgba(12, 68, 124, 0.30); }
+  .callout-caution   { background-color: rgba(113, 43, 19, 0.30); }
+  .callout-note      { background-color: rgba(60, 52, 137, 0.30); }
+  .callout-tip       { background-color: rgba(8, 80, 65, 0.30); }
+}

@@ -64,8 +64,8 @@ format:
       url: "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/"
     include-in-header:
       - text: |
+          <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
           <script>
-            window.MathJax = window.MathJax || {};
             window.katexMacros = {
               "\\R":  "\\mathbb{R}",
               "\\N":  "\\mathbb{N}",
